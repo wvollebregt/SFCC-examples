@@ -1,0 +1,299 @@
+/*doc
+---
+title: Customer club overlay
+name: customerClubOverlay
+category: organisms
+---
+
+This is the style used for the customer club overlay (open when clicking the customer club signup)
+
+```html_example
+<article class="customer-club-overlay js-customer-club__overlay">
+    <div class="customer-club-overlay__overlay">
+        <button class="customer-club-overlay__close js-customer-club--close" data-trigger="popup--hide"></button>
+        <div class="swiper-container swiper-no-swiping" data-autoplay="" data-loop="false">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <header class="customer-club-overlay__banner">
+                        <h3 class="customer-club-overlay__firstheader">
+                            Header
+                        </h3>
+                        <p class="customer-club-overlay__extramessage">
+                            this is a message
+                        </p>
+                    </header>
+                    <form class="customer-club-overlay__form">
+                        <div class="form__field-group customer-club-overlay__form__gender">
+                            <div class="customer-club-overlay__form__label">
+                                <label class="form-group__label--block">
+                                    <span class="js-field-label">
+                                        Choose your gender:
+                                    </span>
+                                </label>
+                            </div>
+                            <input class="form__input-checkbox" type="checkbox" name="category_men" id="category_men" value="selected">
+                            <label for="category_men" class="form-group__label--inline customer-club-overlay__gender-label">
+                                <span class="js-field-label">
+                                    Men
+                                </span>
+                            </label>
+                            <input class="form__input-checkbox" type="checkbox" name="category_women" id="category_women" >
+                            <label for="category_women" class="form-group__label--inline customer-club-overlay__gender-label">
+                                <span class="js-field-label">
+                                    Women
+                                </span>
+                            </label>
+                            <input class="form__input-checkbox" type="checkbox" name="category_kids" id="category_kids">
+                            <label for="category_kids" class="form-group__label--inline customer-club-overlay__gender-label">
+                                <span class="js-field-label">
+                                    Kids
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form__field-group customer-club-overlay__form__birthdate">
+                            <div class="customer-club-overlay__form__label">
+                                <label class="form-group__label--block">
+                                    <span class="js-field-label">
+                                        Your birthdate:
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form__dropdown birthdate__day">
+                                <select class="form__input-select" name="day" required>
+                                    <option class="select-option" label="Day" value="">Day</option>
+                                    <option class="select-option" label="01" value="1">01</option>
+                                    <option class="select-option" label="02" value="2">02</option>
+                                    <option class="select-option" label="03" value="3">03</option>
+                                    <option class="select-option" label="04" value="4">04</option>
+                                    <option class="select-option" label="05" value="5">05</option>
+                                    <option class="select-option" label="06" value="6">06</option>
+                                    <option class="select-option" label="07" value="7">07</option>
+                                    <option class="select-option" label="08" value="8">08</option>
+                                    <option class="select-option" label="09" value="9">09</option>
+                                    <option class="select-option" label="10" value="10">10</option>
+                                    <option class="select-option" label="11" value="11">11</option>
+                                    <option class="select-option" label="12" value="12">12</option>
+                                    <option class="select-option" label="13" value="13">13</option>
+                                    <option class="select-option" label="14" value="14">14</option>
+                                    <option class="select-option" label="15" value="15">15</option>
+                                    <option class="select-option" label="16" value="16">16</option>
+                                    <option class="select-option" label="17" value="17">17</option>
+                                    <option class="select-option" label="18" value="18">18</option>
+                                    <option class="select-option" label="19" value="19">19</option>
+                                    <option class="select-option" label="20" value="20">20</option>
+                                    <option class="select-option" label="21" value="21">21</option>
+                                    <option class="select-option" label="22" value="22">22</option>
+                                    <option class="select-option" label="23" value="23">23</option>
+                                    <option class="select-option" label="24" value="24">24</option>
+                                    <option class="select-option" label="25" value="25">25</option>
+                                    <option class="select-option" label="26" value="26">26</option>
+                                    <option class="select-option" label="27" value="27">27</option>
+                                    <option class="select-option" label="28" value="28">28</option>
+                                    <option class="select-option" label="29" value="29">29</option>
+                                    <option class="select-option" label="30" value="30">30</option>
+                                    <option class="select-option" label="31" value="31">31</option>
+                                </select>
+                            </div>
+                            <div class="form__dropdown birthdate__month">
+                                <select class="form__input-select" name="month" required>
+                                    <option class="select-option" label="Month" value="">Month</option>
+                                    <option class="select-option" label="January" value="">January</option>
+                                    <option class="select-option" label="February" value="1">February</option>
+                                    <option class="select-option" label="March" value="2">March</option>
+                                    <option class="select-option" label="April" value="3">April</option>
+                                    <option class="select-option" label="May" value="4">May</option>
+                                    <option class="select-option" label="June" value="5">June</option>
+                                    <option class="select-option" label="July" value="6">July</option>
+                                    <option class="select-option" label="August" value="7">August</option>
+                                    <option class="select-option" label="September" value="8">September</option>
+                                    <option class="select-option" label="October" value="9">October</option>
+                                    <option class="select-option" label="November" value="10">November</option>
+                                    <option class="select-option" label="December" value="11">December</option>
+                                </select>
+                            </div>
+                            <div class="form__dropdown birthdate__year">
+                                <select class="form__input-select" name="year" required>
+                                    <option class="select-option" label="Year" value="">Year</option>
+                                    <option class="select-option" label="2000" value="2000">2000</option>
+                                    <option class="select-option" label="1999" value="1999">1999</option>
+                                    <option class="select-option" label="1998" value="1998">1998</option>
+                                    <option class="select-option" label="1997" value="1997">1997</option>
+                                    <option class="select-option" label="1996" value="1996">1996</option>
+                                    <option class="select-option" label="1995" value="1995">1995</option>
+                                    <option class="select-option" label="1994" value="1994">1994</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form__field-group customer-club-overlay__form__mobile">
+                            <div class="customer-club-overlay__form__label">
+                                <label class="form-group__label--block" for="mobileInput">
+                                    <span class="js-field-label">
+                                        Your phone:
+                                    </span>
+                                </label>
+                            </div>
+                            <input class="form__input-text js-phone" type="tel" name="phone" id="mobileInput" placeholder="Mobile #"/>
+                        </div>
+                        <div class="form__field-group customer-club-overlay__form__button-container">
+                            <button class="customer-club-overlay__form__button" type="submit" value="join">
+                                Join
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="swiper-slide customer-club__main-container">
+                    <div class="customer-club__sub-container">
+                        <p class="customer-club-overlay__brandcontent">
+                            Brand content
+                        </p>
+                        <h3 class="customer-club-overlay__secondheader">
+                            Thank you
+                        </h3>
+                        <p class="customer-club-overlay__extramessage">
+                            this is an extra message
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+```
+*/
+.customer-club-overlay {
+    @extend %e__desktop__grid__halfs;
+    @extend %q__background-image__cover;
+    @extend %q__border--sizing;
+    @extend %q__colors__primary--100;
+    @extend %q__inline-block;
+    @extend %q__positioning__relative;
+
+    margin: 2 * $b__whitespace__page__horizontal;
+    max-height: 90%;
+    max-width: $b__measure__device--desktop;
+
+    @include e__media--palm-only {
+        max-width: 90%;
+    }
+
+    @include e__media--hands {
+        min-width: 600px;
+    }
+
+    @include e__media--desktop {
+        min-width: 700px;
+    }
+
+    // Overrides the swiper library css
+    &.swiper-container {
+        @extend %e__reset__margin;
+        @extend %e__grid__fill-parent;
+        height: 100%;
+    }
+}
+
+.customer-club-overlay__background {
+    @extend %q__display-none;
+}
+
+.customer-club-overlay__overlay {
+    @extend %q__padding__unassociated;
+    @extend %q__colors__customer-club-overlay;
+    @extend %q__inline-block;
+    @extend %e__grid__fill-parent;
+
+    @include e__media--hands {
+        width: $b__measure__half;
+    }
+}
+
+.customer-club-overlay__close {
+    @extend %m__popup-close;
+    @extend %e__reset__background-color;
+}
+
+.customer-club-overlay__signed-in {
+    @extend %e__reset__background-color;
+}
+
+.customer-club-overlay__secondheader {
+    @extend %q__text-align--center;
+    @extend %q__font__headline;
+    @extend %e__reset__margin;
+}
+
+.customer-club-overlay__firstheader {
+    @extend %q__text-align--center;
+    @extend %q__font__headline;
+    @extend %e__reset__margin;
+}
+
+.customer-club-overlay__brandcontent,
+.customer-club-overlay__extramessage {
+    @extend %q__text-align--center;
+}
+
+.customer-club-overlay__info {
+    @extend %q__whitespace__unassociated--bottom;
+    @extend %q__text-align--center;
+}
+
+.customer-club-overlay__gender-label {
+    @extend %e__palm__grid__thirds;
+}
+
+.customer-club-overlay__form__mobile {
+    @extend %q__whitespace__associated--top;
+    @extend %q__block;
+    @extend %e__grid__fill-parent;
+}
+
+.customer-club-overlay__form__birthdate,
+.customer-club-overlay__form__gender {
+    @extend %q__block;
+    @extend %e__grid__fill-parent;
+
+    .form__input-select {
+        @extend %e__grid__fill-parent;
+    }
+}
+
+.customer-club-overlay__form__terms-conditions {
+    @extend %q__whitespace__associated--top;
+    @extend %q__block;
+
+    height: 10rem;
+    overflow: auto;
+}
+
+.customer-club-overlay__banner {
+    @extend %q__text-align--center;
+}
+
+.customer-club-overlay__form__button-container {
+    @extend %e__grid__fill-parent;
+    @extend %q__whitespace__associated--top;
+}
+
+.customer-club-overlay__form__button {
+    @extend %a__call-to-action--secondary--low;
+    @extend %e__grid__fill-parent;
+}
+
+.customer-club-overlay__form__anchor {
+    @extend %q__font-weight--bold;
+}
+
+.customer-club-overlay__form__label {
+    @extend %q__block;
+}
+
+.birthdate__day,
+.birthdate__month {
+    @extend %e__palm__grid__thirds;
+}
+
+.birthdate__year {
+    @extend %e__palm__grid__thirds;
+    @extend %e__palm__grid__omega;
+}

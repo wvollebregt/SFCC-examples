@@ -1,0 +1,532 @@
+/*doc
+---
+title: Shop the look widget
+name: shopTheLookWidget
+category: organisms
+---
+
+This is the style used for the the shop the look widget.
+
+```html_example
+
+<article class="shop-the-look">
+</article>
+
+```
+*/
+
+//shop the look for instagram widget
+.shop-the-look {
+    @extend %q__padding__base__horizontal;
+    @extend %m__louverdrape;
+    @include e__flexbox;
+    @include e__prefix(flex-wrap, wrap, webkit ms);
+    height: auto;
+    margin-top: $b__measure__text-indent;
+
+    .product-shipping-price__anchor {
+        @extend %q__display-none;
+
+        &.js-shop-the-look {
+            @extend %q__block;
+        }
+    }
+
+    [class*="swatch__item--selectable"] a {
+         @extend %q__font-weight--reset;
+    }
+
+    .product-variations {
+        @extend %m__louverdrape;
+    }
+
+    .swatch__item--selected-colorpattern a {
+        @extend %q__font-weight--bold;
+    }
+
+    @include e__media--desktop {
+        .shop-the-look {
+            display: block;
+            width: $b__measure__half;
+            height: $b__measure__half;
+            position: relative;
+
+            &:hover {
+                .promotion,
+                .product-details-variations,
+                .product-add-to-cart {
+                    display: block;
+                    animation: fadeIn 1s;
+                }
+
+                .nonsticky-price__container--visible {
+                    display: none;
+                }
+            }
+
+            .product-variations {
+                max-height: 200px;
+                overflow-y: scroll;
+            }
+        }
+
+        .product-set-details-container {
+            position: absolute;
+            bottom: 0;
+            background: white;
+            width: $b__measure__whole;
+            padding: 0;
+        }
+
+        .color-combination,
+        .product-more-details,
+        .promotion,
+        .product-add-to-cart {
+            display: none;
+        }
+    }
+
+    .product-set-info {
+        @extend %e__clear-both;
+        margin-top: $b__measure__text-indent;
+
+        .swatch__item--selectable {
+            @extend %q__block;
+            @extend %e__reset__border;
+            @extend %q__text-align--reset;
+            border: 0;
+        }
+
+        .swatch__item-inner-text__text-container {
+            @extend %q__font-weight--reset;
+        }
+
+        .swatch__item--selected {
+            .swatch__item-inner-text__text-container {
+                @extend %q__font-weight--bold;
+            }
+        }
+
+        .swatch__item-inner-text {
+            @extend %q__float__inline;
+        }
+
+        h4 {
+            @extend %q__font--large;
+            @extend %q__font--uppercase;
+        }
+
+        .colorpattern {
+            li {
+                @extend %e__reset__border;
+                @extend %q__whitespace__center--horizontal;
+                @extend %q__block;
+
+                a {
+                    @extend %q__block;
+                    @extend %q__text-align--left;
+                    padding-left: $b__whitespace__associated;
+                }
+
+                img {
+                    @extend %q__inline-block;
+                }
+
+                span {
+                    @extend %q__inline-block;
+                    @extend %q__vertical-align--middle;
+                    margin-top: -3rem;
+                    padding-left: $b__whitespace__associated;
+                }
+            }
+        }
+
+        .swatch__item-inner-image-content {
+            @extend %e__reset__margin;
+        }
+    }
+
+    &.active,
+    .js-swatch-size-open + .value .swatch,
+    .js-swatch-color-open + .value .swatch {
+        @extend %q__block;
+    }
+
+    .product-set-image__content {
+        @extend %q__full-width;
+    }
+
+    .product-set-image {
+        @extend %q__block;
+        @extend %q__whitespace__center--horizontal;
+        @include e__prefix(align-items, center, webkit moz);
+        width: $b__measure__half;
+    }
+
+    .product-name--visible{
+        font-size: $b__font__main--size;
+        font-weight: $b__font__weight;
+    }
+
+    .swatch.size,
+    .swatch.colorpattern {
+        @extend %q__display-none;
+    }
+
+    .swatch-label-size,
+    .swatch-label-length,
+    .swatch-label-colorpattern {
+        @extend %q__text-align--left;
+        @extend %q__border--bottom;
+
+        &::after {
+            @extend %q__float__inline--right;
+            content: '\21E9';
+        }
+    }
+}
+
+.shop-the-look__products {
+    @include e__flexbox;
+    @include e__prefix(flex-wrap, wrap, webkit ms);
+    width: $b__measure__whole;
+
+    .shop-the-look__image {
+        @include e__flexbox;
+        @include e__prefix(flex-direction, column, webkit ms moz);
+        @include e__prefix(align-items, center, webkit moz);
+
+        img {
+            width: 55%;
+        }
+    }
+}
+
+.shop-the-look--see-full-outfit {
+    @extend %q__padding__base__left;
+    @extend %q__padding__base__top;
+    width: 95%;
+}
+
+.shop-the-look__color {
+    @extend %m__swatch-item;
+    @extend %m__swatch-item__inner-text;
+    @extend %q__inline-block;
+}
+
+.shop-the-look__sizes {
+    .shop-the-look__size-link {
+        @extend %q__display-none;
+    }
+}
+
+.shop-the-look__sizes--selected {
+    .shop-the-look__size-link {
+        @extend %m__swatch-item--selected;
+        @extend %m__swatch-item;
+        @extend %m__swatch-item__inner-text;
+        @extend %q__inline-block;
+        border: $b__border__base--width solid $b__color__primary--300;
+    }
+}
+
+.js-shop-the-look--previous,
+.js-shop-the-look--next,
+.shop-the-look--see-full-outfit,
+.shop-the-look__add-to-basket,
+.shop-the-look__swatches {
+    @extend %q__display-none;
+}
+
+.sticky-price__action {
+    font-size: $b__font__large--size;
+}
+
+.shop-the-look--full-product {
+    @include e__flexbox;
+    @include e__prefix(justify-content, center, webkit ms moz);
+    height: 500px;
+    overflow-y: scroll;
+
+    .shop-the-look--see-full-outfit {
+        @extend %q__block;
+        height: auto;
+    }
+
+    .js-shop-the-look--previous {
+        align-self: center;
+        display: block;
+        font-size: 24px;
+        text-align: center;
+        width: $b__measure__quarter;
+    }
+
+    .js-shop-the-look--next {
+        align-self: center;
+        display: block;
+        font-size: 24px;
+        order: 1;
+        text-align: center;
+        width: $b__measure__quarter;
+    }
+
+
+    .shop-the-look {
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+
+
+        &.active {
+            @extend %q__block;
+            visibility: visible;
+            width: $b__measure__half;
+            -webkit-transition: opacity .5s ease-in-out;
+            -moz-transition: opacity .5s ease-in-out;
+            -ms-transition: opacity .5s ease-in-out;
+            -o-transition: opacity .5s ease-in-out;
+            opacity: 1;
+            padding: 0;
+            border: none;
+
+            .product-details-variations,
+            .product-add-to-cart {
+                @extend %q__block;
+            }
+        }
+    }
+
+    .shop-the-look__products {
+        height: 431px;
+        overflow: scroll;
+    }
+
+    .shop-the-look__colors-header,
+    .shop-the-look__sizes-header {
+        margin-top: $b__whitespace__basevalue;
+    }
+}
+
+@include e__media--desktop {
+    .shop-the-look__wrapper {
+        height: 370px;
+        overflow-y: scroll;
+    }
+}
+
+@include e__media--widescreen {
+    .shop-the-look__wrapper {
+        height: 525px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// from here the styling belongs to Complete The Look (Shop the look on PDP)
+.shop-the-look__header {
+    @extend %q__font__header;
+    padding-bottom: $b__whitespace__basevalue;
+}
+
+.shop-the-look__container {
+    @include e__flexbox;
+    @include e__prefix(flex-direction, row, webkit ms moz);
+    @include e__prefix(flex-wrap, nowrap, webkit ms moz);
+    @extend %q__overflow-y--hidden;
+    @extend %m__louverdrape;
+    width: $b__measure__whole;
+    margin-bottom: $b__whitespace__associated;
+}
+
+.shop-the-look__image--main {
+    @extend %q__overflow--hidden;
+    @extend %q__border--sizing;
+
+    img {
+        @extend %q__border--sizing;
+        @extend %q__vertical-align--bottom;
+        max-width: $b__measure__whole;
+        max-height: $b__measure__whole;
+        transition: transform $b__transistion__duration-medium-slow ease-in-out;
+        width: calc(64vw - 20px);
+        height: calc(86vw - 20px);
+
+        @include e__media--hands {
+            width: calc(62vw - 20px);
+            height: calc(86vw - 18px);
+        }
+
+        @include e__media--desktop {
+            width: calc(46vw - 20px);
+            height: calc(60vw - 20px);
+        }
+
+        @include e__media--widescreen {
+            width: 580px;
+            height: 772px;
+        }
+    }
+}
+
+.shop-the-look--pdp {
+    @include e__prefix(flex-wrap, wrap, webkit ms);
+    @include e__prefix(flex-direction, column, webkit ms moz);
+    @extend %q__border--sizing;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: calc(86vw - 20px);
+    margin-top: 0;
+    padding: 0;
+
+    @include e__media--hands {
+        height: calc(86vw - 18px);
+    }
+
+    @include e__media--desktop {
+        height: calc(60vw - 20px);
+    }
+
+    @include e__media--widescreen {
+        height: 772px;
+    }
+
+    .product-set-info {
+        @extend %e__clear-both;
+        @extend %q__positioning__relative;
+        @extend %q__overflow--hidden;
+        margin-top: 0;
+
+        &:hover {
+            .product-set-details-container {
+                opacity: 1.8 * $b__opacity__semiopaque;
+                transition: opacity $b__transistion__duration-medium-slow ease-in-out;
+            }
+
+            .product-set-image,
+            .product-set-image--color-shift {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .product-name,
+    .product-name--visible {
+        @extend %q__block;
+        @extend %m__product-tile__name;
+        font-size: $b__font__main--size;
+        font-weight: $b__font__weight;
+        padding-top: $b__whitespace__basevalue;
+        text-align: center;
+        color: inherit;
+    }
+
+    .product-set-image--color-shift {
+        .product-set-image__overlay {
+            @include e__mix-blend-mode($b__blend-mode__darken, $b__opacity__image-overlay) {
+                @extend %m__product-image__overlay--color-shift;
+            }
+        }
+    }
+
+    .product-set-image,
+    .product-set-image--color-shift {
+        @extend %q__block;
+        @extend %q__whitespace__center--horizontal;
+        @include e__prefix(align-items, center, webkit moz);
+        transition: transform .75s ease-in-out;
+        width: auto;
+
+        img {
+            @extend %q__vertical-align--bottom;
+            max-width: $b__measure__whole;
+            max-height: $b__measure__whole;
+        }
+    }
+
+    .product--unavailable {
+        padding: 0;
+        font-size: $b__font__small--size;
+    }
+
+    @include e__media--widescreen {
+        .product--unavailable {
+            padding: 0 $b__whitespace__associated;
+            font-size: $b__font__main--size;
+        }
+    }
+
+    .product-set-details-container {
+        @extend %q__positioning__absolute;
+        @extend %q__opacity__none;
+        @extend %q__display-none;
+        background: $b__color__offset--700;
+        width: $b__measure__whole;
+        height: $b__measure__whole / 2.5;
+        bottom: 0;
+        padding: 0;
+        transition: opacity $b__transistion__duration-medium-slow ease-in-out;
+
+        @include e__media--hands {
+            opacity: 1.8 * $b__opacity__semiopaque;
+            display: block;
+        }
+
+        @include e__media--desktop {
+            height: $b__measure__third;
+            opacity: $b__opacity__transparent;
+            display: block;
+        }
+
+        @include e__media--widescreen {
+            height: $b__measure__third;
+            opacity: $b__opacity__transparent;
+            display: block;
+        }
+    }
+}
+
+.complete-the-look-wrapper {
+    margin-top: 20px;
+}
+
+.shop-the-look-product {
+    @extend %a__cursor-pointer;
+    @extend %q__text-align--center;
+    @extend %q__full-width;
+    @extend %q__border--sizing;
+    @extend %q__positioning__relative;
+    padding-left: $b__whitespace__line-spacing;
+    width: calc(33vw - 6px);
+    height: calc(43vw - 14px);
+
+    @include e__media--hands {
+        width: calc(33vw - 10px);
+        height: calc(43vw - 12px);
+        padding-left: $b__whitespace__line-spacing;
+    }
+
+    @include e__media--desktop {
+        width: calc(23vw - 8px);
+        height: calc(30vw - 18px);
+        padding-left: $b__whitespace__basevalue;
+    }
+
+    @include e__media--widescreen {
+        width: 295px;
+        height: 380px;
+        padding-left: $b__whitespace__basevalue;
+    }
+}
+
+.shop-the-look-product--unavailable {
+    .nonsticky-price__container {
+        @extend %q__display-none;
+    }
+}

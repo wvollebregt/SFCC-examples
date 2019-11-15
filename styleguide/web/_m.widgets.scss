@@ -1,0 +1,123 @@
+/*doc
+---
+title: Basic Widget Setup
+name: widget
+category: widgets
+---
+
+Basic css for setting up a widget inside a slot.
+
+*/
+%m__widget {
+    @extend %q__positioning__absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+// @TODO: add a /*doc block
+%m__widgets-wrapper {
+    @at-root {
+        .widgets-wrapper {
+            @extend %e__palm__grid__whole;
+        }
+    }
+}
+
+/*doc
+---
+title: Widget Main Container
+name: widgetMainContainer
+category: widgets
+---
+
+*/
+
+%m__widget__main-container {
+    @extend %q__positioning__absolute--left-top;
+    @extend %e__grid__fill-parent;
+    @extend %q__full-height;
+}
+
+%m__widget__main-container--relative {
+    @extend %q__positioning__relative;
+    @extend %e__grid__fill-parent;
+    @extend %q__full-height;
+}
+
+/*doc
+---
+title: Widget Sub Container
+name: widgetSubContainer
+parent: widgets
+---
+
+*/
+%m__widget__sub-container {
+    @extend %q__display-table;
+    @extend %q__overflow--hidden; // Needed if any brand wants to do something like customPosition left 100%
+    @extend %e__grid__fill-parent;
+    @extend %q__full-height;
+}
+
+/*doc
+---
+title: Widget Positioning Box
+name: widgetPositioningBox
+parent: widgets
+---
+
+*/
+%m__widget__positioning-box {
+    @extend %e__nine-positions-box;
+    @extend %q__positioning__relative; // Needed for custom message and call-to-action positioning.
+}
+
+/*doc
+---
+title: Widget Content Container
+name: widgetContentContainer
+parent: widgets
+---
+
+*/
+%m__widget__content-container {
+    @extend %e__nine-positions-box__content;
+    @extend %q__min-width-100;
+}
+
+/*doc
+---
+title: Widget Text
+name: widgetText
+parent: widgets
+---
+
+This is the widget text container. Without modifier it is used for text-elements that do
+not contain generated HTML.
+
+This placeholder also contains the `--markdown` placeholder for text containers that will
+contain generated HTML.
+
+Should you want to extend both automatically, it is recommended to use the electron
+instead.
+*/
+%m__widget__text {
+    @extend %m__exhibit-text;
+
+    &--markdown {
+        @extend %m__markdown;
+
+        &--palm-hidden {
+            @extend %m__markdown--palm-hidden;
+            @extend %m__scalable__content;
+            @extend %e__palm--show;
+        }
+    }
+
+    &--palm-hidden {
+        @extend %m__widget__text;
+        @extend %e__palm--hidden;
+    }
+}

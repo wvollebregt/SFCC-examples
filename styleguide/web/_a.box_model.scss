@@ -1,0 +1,94 @@
+/*doc
+---
+title: Box Model
+name: boxModel
+category: atoms
+---
+
+Standard box model for any block displayed element.
+DIV, ARTICLE, HEADER, FOOTER, etc.
+
+```html_example
+<div class="example__box-model">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi. Sed pharetra, justo vel euismod placerat,
+    augue erat gravida ligula, non dapibus tortor magna et nulla. Quisque justo ex, eleifend pretium aliquet nec,
+    porta quis urna. Aliquam consectetur lectus sed eros faucibus dignissim.
+</div>
+```
+*/
+%a__box-model {
+    @extend %a__box-model__flow;
+    @extend %q__padding__base;
+}
+
+/*doc
+---
+title: Box Model
+name: boxModelFLow
+parent: boxModel
+---
+
+Standard box model for vertical document flow.
+
+```html_example
+<div class="example__box-model--flow">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi.
+</div>
+<div class="example__box-model--flow">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi.
+</div>
+```
+*/
+%a__box-model__flow {
+    @extend %q__block;
+    @extend %q__font;
+    @extend %q__whitespace__associated--top;
+}
+
+/*doc
+---
+title: Box Model
+name: boxModelHorizontal
+parent: boxModel
+---
+
+Standard box model for horizontally aligned elements.
+
+```html_example
+<div class="example__box-model--horizontal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi.
+</div>
+<div class="example__box-model--horizontal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi.
+</div>
+```
+*/
+%a__box-model__horizontal {
+    @extend %q__float__inline;
+    @extend %q__font;
+    @extend %q__padding__horizontal;
+    @extend %q__whitespace__associated--top;
+}
+
+/*doc
+---
+title: Box Model
+name: boxModelVertical
+parent: boxModel
+---
+
+Standard box model for vertically aligned elements.
+
+```html_example
+<div class="example__box-model--vertical">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi.
+</div>
+<div class="example__box-model--vertical">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi.
+</div>
+```
+*/
+%a__box-model__vertical {
+    @extend %a__box-model__flow;
+    @extend %q__padding__vertical;
+}

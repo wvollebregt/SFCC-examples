@@ -1,0 +1,183 @@
+/*doc
+---
+title: Grid Col-Span
+name: gridColSpan
+parent: grid
+category: electrons
+---
+
+Specifies the number of columns an element should span. If the selector is nested the number of columns of its parent element should be passed as an argument as well.
+
+`@param {List} $b_input_span`
+
+A list containing `$b_input_columns`, the unitless number of columns the element spans (required), and `$b_input_container-columns`, the number of columns the parent element spans (optional).
+If only one value is passed, it is assumed that it's `$b_input_columns` and that that `$b_input_container-columns` is equal to `$b__grid__split`, the total number of columns in the grid.
+The values can be separated with any string such as `of`, `/`, etc.
+`$b_input_columns` also accepts decimals for when it's necessary to break out of the standard grid. E.g. Passing `2.4` in a standard 12 column grid will divide the row into 5 columns.
+
+`@param {String} $b_input_display []`
+
+Sets the display property of the element. By default it sets the display propert of the element to `block`.
+
+If passed `block-collapse`, it also removes the gutter `margin-right` by adding it to the element width.
+
+If passed `table`, it sets the display property to `table-cell` and calculates the width of the element without taking gutters into consideration. The result does not align with the block-based grid.
+
+`@example scss - Usage`
+
+    .element {
+        @include e__col-span(6);
+
+        .nested-element {
+            @include e__col-span(2 of 6);
+        }
+    }
+
+`@example css - CSS Output`
+
+    .element {
+        box-sizing: border-box;
+        float: left;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+    }
+
+    .element:last-child {
+        margin-right: 0;
+    }
+
+    .element .nested-element {
+        box-sizing: border-box;
+        float: left;
+        margin-right: 4.82916%;
+        width: 30.11389%;
+    }
+
+    .element .nested-element:last-child {
+        margin-right: 0;
+    }
+*/
+
+/* Reason = taking on tech-debt to refactor this mixin into separate functions later */
+@mixin e__col-span($b_input_span: $b_input_columns of $b_input_container-columns, $b_input_display: block) {
+    $b_input_columns: nth($b_input_span, 1);
+    $b_input_container-columns: container-span($b_input_span);
+
+    $b__grid__parent-columns: get-parent-columns($b_input_container-columns) !global;
+    $b_input_display-table: is-display-table($b__grid__container-display-table, $b_input_display);
+
+    box-sizing: border-box;
+
+    @if $b_input_display-table {
+        display: table-cell;
+        width: percentage($b_input_columns / $b_input_container-columns);
+    } @else {
+        float: left;
+
+        @if $b_input_display == collapse {
+            @warn 'The "collapse" argument will be deprecated. Use "block-collapse" instead.';
+        }
+
+        @if $b_input_display == collapse or $b_input_display == block-collapse {
+            @include style-generator($b_input_columns, $b_input_container-columns, collapse);
+
+        } @else {
+            @include style-generator($b_input_columns, $b_input_container-columns);
+
+            @if $b__grid--alt__selector and $b__grid--alt__gutter {
+                @include style-generator($b_input_columns, $b_input_container-columns, alt-grid);
+            }
+        }
+    }
+}
+
+@mixin style-generator($b_input_columns, $b_input_container-columns, $b_styles-type: grid) {
+    @if $b_styles-type == collapse {
+        width: flex-grid($b_input_columns, $b_input_container-columns) + flex-gutter($b_input_container-columns);
+
+        &:last-child {
+            width: flex-grid($b_input_columns, $b_input_container-columns);
+        }
+
+    } @else if $b_styles-type == alt-grid {
+        #{$b__grid--alt__selector} & {
+            margin-right: flex-gutter($b_input_container-columns, $b__grid--alt__gutter);
+            width: flex-grid($b_input_columns, $b_input_container-columns, $b__grid--alt__gutter);
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+    } @else if $b_styles-type == grid {
+        margin-right: flex-gutter($b_input_container-columns);
+        width: flex-grid($b_input_columns, $b_input_container-columns);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+// Return the size of an element plus the margin (in the grid system) depending on his ratio (half, a third, a quarter, etc)
+// It is useful when two elements need to swap (for example a you have 3 <li> element, and the first one should be shown
+// on 2nd position and the 2nd should be shown on the 1st position).
+@function get-size-from-ratio($b_input_ratio, $b_input_gutter: $b__grid__flex-grid-gutter) {
+    @return flex-gutter(container-span($b__grid__split / $b_input_ratio), $b_input_gutter) + flex-grid(nth($b__grid__split / $b_input_ratio, 1), container-span($b__grid__split / $b_input_ratio), $b_input_gutter);
+}
+
+// Parses the first argument of col-span()
+@function container-span($b_input_span: $b_input_span) {
+    @if length($b_input_span) == 3 or length($b_input_span) == 2 {
+        $b_input_container-columns: nth($b_input_span, length($b_input_span));
+        @return $b_input_container-columns;
+    }
+
+    @return $b__grid__split;
+}
+
+///
+/// _private.scss
+/// Originally the file /grid/_private.scss but containing functions instead of mixins
+///
+@function grid-width($b_input_n) {
+    @return $b_input_n * $b_grid-width-column + ($b_input_n - 1) * $b_grid-width-gutter;
+}
+
+@function get-parent-columns($b_input_columns) {
+    @if $b_input_columns != $b__grid__split {
+        $b__grid__parent-columns: $b_input_columns !global;
+    } @else {
+        $b__grid__parent-columns: $b__grid__split !global;
+    }
+
+    @return $b__grid__parent-columns;
+}
+
+@function is-display-table($b_input_container-is-display-table, $b_input_display) {
+    @return $b_input_container-is-display-table == true or $b_input_display == table;
+}
+
+@function flex-grid($b_input_columns, $b_input_container-columns: $b__grid__flex-grid-max-columns, $b_input_gutter: $b__grid__flex-grid-gutter) {
+    $b_width: $b_input_columns * $b__grid__flex-grid-column + ($b_input_columns - 1) * $b_input_gutter;
+    $b_container-width: $b_input_container-columns * $b__grid__flex-grid-column + ($b_input_container-columns - 1) * $b_input_gutter;
+    @return percentage($b_width / $b_container-width);
+}
+
+@function flex-gutter($b_input_container-columns: $b__grid__flex-grid-max-columns, $b_input_gutter: $b__grid__flex-grid-gutter) {
+    $b_container-width: $b_input_container-columns * $b__grid__flex-grid-column + ($b_input_container-columns - 1) * $b_input_gutter;
+    @return percentage($b_input_gutter / $b_container-width);
+}
+
+@function flex-height-ratio($b_input_ratio, $b_input_gutter: $b__grid__flex-grid-gutter) {
+    $b_input_span: round($b__grid__split / 2 / $b_input_ratio);
+    $b_input_container-columns: container-span($b_input_span);
+    $b_grid-height-ratio: 100 / $b_input_ratio;
+
+    $b_grid-gutter-perc: flex-gutter($b_input_container-columns, $b_input_gutter) !global;
+
+    $b_grid-gutter-strip-value: $b_grid-gutter-perc / ($b_grid-gutter-perc * 0 + 1);
+    $b_grid-gutter-corrected: $b_grid-gutter-strip-value / ((100 - $b_grid-gutter-strip-value) / 100);
+
+    @return percentage(100 / ($b_grid-height-ratio - $b_grid-gutter-corrected));
+}

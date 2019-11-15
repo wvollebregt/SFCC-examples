@@ -1,0 +1,193 @@
+/*doc
+---
+title: Overlay site-level z-index
+name: overlayZIndex
+category: bosons
+---
+
+This would be the default z-index for the site-level overlay. It should be over everything!
+200-299 = Site level indexes
+
+*/
+$b__z-index__overlay--site: 200 !default;
+
+/*doc
+---
+title: Overlay page-level z-index
+name: overlayPageZIndex
+category: bosons
+---
+
+This would be the default z-index for page-level overlays. It should be over all page-level elements
+100-199 = Page level indexes
+
+*/
+$b__z-index__overlay: 100 !default;
+
+/*doc
+---
+title: Servicebar Z-index
+name: servicebarZIndex
+category: bosons
+---
+
+Page level (100-199) index range. Vertical stack values for positioned elements. Default is 1.
+Only singular implementation is allowed in `_o.servicebar.scss`
+
+```html_example
+<header class="servicebar" role="banner">
+    Servicebar
+</header>
+<main class="plp__wrapper js-main-content-offset js-main-plp" role="main">
+    Page specific content
+</main>
+<footer class="footer-container">
+    Footer
+</footer>
+```
+*/
+$b__z-index__servicebar: 104 !default;
+
+/*doc
+---
+title: Servicebar Overlay page-level z-index
+name: servicebarOverlayZIndex
+category: bosons
+---
+
+This would be the default z-index for page-level overlays. It should be over all page-level elements but below the overlay
+*/
+$b__z-index__servicebar-overlay: $b__z-index__overlay - 1 !default;
+
+/*doc
+title: Slim-fit ribbon z-index
+name: slimFitZIndex
+category: bosons
+---
+
+Page level (100-199) index range. This is the default z-index for the slim fit.
+
+*/
+$b__z-index__slim-fit: 100 !default;
+
+/*doc
+---
+title: Burger menu z-index
+name: burgerMenuZIndex
+category: bosons
+---
+
+Page level (100-199) index range. This is the default z-index for the burger menu.
+Only singular implementation is allowed in `_o.burger_menu.scss`
+
+*/
+$b__z-index__burger-menu: 103 !default;
+
+/*doc
+---
+title: Customer club popup z-index
+name: customerClubZIndex
+category: bosons
+---
+
+Content level (0-99) index range. This would be the default z-index for the customer club popup. It should be less than the service bar but more than normal z-index
+
+*/
+$b__z-index__customer-club: 90 !default;
+
+/*doc
+---
+title: Image overlay z-index
+name: imageOverlayZIndex
+category: bosons
+---
+
+Content level (0-99) index range. This would be the default z-index for the image overlay.
+
+*/
+$b__z-index__image-overlay: 2 !default;
+
+/*doc
+---
+title: Sticky bar z-index
+name: stickyBarZIndex
+category: bosons
+---
+*/
+$b__z-index__sticky-bar: 4 !default;
+
+$b__z-index__filter--fixed: $b__z-index__slim-fit + 1 !default;
+$b__z-index__back-to-top: $b__z-index__sticky-bar !default;
+
+/*doc
+---
+title: Refine filter controls z-index
+name: filterControlsZIndex
+category: bosons
+---
+
+Content level (0-99) index range. This would be the default z-index for the filter controls. It should be less than the header section
+
+*/
+$b__z-index--reset: 1 !default;
+
+/*doc
+---
+title: Negative z-index
+name: negativeZIndex
+category: bosons
+---
+
+A negative value for the positioning of the elements
+
+*/
+$b__z-index__negative: -1 !default;
+
+/*doc
+---
+title: Feedback static page z-index
+name: feedbackZIndex
+category: bosons
+---
+
+Content level (0-99) index range. This would be the default z-index for the feedback static page element
+
+*/
+$b__z-index__feedback: 2 !default;
+
+/*doc
+---
+title: Loader overlay z-index
+name: loaderOverlay
+category: bosons
+---
+
+Content level (>200) index range. This would be the default z-index for the loader overlay element
+
+*/
+$b__z-index__loader-overlay: $b__z-index__overlay--site + 1 !default;
+
+/*doc
+---
+title: refine filters sticky
+name: refineFiltersSticky
+category: bosons
+---
+
+Content level 99 should be under the servicebar and under the slim fit banner
+
+*/
+$b__z-index__refine-filters--sticky: $b__z-index__servicebar - 5;
+
+/*doc
+---
+title: refine filters section
+name: refineFiltersSection
+category: bosons
+---
+
+Content level (0-99) index range. This would be the default z-index for the filter section
+
+*/
+
+$b__z-index__refine-filters-section: 4;

@@ -1,0 +1,91 @@
+/*doc
+---
+title: Pseudo Icons
+name: pseudoIcons
+category: atoms
+---
+
+These atoms define the use of pseudo-icons. Icons that are connected to a piece of content
+but not represented themselves by HTML. Common use-cases are bullets, backward/forward
+links, etc.
+
+We are currently assuming the use of an icon-font for use with this class. By default a
+no-break-space is inserted, the `content` css-property should be overwritten to reflect
+the actual icon to be used.
+
+*/
+%a__pseudo__icon {
+    @extend %q__font--icon;
+    @extend %q__inline-block;
+}
+
+/*doc
+---
+title: Pseudo Icon, before
+name: pseudoIconBefore
+parent: pseudoIcons
+---
+
+When using a pseudo-icon before the content, it is appropriate to extend this atom.
+
+```html_example
+<a href="#testLink" class="example__link--backward">Backward link</a>
+```
+*/
+%a__pseudo__icon--before {
+    @extend %a__pseudo__icon;
+    margin-right: $b__whitespace__line-spacing;
+}
+
+/*doc
+---
+title: Pseudo Icon, after
+name: pseudoIconAfter
+parent: pseudoIcons
+---
+
+When using a pseudo-icon following the content, it is appropriate to extend this atom.
+
+```html_example
+<a href="#testLink" class="example__link--forward">Forward link</a>
+```
+*/
+%a__pseudo__icon--after {
+    @extend %a__pseudo__icon;
+    margin-left: $b__whitespace__line-spacing;
+}
+
+/*doc
+---
+title: Pseudo ratio
+name: pseudoRatio
+category: atoms
+---
+
+A pseudo-element used to get a minimum aspect ratio. No default ratio is defined (this
+could break existing electrons) and can be defined by settings the padding-top property.
+
+*/
+%a__pseudo__ratio {
+    @extend %q__inline-block;
+    content: '';
+    font-size: 0;
+}
+
+/*doc
+---
+title: Pseudo ratio block
+name: pseudoRatioBlock
+parent: pseudoRatio
+---
+
+A pseudo-element used to get a minimum aspect ratio on a full-width parent element.
+No default ratio is defined (this could break existing electrons) and can be defined
+by settings the padding-top property.
+
+*/
+%a__pseudo__ratio--block {
+    @extend %q__block;
+    content: '';
+    font-size: 0;
+}

@@ -1,0 +1,25 @@
+/*doc
+---
+title: Adelle
+name: bc-adelle
+parent: bc-overwrites
+---
+
+Adelle font style.
+
+```html_example
+<ul>
+    <li class="example__adelle">Danish - Høj bly gom vandt fræk sexquiz på wc</li>
+    <li class="example__adelle--semi-bold">Dutch - Lynx c.q. vos prikt bh: dag zwemjuf!</li>
+    <li class="example__adelle--bold">French - Buvez de ce whisky que le patron juge fameux</li>
+    <li class="example__adelle">German - Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich</li>
+    <li class="example__adelle--semi-bold">Italian - In quel campo si trovan funghi in abbondanza.</li>
+    <li class="example__adelle--bold">Norwegian - Vår sære Zulu fra badeøya spilte jo whist og quickstep i min taxi.</li>
+    <li class="example__adelle">Spanish - El veloz murciélago hindú comía feliz cardillo y kiwi. ¡qué figurota exhibe! La cigüeña tocaba el saxofón ¿Detrás del palenque de paja?</li>
+    <li class="example__adelle--semi-bold">Swedish - Yxskaftbud, ge vår WC-zonmö IQ-hjälp.</li>
+</ul>
+```
+*/
+$b__bc__font__adelle--import: '../../bc/fonts/adelle/styles.css';
+
+$b__bc__font__adelle: 'Adelle', serif;

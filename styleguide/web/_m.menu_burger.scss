@@ -1,0 +1,266 @@
+/*doc
+---
+title: Burger menu
+name: burger-menu
+category: molecules
+---
+
+This is the element for the burger menu
+
+```html_example
+<nav class="example__burger-menu" id="example__menu1">
+    <button class="example__menu-toggle" href="#example__menu1"></button>
+</nav>
+```
+*/
+
+%m__menu-toggle {
+    @extend %m__servicebar__icon--menu;
+
+    & %m__menu-toggle__element--passive {
+        display: inline-block;
+    }
+    & %m__menu-toggle__element--active {
+        display: none;
+    }
+}
+
+/*doc
+---
+title: Burger menu active
+name: burger-menu-active
+category: molecules
+---
+
+This is the element for the burger menu
+
+```html_example
+<nav class="example__burger-menu" id="example__menu1">
+    <button class="example__menu-toggle active" href="#example__menu1"></button>
+</nav>
+```
+*/
+
+%m__menu-toggle--active {
+    @extend %m__servicebar__icon--close;
+
+    & %m__menu-toggle__element--passive {
+        display: none;
+    }
+    & %m__menu-toggle__element--active {
+        display: inline-block;
+    }
+}
+
+/*doc
+---
+title: Burger menu Icons
+name: burger-menu-icons
+category: molecules
+---
+
+This is the element for the burger menu icon
+*/
+
+%m__menu-icons {
+    @extend %e__ellipsis;
+    @extend %m__accordion__link-item;
+    line-height: $b__font__icon__xlarge--size;
+
+    &::before {
+        @extend %q__font--icon--xlarge--middle;
+        @extend %q__text-align--center;
+
+        // Ugly 1px hack to fix chopped off icons.
+        // Commonly used by font generators for the same purpose.
+        margin: 1px .5rem 1px 1px;
+        vertical-align: -.25rem;
+        width: $b__font__icon__xlarge--size;
+    }
+}
+
+%m__menu-container {
+    @extend %a__transition__menu;
+    @extend %m__container--page;
+    @extend %q__border--sizing;
+    @extend %q__display-none;
+    @extend %q__overflow-x--hidden;
+    @extend %q__padding__related--top;
+    @extend %q__positioning__absolute--left-top;
+    background-color: $b__color__burger-menu--primary;
+    max-width: $b__measure__menu-width;
+    overflow-y: auto;
+    -webkit-tap-highlight-color: $b__color__reset--primary;// Avoid flickering on touch in IOS
+    width: 100%;
+    z-index: $b__z-index__burger-menu; // Only singular implementation is allowed
+
+    .nav-is-open & {
+        @extend %a__transform__menu__wrapper__open;
+        @extend %q__positioning__fixed;
+        bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        right: 0;
+        top: 0;
+
+        @include e__media--widescreen {
+            left: $b__measure__menu-offset--widescreen;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+%m__menu-container--layered {
+    @extend %m__menu-container;
+    max-width: $b__measure__menu-width * 1.01;
+
+    .nav-is-open & {
+        .full-width & {
+            @include e__media--widescreen {
+                left: 0;
+                margin-left: 0;
+            }
+
+            & + .curtain.nav-is-open-curtain {
+                @include e__media--widescreen {
+                    left: $b__measure__menu-width;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    & + .curtain.nav-is-open-curtain {
+        @extend %m__curtain-show--layered;
+    }
+
+    &[data-active-menu-layer="1"] {
+        .burger-menu__controls__back {
+            @extend %q__visibility-hidden;
+        }
+
+        .category-navigation__group--level-1 {
+            @extend %m__menu--layered__layer--visible;
+        }
+    }
+    &[data-active-menu-layer="2"] {
+        .category-navigation__group--level-2 {
+            @extend %m__menu--layered__layer--visible;
+        }
+    }
+    &[data-active-menu-layer="3"] {
+        .category-navigation__group--level-3 {
+            @extend %m__menu--layered__layer--visible;
+        }
+    }
+    &[data-active-menu-layer="4"] {
+        .category-navigation__group--level-4 {
+            @extend %m__menu--layered__layer--visible;
+        }
+    }
+
+    .category-navigation__group {
+        @extend %e__reset__margin;
+        @extend %e__reset__padding;
+        @extend %m__menu--layered__layer--hidden;
+        @extend %q__block;
+
+        .category-navigation__item {
+            @extend %e__reset__margin;
+            @extend %q__border--bottom;
+            @extend %q__positioning__relative;
+            @extend %q__vertical-align--middle;
+        }
+
+        .category-navigation__link,
+        .category-navigation__parent--layered {
+            @extend %q__border--sizing;
+            @extend %q__padding__base__top;
+            @extend %q__padding__base__bottom;
+        }
+    }
+}
+
+%m__menu--layered__controls {
+    .burger-menu__controls {
+        @extend %q__display-table;
+        @extend %q__padding__related--bottom;
+
+        svg {
+            @extend %q__inline-block;
+            pointer-events: none;
+        }
+    }
+
+    .burger-menu__controls__back,
+    .burger-menu__controls__category-label,
+    .burger-menu__controls__close {
+        @extend %q__display-table__cell;
+        @extend %q__vertical-align--middle;
+        line-height: 1.25rem;
+    }
+
+    .burger-menu__controls__back {
+        @extend %e__reset__button;
+        @extend %a__cursor-pointer;
+        @extend %q__text-align--reset;
+        @extend %m__menu--layered__controls__back-tweak;
+    }
+
+    .burger-menu__controls__category-label {
+        @extend %e__grid__fill-parent;
+        @extend %q__font--uppercase;
+        @extend %q__text-align--center;
+    }
+
+    .burger-menu__controls__close {
+        @extend %e__reset__button;
+        @extend %e__reset__margin;
+        @extend %a__cursor-pointer;
+        @extend %q__text-align--right;
+        @extend %m__menu--layered__controls__close-tweak;
+    }
+}
+
+%m__menu--layered__layer--visible {
+    @extend %q__transform__panel-swipe--visible;
+    @extend %q__transition__panel-swipe;
+    height: inherit;
+    opacity: 1;
+    width: 100%;
+
+    &.hidden {
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+}
+
+%m__menu--layered__layer--hidden {
+    @extend %q__transition__panel-swipe;
+    height: 0;
+    opacity: 0;
+    width: 0;
+}
+
+.js-burger-menu__controls__next--forward{
+    @extend %q__transform__panel-swipe--right;
+}
+
+.js-burger-menu__controls__close--backward{
+    @extend %q__transform__panel-swipe--left;
+}
+
+// Ugly Tweaks needed for the Icons on top of the layered menu to be aligned visually
+
+%m__menu--layered__controls__back-tweak{
+    margin-left: -($b__whitespace__associated/1.4);
+    //following calculation is to make the close and back controls have the same width in order to center the text
+    margin-right: ($b__whitespace__associated/1.4)-($b__whitespace__associated/2.5);
+}
+
+%m__menu--layered__controls__close-tweak {
+    margin-right: -($b__whitespace__associated/2.5);
+}
+

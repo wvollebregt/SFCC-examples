@@ -1,0 +1,85 @@
+/*doc
+---
+title: Custom navigation link
+name: customNavigationLink
+category: widgets
+---
+
+Setup for a unisex splitter section.
+
+```html_example
+<div class="custom-navigation-links">
+    <a class="custom-navigation-links__item" href="">
+        Olympic site
+    </a>
+    <a class="custom-navigation-links__item" href="">
+        Shop Femme
+    </a>
+    <a class="custom-navigation-links__item" href="">
+        Save the rainforest
+    </a>
+</div>
+
+```html_example - top-navigation enabled in header template
+<div class="custom-navigation-links__container top-navigation--enable">
+    <div class="custom-navigation-links">
+        <a class="custom-navigation-links__item" href="">
+            HOMME
+        </a>
+        <a class="custom-navigation-links__item" href="">
+            FEMME
+        </a>
+        <a class="custom-navigation-links__item" href="">
+            Save the rainforest
+        </a>
+    </div>
+</div>
+
+```
+*/
+
+// standard navigation specific styling
+.custom-navigation-links__item {
+    @extend %q__block;
+    @extend %q__padding__related__vertical;
+    @extend %q__font__subheader;
+    @extend %q__border--bottom;
+}
+
+//this is specific styling for custom navigation links when
+//top navigation menu is enabled and only for widescreens
+//NOTE: this styling only applies to SELECTED at the moment
+.custom-navigation-links__container.top-navigation--enable {
+    @extend %q__display-none;
+
+    .custom-navigation-links {
+        @extend %q__positioning__absolute;
+    }
+
+    .custom-navigation-links__item {
+        @extend %q__inline-block;
+        @extend %q__font__link;
+        @extend %q__whitespace__associated--right;
+        @extend %e__reset__border;
+        @extend %e__reset__padding;
+        line-height: 1.5121 * $b__whitespace__inside-of-topbar--vertical; //63px
+
+        &:hover {
+            background-color: $b__color__primary--200;
+        }
+    }
+
+    @include e__media--widescreen {
+        display: block;
+    }
+}
+
+.account,
+.cart,
+.checkout,
+.order-confirmation,
+.storelocator {
+    .custom-navigation-links__container.top-navigation--enable {
+        @extend %e__desktop--hidden;
+    }
+}

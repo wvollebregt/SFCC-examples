@@ -1,0 +1,177 @@
+/*doc
+---
+title: Customer Club Sign up
+name: CustomerClubSignUp
+category: organisms
+---
+
+This is the style used for the customer club sign up
+
+```html_example
+<article class="customer-club-signup js-customer-club__signup" >
+    <div class="customer-club-signup__overlay">
+        <div class="customer-club-signup__background" style="background-image: url(http://placehold.it/300x530/CFDFDE/F2F2F2);"></div>
+        <header class="customer-club-signup__banner">
+            <button class="customer-club-signup__close" data-trigger="popup--hide"></button>
+            <h3 class="customer-club-signup__firstheader">Header</h3>
+            <p class="customer-club-signup__extramessage">Message</p>
+        </header>
+        <form class="customer-club-signup__form">
+            <div class="form__field-group customer-club-signup__form__firstname">
+                <div class="customer-club-signup__form__label">
+                    <label class="form-group__label--block"><span>First name:</span></label>
+                </div>
+                <input class="form__input-text" type="text" placeholder="Last name" />
+            </div>
+            <div class="form__field-group customer-club-signup__form__lastname">
+                <div class="customer-club-signup__form__label">
+                    <label class="form-group__label--block"><span>Last name:</span></label>
+                </div>
+                <input class="form__input-text" type="text" placeholder="Last name"/>
+            </div>
+            <div class="form__field-group customer-club-signup__form__email">
+                <div class="customer-club-signup__form__label">
+                    <label class="form-group__label--block"><span>Email:</span></label>
+                </div>
+                <input class="form__input-text" type="email" placeholder="Email"/>
+            </div>
+            <div class="form__field-group customer-club-signup__form__button--inline">
+                <label class="form-group__label--block customer-club-signup__form__label"> </label>
+                <button class="customer-club-signup__form__button" type="submit" value="join">
+                    Sign me up
+                </button>
+            </div>
+            <div class="form__field-group customer-club-signup__form__terms">
+                <input class="form__input-checkbox" type="checkbox" id="checkbox-signup" name="null">
+                <label for="checkbox-signup" class="form-group__label--block">
+                    I agree to the
+                    <a class="customer-club-signup__form__anchor" title="Terms & conditions">
+                        terms & conditions
+                    </a>
+                </label>
+            </div>
+            <div class="form__field-group customer-club-signup__form__button--block">
+                <button class="customer-club-signup__form__button" type="submit" value="join">
+                    Sign me up
+                </button>
+            </div>
+        </form>
+    </div>
+</article>
+```
+*/
+
+.customer-club-signup {
+    @extend %e__palm__one-whole;
+    @extend %q__positioning__relative;
+    @extend %q__padding__unassociated;
+    @extend %q__colors__customer-club-signup;
+    background-size: 0;
+
+    &::before {
+        @extend %q__display-none;
+    }
+}
+
+.customer-club-signup__overlay {
+    @extend %q__overflow-x--hidden;
+}
+
+.customer-club-signup__background {
+    @extend %q__positioning__absolute;
+    @extend %q__background-image__cover;
+    @extend %q__background-image__center;
+    @extend %q__opacity__customer-club-signup;
+    height: 100%;
+    // needed to line up background image with page margins
+    margin-left: -$b__whitespace__unassociated;
+    margin-top: -$b__whitespace__unassociated;
+    transform: translateZ(0);
+    width: 100%;
+}
+
+.customer-club-signup__close,
+.customer-club-signup__signed-in {
+    @extend %q__display-none;
+}
+
+.customer-club-signup__firstheader,
+.customer-club-signup__secondheader {
+    @extend %q__whitespace__associated--bottom;
+    @include e__exhibit-header;
+}
+
+.customer-club-signup__form {
+    @extend %e__grid__container;
+    @extend %e__grid__fill-parent;
+    @extend %q__overflow--hidden;
+}
+
+.customer-club-signup__form__firstname {
+    @extend %e__palm__grid__halfs;
+    @extend %e__hands__grid__thirds;
+    @extend %e__desktop__grid__quarters;
+}
+
+.customer-club-signup__form__lastname {
+    @extend %e__palm__grid__omega;
+    @extend %e__palm__grid__halfs;
+    @extend %e__hands__grid__thirds;
+    @extend %e__desktop__grid__quarters;
+}
+
+.customer-club-signup__form__email {
+    @extend %e__hands__grid__omega;
+    @extend %e__palm__grid__whole;
+    @extend %e__hands__grid__thirds;
+    @extend %e__desktop__grid__quarters;
+}
+
+.customer-club-signup__form__button {
+    @extend %a__call-to-action--secondary--low;
+    @extend %e__reset__margin;
+    @extend %e__palm__grid__whole;
+    @extend %e__hands__grid__whole;
+    @extend %e__desktop__grid__whole;
+}
+
+.customer-club-signup__form__button--block {
+    @extend %e__desktop--hidden;
+    @extend %e__palm__grid__whole;
+    @extend %e__hands__grid__thirds;
+    @extend %q__whitespace__associated--top;
+}
+
+.customer-club-signup__form__button--inline {
+    @extend %e__palm--hidden;
+    @extend %e__hands--hidden;
+    @extend %e__desktop--show;
+    @extend %e__desktop__grid__quarters;
+    @extend %e__desktop__grid__omega;
+    @extend %e__widescreen__grid__omega;
+}
+
+.customer-club-signup__brandcontent,
+.customer-club-signup__extramessage {
+    @extend %q__whitespace__unassociated--bottom;
+}
+
+.customer-club-signup__brandcontent {
+    @extend %q__text-align--center;
+}
+
+.customer-club-signup__form__anchor {
+    @extend %q__font-weight--bold;
+}
+
+.customer-club-signup__form__terms {
+    @extend %e__palm__grid__whole;
+}
+
+.customer-club-signup__form__label {
+    @extend %q__block;
+}
+
+.customer-club-signup__main-container {
+    @extend %q__display-none;
+}

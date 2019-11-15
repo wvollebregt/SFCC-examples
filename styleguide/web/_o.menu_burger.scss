@@ -1,0 +1,319 @@
+/*doc
+---
+title: Menu type - Burger Menu
+name: menuBurger
+category: organisms
+---
+
+Burger Menu Markup
+
+```html_example
+<nav class="burger-menu">
+    <article>
+        <section class="category-navigation__section">
+            <ul class="icon-list">
+                <li class="icon-list__item">
+                    <a class="icon-list__item__link" href="#">link1</a>
+                </li>
+                <li class="icon-list__item">
+                    <a class="icon-list__item__link" href="#">link2</a>
+                </li>
+                <li class="icon-list__item">
+                    <a class="icon-list__item__link" href="#">link3</a>
+                </li>
+                <li class="icon-list__item">
+                    <a class="icon-list__item__link" href="#">link4</a>
+                </li>
+            </ul>
+        </section>
+    </article>
+
+    <article class="category-navigation" role="accordion">
+        <header class="category-navigation__title">Expanded</header>
+        <section class="category-navigation__section">
+            <ul class="category-navigation__links">
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+            </ul>
+            <ul class="category-navigation__links">
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+            </ul>
+            <button class="category-navigation__trigger">Close</button>
+        </section>
+    </article>
+
+    <article class="category-navigation" role="accordion">
+        <header class="category-navigation__title">Semi-collapsed</header>
+        <section class="category-navigation__section">
+            <ul class="category-navigation__links">
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+            </ul>
+            <ul class="category-navigation__links category-navigation__links--collapsed">
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+            </ul>
+            <button class="category-navigation__trigger">More</button>
+        </section>
+    </article>
+
+    <article class="category-navigation" role="accordion">
+        <header class="category-navigation__title">
+            <button class="category-navigation-trigger--title">Collapsed</button>
+        </header>
+        <section class="category-navigation__section">
+            <ul class="category-navigation__links category-navigation__links--collapsed">
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+            </ul>
+        </section>
+    </article>
+
+    <article class="category-navigation customer-club">
+        <header class="category-navigation__title">
+            <a class="category-navigation__customer-club-link" href="#">Customer Club</a>
+        </header>
+        <section class="category-navigation__section">
+            <span class="category-navigation__customer-club-call-to-action">Sign up to get 20% off</span>
+        </section>
+    </article>
+
+    <article class="burger-menu-marketing-widget">
+        <header>
+            <h3 class="burger-menu-marketing-widget__header">Shop 17 brands in one website</h3>
+        </header>
+        <figure>
+            <a href="#">
+                <img class="burger-menu-marketing-widget__img" src="https://placeholdit.imgix.net/~text?txtsize=79&txt=845%C3%97500&w=845&h=500" />
+            </a>
+            <figcaption>
+                <a href="#">
+                    <span class="burger-menu-marketing-widget__text">Shop on Bestseller.com now</span>
+                </a>
+            </figcaption>
+        </figure>
+    </article>
+
+    <article class="category-navigation help-link" role="accordion">
+        <header class="category-navigation__title">
+            <button class="category-navigation-trigger--title">Help</button>
+        </header>
+        <section class="category-navigation__section">
+            <ul class="category-navigation__links category-navigation__links--collapsed">
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+            </ul>
+        </section>
+    </article>
+
+    <article class="category-navigation" role="accordion">
+        <header class="category-navigation__title">
+            <button class="category-navigation-trigger--title">About</button>
+        </header>
+        <section class="category-navigation__section">
+            <ul class="category-navigation__links category-navigation__links--collapsed">
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+                <li class="category-navigation__item">
+                    <a class="category-navigation__link-item" href="#">Category link</a>
+                </li>
+            </ul>
+        </section>
+    </article>
+
+    <article class="country-selector">
+        <section>
+            <ul class="icon-list">
+                <li class="icon-list__empty">
+                </li>
+                <li class="icon-list__item">
+                    <a class="icon-list__item__link" href="#">link1</a>
+                </li>
+                <li class="icon-list__item">
+                    <a class="icon-list__item__link" href="#">link2</a>
+                </li>
+                <li class="icon-list__empty">
+                </li>
+            </ul>
+        </section>
+    </article>
+
+</nav>
+```
+*/
+
+.burger-menu {
+    @extend %m__menu-container;
+
+    .nav-is-open & {
+        top: $b__measure__height__servicebar;
+    }
+}
+
+.service-navigation__item {
+    @extend %q__border--bottom;
+    @extend %q__padding__base__vertical;
+    @extend %a__vertical--middle;
+}
+
+.service-navigation__list {
+    @extend %e__reset;
+}
+
+@each $b__icon in $b__char__bestseller_usp_icons {
+    .service-navigation__icon--#{$b__icon} {
+        @extend %m__menu-icons;
+
+        &::before {
+            @extend %q__icon__#{$b__icon};
+        }
+    }
+}
+
+.burger-menu-marketing-widget {
+    @extend %q__border--bottom;
+    @extend %q__padding__base__vertical;
+}
+
+.burger-menu-marketing-widget__header {
+    @extend %q__whitespace__associated--top;
+    @include e__exhibit-header--medium;
+    @extend %e__ellipsis;
+}
+
+.burger-menu-marketing-widget__img {
+    @extend %q__block;
+    @extend %q__whitespace__associated--top;
+    @extend %q__max-width-100;
+}
+
+.burger-menu-marketing-widget__text {
+    @extend %q__block;
+    @extend %q__whitespace__associated--top;
+}
+
+.country-selector {
+    @extend %q__whitespace__associated--top;
+}
+
+.help-link {
+    @extend %q__border--top;
+}
+
+.customer-club {
+    @extend %q__border__unassociated;
+}
+
+.burger-menu--layered {
+    @extend %m__menu-container--layered;
+    @extend %m__menu--layered__controls;
+
+    .search__control {
+        @extend %e__reset__margin;
+    }
+
+    .category-navigation__title {
+        @extend %e__reset;
+        @extend %q__colors__link;
+    }
+
+    .burger-menu__layers {
+        @include e__prefix(transition, height, webkit ms moz);
+        @extend %q__overflow--hidden;
+        @extend %q__positioning__relative;
+        display: flex;
+    }
+
+    .category-navigation__parent--layered {
+        @extend %q__vertical-align--middle;
+        width: calc(100% - 1rem);
+
+        &::after {
+            @extend %q__float__omega;
+            @extend %a__pseudo__icon--after;
+            @extend %q__icon__forward;
+            top: $b__whitespace__basepadding;
+        }
+    }
+
+    .category-navigation__item--see-all .category-navigation__link {
+        @extend %q__font-weight--bold;
+    }
+
+    .burger-menu__widgets,
+    .burger-menu__assets {
+        @extend %q__transform__panel-swipe--right;
+        height: 0;
+    }
+
+    &[data-active-menu-layer="1"] {
+        .burger-menu__widgets,
+        .burger-menu__assets {
+            @extend %q__transition__panel-swipe--no-width;
+            @extend %q__transform__panel-swipe--visible;
+            height: auto;
+        }
+    }
+}

@@ -1,0 +1,87 @@
+/*doc
+---
+title: PDP - Delivery & Returns
+name: deliveryReturns
+category: organisms
+---
+
+Delivery & Returns section on the PDP
+
+```html_example
+<article class="widget-delivery-returns">
+    <section class="widget-section">
+        <h3 class="widget-section__header">Delivery</h3>
+        <div class="widget-section__container">
+            <p class="widget-section__content">This is a seo text we need the copywriter to work on it now. Lorem ipsum dolor sit amet.</p>
+        </div>
+    </section>
+
+    <section class="widget-section">
+        <h3 class="widget-section__header">Return</h3>
+        <div class="widget-section__container">
+            <p class="widget-section__content">This is a seo text we need the copywriter to work on it now. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+        </div>
+    </section>
+</article>
+```
+*/
+
+.widget-delivery-returns {
+    @extend %e__palm__grid__whole;
+    @extend %e__clearfix;
+    @extend %a__parent-container;
+
+    @include e__media--hands {
+        margin-top: $b__whitespace__unassociated;
+    }
+}
+
+.widget-section {
+    @extend %e__reset;
+    @extend %e__hands__grid__halfs;
+    @extend %e__desktop__grid__halfs;
+    @extend %q__border--bottom;
+    @extend %q__padding__base;
+
+    &:first-of-type {
+        @extend %q__border--top;
+        @extend %q__whitespace__associated--top;
+    }
+
+    @include e__media--hands {
+        border: 0;
+        padding: 0;
+
+        &:first-of-type {
+            border: 0;
+            margin-top: 0;
+        }
+    }
+}
+
+.widget-section__header,
+.widget-section__header--plain {
+    @extend %q__font__header;
+    @extend %e__reset__margin;
+
+    &::after {
+        @extend %q__float__inline--right;
+        @extend %e__hands--hidden;
+    }
+}
+
+.widget-section__container {
+    @include e__media--hands {
+        margin-top: $b__whitespace__associated;
+    }
+
+    &.js-hide__display {
+        @include e__media--hands {
+            display: block;
+        }
+    }
+}
+
+.widget-section__content {
+    @extend %q__font;
+}

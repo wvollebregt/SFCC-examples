@@ -1,0 +1,227 @@
+/*doc
+---
+title: Customer club popup
+name: customerClubPopup
+category: organisms
+---
+
+This is the style used for the customer club popup
+
+```html_example
+<article class="customer-club-popup js-customer-club__popup js-popup--show" style="background-image: url(http://placehold.it/300x530/CFDFDE/F2F2F2);">
+    <div class="customer-club-popup__overlay">
+        <div class="customer-club-popup__background" ></div>
+        <header class="customer-club-popup__banner">
+            <button class="customer-club-popup__close" data-trigger="popup--hide"></button>
+            <h3 class="customer-club-popup__header">Header</h3>
+            <p class="customer-club-popup__info">Message</p>
+        </header>
+        <form class="customer-club-popup__form">
+            <div class="form__field-group customer-club-popup__form__firstname">
+                <div class="customer-club-popup__form__label">
+                    <label class="form-group__label--block"><span>First name:</span></label>
+                </div>
+                <input class="form__input-text" type="text" placeholder="Last name" />
+            </div>
+            <div class="form__field-group customer-club-popup__form__lastname">
+                <div class="customer-club-popup__form__label">
+                    <label class="form-group__label--block"><span>Last name:</span></label>
+                </div>
+                <input class="form__input-text" type="text" placeholder="Last name"/>
+            </div>
+            <div class="form__field-group customer-club-popup__form__email">
+                <div class="customer-club-popup__form__label">
+                    <label class="form-group__label--block"><span>Email:</span></label>
+                </div>
+                <input class="form__input-text" type="email" placeholder="Email"/>
+            </div>
+            <div class="form__field-group customer-club-popup__form__button--inline">
+                <label class="form-group__label--block customer-club-popup__form__label"> </label>
+                <button class="customer-club-popup__form__button" type="submit" value="join">
+                    Sign me up
+                </button>
+            </div>
+            <div class="form__field-group customer-club-popup__form__terms">
+                <input class="form__input-checkbox" type="checkbox" id="checkbox-popup" name="null">
+                <label for="checkbox-popup" class="form-group__label--block">
+                    I agree to the
+                    <a class="customer-club-popup__form__anchor" title="Terms & conditions">
+                        terms & conditions
+                    </a>
+                </label>
+            </div>
+            <div class="form__field-group customer-club-popup__form__button--block">
+                <button class="customer-club-popup__form__button" type="submit" value="join">
+                    Sign me up
+                </button>
+            </div>
+        </form>
+    </div>
+</article>
+
+<script>
+
+function closePopup() {
+    document.querySelector('.customer-club-popup').style.display='none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.customer-club-popup').onclick = closePopup;
+}, false);
+
+</script>
+```
+*/
+
+.customer-club-popup {
+    @extend %e__palm--hidden;
+    @extend %e__desktop__grid__halfs;
+    @extend %m__container--sticky;
+    @extend %q__visibility-hidden;
+    @extend %q__background-image__cover;
+    @extend %q__border--sizing;
+    @extend %q__z-index__customer-club;
+    @include e__prefix(transform, translateY(150%), webkit ms);
+    @include e__media--desktop {
+        left: auto;
+        max-width: $b__measure__device--hands;
+    }
+    @include e__media--widescreen {
+        right: calc(50% - #{$b__measure__device--widescreen} + #{$b__measure__device--hands});
+    }
+
+    .swiper-container {
+        // Removing automatic margin top added by the swiper library
+        margin-top: 0;
+    }
+
+    &.js-popup--show {
+        @extend %q__visibility-reset;
+        @extend %a__transition__customer-club;
+        @include e__prefix(transform, translateY(0%), webkit ms);
+
+        @media screen and (max-height: $b__measure__device--hands) {
+            display: none;
+        }
+    }
+}
+
+.customer-club-popup__background {
+    @extend %q__display-none;
+}
+
+.customer-club-popup__overlay {
+    @extend %q__padding__unassociated;
+    @extend %q__colors__customer-club-overlay;
+    @extend %q__inline-block;
+
+    width: $b__measure__whole;
+}
+
+.customer-club-popup__close {
+    @extend %m__popup-close;
+    @extend %q__padding__associated;
+}
+
+.customer-club-popup__signed-in {
+    @extend %e__reset__background-color;
+}
+
+.customer-club-popup__firstheader,
+.customer-club-popup__secondheader {
+    @extend %m__customer-club-header;
+}
+
+.customer-club-popup__extramessage,
+.customer-club-popup__brandcontent {
+    @extend %m__customer-club-content;
+}
+
+.widget-customer-club__text {
+    @include e__widget__text {
+        @extend %q__whitespace__unassociated--bottom;
+
+        &--palm-hidden {
+            font-size: inherit;
+        }
+    }
+    font-size: 1em;
+}
+
+.customer-club-popup__form__firstname,
+.customer-club-popup__form__lastname,
+.customer-club-popup__form__email,
+.customer-club-popup__form__date-of-birth {
+    @extend %q__whitespace__associated--top;
+    @extend %q__block;
+    @extend %e__grid__fill-parent;
+}
+
+.customer-club-popup__form__terms-conditions {
+    @extend %q__whitespace__associated--top;
+    @extend %q__block;
+
+    height: 10rem;
+    overflow: auto;
+}
+
+.customer-club-popup__banner {
+    @extend %q__whitespace__unassociated--top;
+    @extend %q__text-align--center;
+}
+
+.customer-club-popup__form__button--inline {
+    @extend %q__display-none;
+}
+
+.customer-club-popup__form__button--block {
+    @extend %e__grid__fill-parent;
+    @extend %q__whitespace__associated--top;
+}
+
+.customer-club-popup__form__button {
+    @extend %a__call-to-action--secondary--low;
+    @extend %e__grid__fill-parent;
+}
+
+.customer-club-popup__form__anchor {
+    @extend %q__font-weight--bold;
+}
+
+.customer-club-popup__form__label {
+    @extend %q__display-none;
+}
+
+.customer-club-popup__main-container {
+    @extend %q__positioning__relative;
+
+    height: auto;
+    width: auto;
+}
+
+.customer-club-popup__sub-container {
+    @extend %e__grid__fill-parent;
+    @extend %q__positioning__absolute;
+    @include e__prefix(transform, translateY(100%), webkit ms);
+}
+
+.customer-club-popup__birth-date::before {
+    @extend %e__grid__fill-parent;
+    content: attr(placeholder);
+}
+
+.customer-club-popup__birth-date {
+    /* hide our custom/fake placeholder text when in focus to show the default
+    * 'mm/dd/yyyy' value and when valid to show the users' date of birth value.*/
+    &:focus,
+    &:valid {
+        &::before {
+            content: none;
+        }
+    }
+}
+
+.customer-club-popup__form--second-step {
+    @extend %q__whitespace__unassociated--top;
+    @extend %q__whitespace__unassociated--bottom;
+}

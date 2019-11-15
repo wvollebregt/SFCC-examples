@@ -1,0 +1,120 @@
+/*doc
+---
+title: Grid
+name: gridVar
+category: bosons
+---
+
+Working with a grid. To facilitate both a 3 column split and a 4 column split, the choice for default 12 columns is made.
+
+*/
+
+/*doc
+---
+title: Grid - single column
+name: gridVarColumn
+parent: gridVar
+---
+
+Sets the relative width of a single grid column. The unit used should be the same one used to define `$gutter`.
+Set with a `!global` flag. Type Number (Unit)
+
+*/
+$b__grid__column: 3 * $b__whitespace__basevalue !default;
+
+/*doc
+---
+title: Grid - single gutter
+name: gridVarGutter
+parent: gridVar
+---
+
+Sets the relative width of a single grid gutter. The unit used should be the same one used to define `$column`.
+Set with the `!global` flag. Type Number (Unit)
+
+*/
+$b__grid__gutter: $b__whitespace__basevalue !default;
+
+/*doc
+---
+title: Grid - number of columns
+name: gridVarSplit
+parent: gridVar
+---
+
+Sets the total number of columns in the grid. Its value can be overridden inside a media query using the `media()` mixin.
+Set with the `!global` flag. Type Number (Unitless)
+
+*/
+$b__grid__split: 12 !default;
+
+/*doc
+---
+title: Grid - maximum width
+name: gridVarWidth
+parent: gridVar
+---
+
+Sets the max-width property of the element that is set as the `grid-container`. Set with the `!global` flag.
+Type Number (Unit)
+
+*/
+$b__grid__max-width: $b__measure__device--widescreen !default;
+
+/*doc
+---
+title: Grid - display table
+name: gridVarDisplayTable
+parent: gridVar
+---
+
+Sets the max-width property of the element that is set as the `grid-container`. Set with the `!global` flag.
+Type Number (Unit)
+
+*/
+$b__grid__container-display-table: false !default;
+
+// Function variables based off bosons above
+$b__grid__parent-columns: $b__grid__split !default;
+$b__grid__flex-grid-max-columns: $b__grid__split;
+$b__grid__flex-grid-column: $b__grid__column;
+$b__grid__flex-grid-gutter: $b__grid__gutter;
+
+/*doc
+---
+title: Grid Alternate
+name: gridVarAlt
+category: bosons
+---
+
+The possibility of an alternate grid, based on selector to prefix all targeted classnames.
+Originally created for Branded Styling reasons to operate an alternate grid-layout
+
+*/
+/*doc
+---
+title: Selector prefix
+name: gridVarAltSelector
+parent: gridVarAlt
+---
+
+CSS3 valid selector to prefix all targeted classnames for the alternate gridVars below.
+Type Number (Unit). Default value 'null' for declaration.
+`! DO NOT CHANGE !` Should only be set with a value in Brand-level overwrites!
+
+*/
+$b__grid--alt__selector: null !default;
+
+/*doc
+---
+title: Variables
+name: gridVarAltVars
+parent: gridVarAlt
+---
+
+List of variables to run on the Alternate Grid
+Type Number (Unit). Default value 'null' for declaration.
+`! DO NOT CHANGE !` Should only be set with a value in Brand-level overwrites!
+
+*/
+$b__grid--alt__gutter: null !default;

@@ -1,0 +1,104 @@
+/*doc
+---
+title: Editorial Multi backgrounds
+name: editorialMultiBackgrounds
+category: widgets
+---
+
+Editorial Multi backgrounds widgets mimics the Victorinox Multi Background.
+The only difference is that slide overflow is not hidden.
+
+```html_example
+<ol class="row-type-16-half-width">
+    <li class="row-type-16-half-width__right">
+        <article class="widget-editorial--multi-backgrounds">
+            <div class="widget-editorial--multi-backgrounds__backgrounds js-multi-backgrounds swiper-container-horizontal swiper-container-3d swiper-container-coverflow swiper-container-android">
+                <div class="widget-editorial--multi-backgrounds__backgrounds--container swiper-wrapper">
+                    <img width=600 height=350 src="//0" style="background: yellow;">
+                </div>
+            </div>
+
+            <a href="https://bt-b27.bse-test.com/no/en/search?cgid=http%3A%2F%2Fgoogle.com" class="widget-editorial__link" target="_self">
+                <div class="widget-editorial__main-container">
+                    <div class="widget-editorial__sub-container">
+                        <div class="widget-editorial__content-box widget-editorial__text-box widget-editorial__content-box--desktop-right-top">
+                            <div class="widget-editorial__content">
+                                <h3 class="widget-editorial__header">
+                                Editorial with multiple backgrounds
+                                </h3>
+                                <div class="widget-editorial__text--markdown--palm-hidden ">
+                                    <p>You can see a multiple background images fading in and out</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="widget-editorial__main-container">
+                    <div class="widget-editorial__sub-container">
+                        <div class="widget-editorial__content-box widget-editorial__call-to-action-box widget-editorial__content-box--desktop-right-bottom">
+                            <span class="widget-editorial__call-to-action widget-link--auto-width null widget-link--markdown js-call-to-action" style=";color:#ff0000">
+                                <p>IAMSTUFF</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+    </li>
+    <li class="row-type-16-half-width__left">
+        <article class="widget-editorial--multi-backgrounds">
+            <div class="widget-editorial--multi-backgrounds__backgrounds js-multi-backgrounds swiper-container-horizontal swiper-container-3d swiper-container-coverflow swiper-container-android">
+                <div class="widget-editorial--multi-backgrounds__backgrounds--container swiper-wrapper">
+                    <img width=600 height=350 src="//0" style="background: blue;">
+                </div>
+            </div>
+
+            <a href="#test" class="widget-editorial__link" target="_self">
+                <div class="widget-editorial__main-container">
+                    <div class="widget-editorial__sub-container">
+                        <div class="widget-editorial__content-box widget-editorial__text-box widget-editorial__content-box--desktop-left-top">
+                            <div class="widget-editorial__content">
+                                <div class="widget-editorial__text--markdown--palm-hidden ">
+                                    <p>You can see a multiple background images fading in and out</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+    </li>
+</ol>
+```
+*/
+
+.widget-editorial--multi-backgrounds {
+    @extend %q__positioning__relative;
+    @extend %m__widget-editorial--spacing;
+
+    .widget-editorial__link {
+        @extend %q__positioning__absolute--fill-parent;
+        @extend %q__z-index--reset;
+    }
+
+    .widget-editorial__main-container {
+        @extend %q__positioning__absolute--left-top;
+    }
+}
+
+.widget-editorial--multi-backgrounds__backgrounds {
+    @extend %q__full-height;
+    @extend %q__overflow--hidden;
+
+    &--container {
+        @extend %q__positioning__relative;
+    }
+
+    &--slide {
+        @extend %q__full-height;
+        @extend %q__overflow--hidden;
+        @extend %q__block;
+    }
+}

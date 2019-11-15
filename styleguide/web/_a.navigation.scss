@@ -1,0 +1,401 @@
+/*doc
+---
+title: Links
+name: links
+category: atoms
+---
+
+Our definitions of links throughout the applications, as well as their variants.
+
+```html_example
+<a href="#testLink" class="example__link">I'm a link</a>
+```
+*/
+%a__link {
+    @extend %q__font--emphasis;
+    @extend %q__font__link;
+    @extend %q__colors__link;
+}
+
+/*doc
+---
+title: SubLink
+name: subLink
+parent: links
+---
+
+```html_example
+<a href="#testLink" class="example__sublink">Sublink</a>
+```
+*/
+%a__sublink {
+    @extend %q__font--emphasis;
+    @extend %q__font__sublink;
+    @extend %q__colors__sublink;
+}
+
+/*doc
+---
+title: Backward Link
+name: backwardLink
+parent: links
+---
+
+```html_example
+<a href="#testLink" class="example__link--backward">Backward link</a>
+```
+*/
+%a__link--backward {
+    @extend %a__link;
+
+    &::before {
+        @extend %a__pseudo__icon--before;
+        @extend %q__icon__back-small;
+    }
+}
+
+/*doc
+---
+title: Forward Link
+name: forwardLink
+parent: links
+---
+
+```html_example
+<a href="#testLink" class="example__link--forward">Forward link</a>
+```
+*/
+%a__link--forward {
+    @extend %a__link;
+
+    &::after {
+        @extend %a__pseudo__icon--after;
+        @extend %q__icon__forward-small;
+    }
+}
+
+/*doc
+---
+title: Stand Alone Link
+name: standAloneLink
+parent: links
+---
+
+Some links in the application stand on their own. Not related to content, not calls to
+action that the user must be drawn towards. Such links however behave similar to a call
+to action.
+
+```html_example
+<a href="#ctaTest" class="example__stand-alone-link">Go back</a>
+<a href="#ctaTest" class="example__call-to-action">Next Phase</a>
+```
+*/
+%a__stand-alone-link {
+    @extend %q__font;
+    @extend %a__cursor-pointer;
+    @extend %e__reset__border;
+    font-size: $b__font__main--size;
+    outline: none;
+}
+
+%a__cta-link {
+    @extend %a__stand-alone-link;
+    @extend %q__font--uppercase;
+    @extend %q__padding__base;
+    @extend %q__text-align--center;
+    font-size: $b__font__large--size;
+}
+
+%a__action{
+    @extend %a__cta-link;
+    @extend %q__colors__emphasis--success;
+
+}
+
+/*doc
+---
+title: Call To Action
+name: callToAction
+parent: links
+---
+
+The essential call to action only to be used as primary call to action such as a BUY button. This styling should be used sparingly to guide a user
+through a successfull shopping experience.
+
+Display-type must be determined on context. A button residing in a text-environment should
+be `inline-block`, however stand-alone buttons should be `block`. Take this into account
+when defining them in molecules.
+
+```html_example
+<a href="#ctaTest" class="example__call-to-action">Next Phase</a>
+```
+*/
+
+%a__call-to-action {
+    @extend %a__action;
+    padding: $b__whitespace__related;
+}
+
+/*doc
+---
+title: Call To Action Secondary
+name: callToActionSecondary
+parent: links
+---
+
+Secondary call to action to be used on anything other then primary call to action on the page.
+
+```html_example
+
+<a href="#ctaTest" class="example__call-to-action__secondary">Marketing CTA</a>
+
+```
+*/
+%a__call-to-action__secondary {
+    @extend %q__font__header;
+    @extend %q__padding__associated;
+    @extend %q__colors__call-to-action--secondary;
+    @extend %q__text-align--center;
+    @extend %q__border__call-to-action--secondary;
+
+    &--scalable {
+        @extend %a__call-to-action__secondary;
+        @extend %q__font__header--scalable;
+    }
+}
+
+/*doc
+---
+title: Call To Action Secondary In Slot
+name: callToActionSecondaryInSlot
+parent: links
+---
+
+Secondary call to action that is inide a slot. To be used on anything other than primary call to action on the page.
+
+```html_example
+
+<a href="#ctaTest" class="example__call-to-action__secondary-in-slot">Marketing CTA</a>
+
+```
+*/
+%a__call-to-action__secondary-in-slot {
+    @extend %a__call-to-action__secondary;
+    @extend %q__min-width-100;
+    height: auto;
+
+    &--scalable {
+        @extend %a__call-to-action__secondary-in-slot;
+        @extend %a__call-to-action__secondary--scalable;
+    }
+}
+
+@include e__slot__2byN {
+    %a__call-to-action__secondary-in-slot {
+        min-width: 100%;
+    }
+}
+
+@include e__slot__3by2--hands {
+    %a__call-to-action__secondary-in-slot {
+        max-width: 100%;
+        min-width: $b__measure__half;
+    }
+}
+
+@include e__slot__4by2--desktop {
+    %a__call-to-action__secondary-in-slot {
+        max-width: 100%;
+        min-width: $b__measure__half;
+    }
+}
+
+@include e__slot__4by4 {
+    %a__call-to-action__secondary-in-slot {
+        max-width: 100%;
+        min-width: $b__measure__half;
+    }
+}
+
+@include e__slot__6by4--hands {
+    %a__call-to-action__secondary-in-slot {
+        max-width: $b__measure__third * 2;
+        min-width: $b__measure__third;
+    }
+}
+
+@include e__slot__8by4--desktop {
+    %a__call-to-action__secondary-in-slot {
+        max-width: $b__measure__half;
+        min-width: $b__measure__quarter;
+    }
+}
+
+@include e__slot__8by2--desktop {
+    %a__call-to-action__secondary-in-slot {
+        max-width: 100%;
+        min-width: $b__measure__half;
+    }
+}
+
+@include e__slot__6by2--hands {
+    %a__call-to-action__secondary-in-slot {
+        max-width: 100%;
+        min-width: $b__measure__half;
+    }
+}
+
+/*doc
+---
+title: Call To Action Back
+name: callToActionBack
+parent: links
+---
+
+The essential call to action back. This styling should be used sparingly to guide a user
+through a successfull shopping experience. For example used for the back button in the minicart.
+
+
+```html_example
+<a href="#ctaTest" class="example__call-to-action--backward">Next Phase</a>
+```
+*/
+%a__call-to-action--backward {
+    @extend %a__call-to-action;
+    @extend %q__colors__call-to-action--backward;
+    @extend %q__border__call-to-action--backward;
+}
+
+/*doc
+---
+title: Call To Action Back Low
+name: callToActionBackLowShared
+parent: links
+---
+
+The essential call to action back. This styling should be used sparingly to guide a user
+through a successfull shopping experience. For example used for the back button in the minicart.
+
+
+```html_example
+<a href="#ctaTest" class="example__call-to-action--backward">Next Phase</a>
+```
+*/
+%a__call-to-action--secondary--low,
+%a__call-to-action--backward--low {
+    @extend %e__reset__border;
+    @extend %q__padding__base;
+    @extend %q__font__header;
+    @extend %q__text-align--center;
+    @extend %a__cursor-pointer;
+    @extend %q__border__call-to-action--backward;
+}
+
+/*doc
+---
+title: Call To Action Secondary Low
+name: callToActionSecondaryLow
+parent: links
+---
+
+Same as call to action secondary, but with lower paddings so the height matches input fields and can be aligned to forms.
+
+```html_example
+<a href="#" class="example__call-to-action--secondary--low">Next Phase</a>
+```
+*/
+%a__call-to-action--secondary--low {
+    @extend %q__color__secondary-calltoaction;
+}
+
+/*doc
+---
+title: Call To Action Back Low
+name: callToActionBackLow
+parent: links
+---
+
+Same as call to action back, but with lower paddings so the height matches input fields and can be aligned to forms.
+
+```html_example
+<a href="#ctaTest" class="example__call-to-action--backward--low">Next Phase</a>
+```
+*/
+%a__call-to-action--backward--low {
+    @extend %q__colors__call-to-action--backward;
+}
+
+/*doc
+---
+title: Navigation Link
+name: navigationLink
+parent: links
+---
+
+Category links in the navigation
+
+```html_example
+<a href="#testLink" class="example__nav-link">I'm a link</a>
+```
+*/
+%a__nav-link {
+    @extend %q__font;
+}
+
+/*doc
+---
+title: Text replaced by an icon
+name: navIconReplaced
+parent: links
+---
+
+A navigation item in which the text-content is replace by an icon. Result is a square
+'button'.
+
+```html_example
+<a href="#testLink" class="example__icon--svg">I'm a link <svg class="example__icon-replacement" /></a>
+```
+*/
+%a__navigation__icon-replaced--svg {
+    @extend %a__formfield__submit;
+    @extend %q__overflow--hidden;
+    @extend %q__positioning__relative;
+    @extend %q__inline-block;
+    @extend %q__whitespace__nowrap;
+    text-indent: 2 * $b__whitespace__related;
+    width: 2 * $b__whitespace__related;
+}
+
+%a__navigation__icon-replacement {
+    @extend %q__positioning__absolute;
+    height: $b__whitespace__related;
+    margin-top: -(.5 * $b__font__line-height) * 1em;
+    right: $b__whitespace__inside-of-searchbar--horizontal;
+    top: 50%;
+    width: $b__whitespace__related;
+}
+
+/*doc
+---
+title: Text replaced by an icon
+name: navIconReplaced
+parent: links
+---
+
+A navigation item in which the text-content is replace by an icon. Result is a square
+'button'.
+
+```html_example
+<a href="#testLink" class="example__icon-replaced">I'm a link</a>
+```
+*/
+%a__navigation__icon-replaced {
+    @extend %a__navigation__icon-replaced--svg;
+
+    &::after {
+        @extend %a__pseudo__icon--after;
+        @extend %a__navigation__icon-replacement;
+        font-size: $b__whitespace__related;
+        height: auto;
+    }
+}

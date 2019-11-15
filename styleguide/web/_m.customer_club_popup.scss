@@ -1,0 +1,22 @@
+/*doc
+---
+title: Customer club headers
+name: customerHeaders
+category: molecules
+---
+
+Specify the different header for the customer club popup
+
+*/
+
+%m__customer-club-header {
+    @extend %q__text-align--center;
+    @extend %a__headline;
+    @extend %e__reset__margin;
+}
+
+// @TODO: add a /*doc block
+%m__customer-club-content {
+    @extend %q__whitespace__unassociated--bottom;
+    @extend %q__text-align--center;
+}

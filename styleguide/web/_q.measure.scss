@@ -1,0 +1,57 @@
+/*doc
+---
+title: Height Base
+name: heightBase
+category: quarks
+---
+
+Height base
+
+```html_example
+<input type="text" name="testInputText" value="firstname" form="testForm">
+```
+*/
+%q__height {
+    height: $b__measure__height__element;
+}
+
+/*doc
+---
+title: Height Rectilineal
+name: heightRectilineal
+category: quarks
+---
+
+Height base & line-height base. When vertical alignment of text in an input[type=text] field needs to be centered.
+Line-height equal to height is a clean & stable way to do this.
+
+```html_example
+<input type="text" name="testInputText" value="lastname" form="testForm">
+```
+*/
+
+%q__height--rectilineal {
+    @extend %q__height;
+    line-height: $b__measure__height__element;
+}
+
+%q__measure-swatch {
+    min-height: $b__measure__swatch__element;
+    min-width: $b__measure__swatch__element;
+}
+
+%q__height--none {
+    height: 0;
+}
+
+%q__height--reset {
+    height: auto;
+}
+
+%q__measure-product-image {
+    padding-bottom: $b__measure__aspect-ratio-percent--inverted;
+}
+
+%q__height__filter__buttons {
+    height: 2 * $b__whitespace__unassociated;
+}

@@ -1,0 +1,70 @@
+@import 'b.font.futura';
+@import 'b.font.quickpen';
+/*doc
+---
+title: YAS Brand Variables
+name: ys-overwrites
+category: ys-brand
+---
+
+Collection of all SCSS variables (Bosons) that this brand can use/uses to overwrite the global/default styling.
+By changing the values of these bosons this brand changes the SCSS values for things like color, size, font, etc.
+
+Best practice is to define and re-use branded ** variables '$b__**__color__primary' for every recurring value,
+naming kept functional, whenever sharing the same relationship.
+
+*/
+
+$b__ys__color__primary--600: #000;
+$b__ys__color__offset--400: $b__ys__color__primary--600;
+$b__ys__font__base--size: 14px;
+$b__ys__font__weight: 200;
+$b__ys__font__link--weight: bold;
+$b__ys__headers__header--size: 9 / 8 * 1rem;
+$b__ys__headers__headline--size: 25 / 16 * 1rem;
+$b__ys__headers__subheader--size: 1rem;
+$b__ys__headers__subheader--weight: normal;
+
+$b__color__primary--600: $b__ys__color__primary--600;
+$b__color__offset--400: $b__ys__color__offset--400;
+
+$b__font__base--size: $b__ys__font__base--size;
+$b__font__main--import: $b__ys__font__futura--import;
+$b__font__main: $b__ys__font__futura;
+$b__font__weight: $b__ys__font__weight;
+$b__font__link--weight: $b__ys__font__link--weight;
+
+$b__headers__exhibit-header--import: $b__ys__font__quickpen--import;
+$b__headers__exhibit-header--font: $b__ys__font__quickpen;
+$b__headers__header--size: $b__ys__headers__header--size;
+$b__headers__headline--size: $b__ys__headers__headline--size;
+$b__headers__subheader--size: $b__ys__headers__subheader--size;
+$b__headers__subheader--weight: $b__ys__headers__subheader--weight;
+
+/*doc
+---
+title: Grid Alternate variables
+name: bt-gridAlt
+parent: bt-overwrites
+---
+
+Grid Alternate gutter sizes must be based on whitespace standards
+The values for `$b__grid--alt__gutter` and `$b__grid__aspect-ratio__1by2` are
+directly related. Pick the corresponding values from the table below
+
+Grid gutter boson standard  |  est.px  |  alt__gutter
+=======================================================
+- none -                    |    0px   |       0rem
+-------------------------------------------------------
+$b__whitespace__line-spacing|  ~ 5px   |   0.417rem
+$b__whitespace__associated  |  ~10px   |   0.833rem    !default
+$b__whitespace__basepadding |  ~15px   |   1.250rem
+$b__whitespace__related     |  ~20px   |   1.666rem
+$b__whitespace__unassociated|  ~30px   |   2.499rem
+BestsellerCom               |  ~85px   |   8.333rem
+
+$b__grid--alt__selector: ".cm-branded-content";
+$b__grid--alt__gutter: 0.833rem;
+ */
+
+

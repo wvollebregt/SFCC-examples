@@ -1,0 +1,85 @@
+/*doc
+---
+title: Body
+name: body
+category: organisms
+---
+
+Basic output of body tags.
+
+*/
+
+html,
+body {
+    @extend %e__reset;
+    @extend %e__reset__text-size-adjust;
+    @extend %q__font;
+    background-color: $b__color__body--primary;
+    color: $b__color__body--offset;
+    font-size: $b__font__base--size;
+    letter-spacing: $b__letter-spacing;
+    line-height: $b__font__line-height;
+    -webkit-font-smoothing: antialiased;
+}
+
+html, body{
+    @include e__media--palm-only {
+        &.js-no-scroll {
+            overflow: hidden;
+            position: fixed;
+            -webkit-overflow-scrolling: unset;
+        }
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+fieldset {
+    @extend %e__reset;
+}
+
+fieldset {
+    min-width: inherit; //Overwrite seriously weird webkit behavior
+}
+
+h1,
+h2,
+h3,
+h4 {
+    * + & {
+        @extend %q__whitespace__related;
+    }
+}
+
+a {
+    @extend %e__reset;
+    @extend %a__link;
+}
+
+ul,
+ol {
+    @extend %q__list__style-none;
+}
+
+img {
+    @extend %e__reset__border;
+}
+
+button {
+    border-radius: 0px;
+    @extend %e__reset__background-color;
+}
+
+main { // IE support for MAIN tag in HTML5
+    @extend %e__clearfix;
+    display: block;
+}
+
+input, textarea, select, button {
+    @extend %e__reset__line-height;
+}

@@ -1,0 +1,177 @@
+/*doc
+---
+title: Nine Positions Box
+name: ninePositionsBox
+category: electrons
+---
+
+A box in which content can be placed in nine different positions, depending on modifier classes.
+
+Supported positions for content of box:
+- left top
+- center top
+- right top
+- left middle
+- center middle
+- right middle
+- left bottom
+- center bottom
+- right bottom
+
+*/
+%e__nine-positions-box {
+    @extend %q__display-table__cell;
+    @extend %q__border--sizing;
+    height: 100%;
+}
+
+/*doc
+---
+title: Nine Positions Content
+name: ninePositionsContent
+category: electrons
+---
+
+The content of a nine positions box.
+
+*/
+%e__nine-positions-box__content {
+    @extend %q__inline-block;
+}
+
+$b_horizontal: ('left', 'center', 'right');
+$b_vertical: ('top', 'middle', 'bottom');
+
+@each $b__position in $b_horizontal {
+    %a__nine-positions--#{$b__position} {
+        text-align: #{$b__position};
+    }
+}
+
+@each $b__position in $b_vertical {
+    %a__nine-positions--#{$b__position} {
+        vertical-align: #{$b__position};
+    }
+}
+
+/*doc
+---
+title: Nine Positions Horizontal Mixin
+name: ninePositionsHorizontalMixin
+parent: ninePositionsBox
+---
+
+Creates class definitions for three horizontal positions.
+
+*/
+@mixin e__nine-positions-horizontal($b_class-name) {
+
+    @each $b__position in $b_horizontal {
+
+        .#{$b_class-name}--#{$b__position} {
+            @extend %a__nine-positions--#{$b__position};
+        }
+    }
+}
+
+/*doc
+---
+title: Nine Positions Vertical Mixin
+name: ninePositionsVerticalMixin
+parent: ninePositionsBox
+---
+
+Creates class definitions for three vertical positions.
+
+*/
+@mixin e__nine-positions-vertical($b_class-name) {
+
+    @each $b__position in $b_vertical {
+
+        .#{$b_class-name}--#{$b__position} {
+            @extend %a__nine-positions--#{$b__position};
+        }
+    }
+}
+
+/*doc
+---
+title: Nine Positions Vertical And Horizontal Mixin
+name: ninePositionsVerticalAndHorizontalMixin
+parent: ninePositionsBox
+---
+
+Creates class definitions for nine positions for a widget that lives in a row slot.
+
+*/
+@mixin e__nine-positions($b_class-name, $b_box) {
+
+    @for $b_i from 1 through length($b_horizontal) {
+
+        @for $b_j from 1 through length($b_vertical) {
+
+            .#{$b_class-name}--#{$b_box}-#{nth($b_horizontal, $b_i)}-#{nth($b_vertical, $b_j)} {
+                text-align: #{nth($b_horizontal, $b_i)};
+                vertical-align: #{nth($b_vertical, $b_j)};
+            }
+        }
+    }
+}
+
+/*doc
+---
+title: Nine Positions Vertical And Horizontal Background Position Mixin
+name: ninePositionsVerticalAndHorizontalBackgroundPositionMixin
+parent: ninePositionsBox
+---
+
+Creates class definitions for nine positions for banner widgets.
+
+*/
+
+@mixin e__nine-positions-image-bg($b_class-name) {
+
+    $b_horizontal: ('left', 'center', 'right');
+    $b_vertical: ('top', 'center', 'bottom');
+
+    @for $b_i from 1 through length($b_horizontal) {
+
+        @for $b_j from 1 through length($b_vertical) {
+
+            .#{$b_class-name}-#{nth($b_horizontal, $b_i)}-#{nth($b_vertical, $b_j)} {
+                background-position: #{nth($b_horizontal, $b_i)} #{nth($b_vertical, $b_j)};
+                background-size: cover;
+            }
+        }
+    }
+}
+
+@mixin e__nine-positions--extends {
+    $b_positions: ('top', 'right', 'bottom', 'left', 'middle', 'center');
+
+    @for $b_i from 1 through length($b_positions) {
+        &--#{nth($b_positions, $b_i)} {
+            @extend %a__nine-positions--#{nth($b_positions, $b_i)};
+        }
+    }
+}
+
+@mixin e__nine-positions--complex {
+    &__main-container {
+        @extend %m__widget__main-container;
+    }
+
+    &__sub-container {
+        @extend %m__widget__sub-container;
+    }
+
+    &__positioning-box {
+        @include e__nine-positions--extends;
+        @extend %m__widget__positioning-box;
+        @extend %q__padding__unassociated;
+    }
+
+    &__content-container {
+        @extend %m__widget__content-container;
+    }
+}

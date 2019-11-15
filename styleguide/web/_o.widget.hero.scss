@@ -1,0 +1,190 @@
+/*doc
+---
+title: Hero widget
+name: heroWidget
+category: widgets
+---
+
+Full width widget on home page.
+
+```html_example
+<article class="widget-hero"
+    data-style-generator
+    data-palm-background="https://placeholdit.imgix.net/~text?txtsize=33&txt=Palm&w=660&h=320"
+    data-hands-background="https://placeholdit.imgix.net/~text?txtsize=200&txt=Hands+Desktop&w=1600&h=640"
+    />
+    <div class="widget-hero__main-container">
+        <div class="widget-hero__sub-container">
+            <div class="widget-hero__positioning-box widget-hero__positioning-box--left widget-hero__positioning-box--top">
+                <div class="widget-hero__content-container">
+                    <h3 class="widget-hero__header">
+                    Set horizontal position
+                    </h3>
+                    <p class="widget-hero__text">
+                    Click here to set the vertical position (if you like).
+                    </p>
+                    <div class="widget-hero__badge">ONLY TODAY</>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widget-hero__main-container">
+        <div class="widget-hero__sub-container">
+            <div class="widget-hero__positioning-box widget-hero__positioning-box--right widget-hero__positioning-box--bottom">
+                <div class="widget-hero__content-container">
+                    <a class="widget-hero__call-to-action" href="http://www.bestseller.com">Go to Bestseller</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script>
+
+// This script only exists for demo purposes!!
+
+var changeHorizontalPosition = function(){
+
+    var classes = {
+        index: 0,
+        list: ['widget-hero__positioning-box--left', 'widget-hero__positioning-box--center', 'widget-hero__positioning-box--right']
+    };
+
+    return function(){
+
+        var activeClass = classes.list[classes.index],
+            element = document.querySelector('.widget-hero__positioning-box');
+
+        element.classList.remove(activeClass);
+        classes.index = classes.index < classes.list.length - 1? classes.index + 1: 0;
+        element.classList.add(classes.list[classes.index]);
+    };
+
+}();
+
+var changeVerticalPosition = function(){
+
+    var classes = {
+        index: 0,
+        list: ['widget-hero__positioning-box--top', 'widget-hero__positioning-box--middle', 'widget-hero__positioning-box--bottom']
+    };
+
+    return function(){
+
+        var activeClass = classes.list[classes.index],
+            element = document.querySelector('.widget-hero__positioning-box');
+
+        element.classList.remove(activeClass);
+        classes.index = classes.index < classes.list.length - 1? classes.index + 1: 0;
+        element.classList.add(classes.list[classes.index]);
+    };
+
+}();
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Disable pointer events on overlaying container for demo purposes.
+    document.querySelectorAll('.widget-hero__main-container')[1].style.pointerEvents = 'none';
+    document.querySelector('.widget-hero__call-to-action').style.pointerEvents = 'all';
+
+    // Show dimensions.
+    document.querySelector('.widget-hero').style.background = '#DDD';
+
+    document.querySelector('.widget-hero__header').onclick = changeHorizontalPosition;
+    document.querySelector('.widget-hero__text').onclick = changeVerticalPosition;
+
+}, false);
+
+</script>
+
+```
+*/
+
+.widget-hero {
+    @extend %m__hero--default;
+}
+
+.widget-hero--type2 {
+    @extend %m__hero--type2;
+}
+
+// Elements needed for positioning of content.
+
+.widget-hero__main-container {
+    @extend %m__widget__main-container;
+    @extend %m__scalable__content;
+}
+
+.widget-hero__sub-container {
+    @extend %m__widget__sub-container;
+}
+
+.widget-hero__positioning-box {
+    @extend %m__widget__positioning-box;
+    @extend %q__padding__unassociated;
+}
+
+@include e__media--hands {
+    @include e__nine-positions(widget-hero__positioning-box, 'desktop');
+}
+
+@include e__media--palm-only {
+    @include e__nine-positions(widget-hero__positioning-box, 'mobile');
+}
+
+.widget-hero__content-container,
+.widget-hero__cta-container {
+    @extend %m__widget__content-container;
+
+    @include e__media--hands {
+        max-width: $b__measure__third * 2;
+        min-width: $b__measure__third;
+    }
+
+    @include e__media--desktop {
+        max-width: $b__measure__half;
+        min-width: $b__measure__quarter;
+    }
+}
+
+// Content elements.
+
+.widget-hero__countdown-text {
+    @extend %q__whitespace__associated--top;
+    @extend %q__font__exhibit-header;
+}
+
+.widget-hero__header {
+    @include e__exhibit-header;
+}
+
+.widget-hero__text {
+    @include e__widget__text;
+
+    @include e__media--palm-only {
+        font-size: e__replace-units__rems-to-ems($b__font__large--size);
+    }
+}
+
+.widget-hero__call-to-action {
+    @extend %a__call-to-action__secondary--scalable;
+    @extend %q__block;
+}
+
+.widget--display-font {
+    @extend %q__font__exhibit-header;
+}
+
+.widget-link--markdown {
+    // This is needed because the markup library add automatically some p tag
+    p {
+        @extend %q__inline;
+    }
+}
+
+[class].widget-link--auto-width { // Specificity selector to overrule exsiting styling
+    @extend %q__inline-block;
+    line-height: 1;
+    min-width: auto;
+    width: auto;
+}

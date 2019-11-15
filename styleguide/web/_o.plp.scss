@@ -1,0 +1,634 @@
+/*doc
+---
+title: PLP - Product listing page
+name: product_listing_page
+category: organisms
+---
+
+Product listing page
+
+*/
+
+/*doc
+---
+title: PLP - Layout Grid
+name: product_listing_page-grid
+parent: product_listing_page
+---
+
+Working grid of PLP page.
+
+```html_example
+<div class="plp">
+    <div class="plp__wrapper">
+        <header class="category-banner">
+            <img class="category-banner__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+CATEGORY+BANNER&w=1009&h=154&txttrack=0" />
+        </header>
+        <aside class="plp__refine">
+            <div class="plp-products-display">
+                <a href="#">1</a>
+                <a href="#">2</a>
+            </div>
+            <select class="plp-sorting">
+                <option selected value="SORT BY">SORT BY</option>
+                <option value="Price low-to-high">Price low-to-high</option>
+                <option value="Price high-to-low">Price high-to-low</option>
+                <option value="Best sold">Best sold</option>
+            </select>
+            <article class="plp-categories accordion" role="accordion">
+                <header class="accordion__title">Categories</header>
+                <section class="accordion__section">
+                    <ul class="accordion__links">
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Category link 1</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Category link 2</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Category link 3</a>
+                        </li>
+                    </ul>
+                    <ul class="accordion__links">
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Category link 11</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Category link 12</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Category link 13</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Category link 14</a>
+                        </li>
+                    </ul>
+                    <button class="accordion-trigger">Close</button>
+                </section>
+            </article>
+            <article class="plp-filters accordion" role="accordion">
+                <header class="accordion__title">Refine</header>
+                <section class="accordion__section">
+                    <ul class="accordion__links">
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Size 1</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Size 2</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Size 3</a>
+                        </li>
+                    </ul>
+                    <ul class="accordion__links">
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Colour 1</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Colour 2</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Colour 3</a>
+                        </li>
+                        <li class="accordion__item">
+                            <a class="accordion__link-item" href="#">Colour 4</a>
+                        </li>
+                    </ul>
+                    <button class="accordion-trigger">Close</button>
+                </section>
+            </article>
+            <div class="plp-products-found">
+                <span class="">Trousers - </span>1645 Products
+            </div>
+            <div class="plp-pagination">
+                <a class="button"><</a>
+                <select>
+                    <option>1/6</option>
+                    <option>2/6</option>
+                    <option>3/6</option>
+                    <option>4/6</option>
+                    <option>5/6</option>
+                    <option>6/6</option>
+                </select>
+                <a class="button">></a>
+            </div>
+        </aside>
+        <div class="plp__products">
+            <div class="plp__products__item">
+                <figure>
+                    <a href="#" class="plp__products__item__image-container">
+                        <img class="plp__products__item__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Product+image+1&w=228&h=303&txttrack=0" />
+                    </a>
+                </figure>
+            </div>
+            <div class="plp__products__item">
+                <figure>
+                    <a href="#" class="plp__products__item__image-container">
+                        <img class="plp__products__item__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Product+image+2&w=228&h=303&txttrack=0" />
+                    </a>
+                </figure>
+            </div>
+            <div class="plp__products__item">
+                <figure>
+                    <a href="#" class="plp__products__item__image-container">
+                        <img class="plp__products__item__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Product+image+3&w=228&h=303&txttrack=0" />
+                    </a>
+                </figure>
+            </div>
+            <div class="plp__products__item">
+                <figure>
+                    <a href="#" class="plp__products__item__image-container">
+                        <img class="plp__products__item__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Product+image+4&w=228&h=303&txttrack=0" />
+                    </a>
+                </figure>
+            </div>
+            <div class="plp__products__item">
+                <figure>
+                    <a href="#" class="plp__products__item__image-container">
+                        <img class="plp__products__item__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Product+image+5&w=228&h=303&txttrack=0" />
+                    </a>
+                </figure>
+            </div>
+            <div class="plp__products__item">
+                <figure>
+                    <a href="#" class="plp__products__item__image-container">
+                        <img class="plp__products__item__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Product+image+6&w=228&h=303&txttrack=0" />
+                    </a>
+                </figure>
+            </div>
+        </div>
+        <div class="plp-brand-banner">
+            <img class="plp-brand-banner__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Brand+banner&w=965&h=100&txttrack=0" />
+        </div>
+        <div class="plp-recommendations">
+            <img class="plp-recommendations__image" src="https://placeholdit.imgix.net/~text?txtsize=30&txt=PLP+Recommendations&w=965&h=100&txttrack=0" />
+        </div>
+    </div>
+</div>
+```
+*/
+
+.plp-category__header {
+    @extend %a__header;
+    @extend %q__display-none;
+    @extend %q__padding__related--bottom;
+    font-size: 8 / 6 * $b__font__main--size;
+    margin-top: 0;
+}
+
+.plp-category__header--show {
+    @include e__media--hands {
+        display: block;
+    }
+}
+
+
+.plp__products__item__image-container {
+    @extend %a__noreflow__image-container;
+}
+
+.plp__products__item__image {
+    @extend %a__noreflow__image;
+
+    &::after {
+        @extend %q__background-image__no-repeat;
+        @extend %q__background-image__center;
+        @extend %q__block;
+        @extend %q__positioning__absolute--fill-parent;
+        background-color: $b__color__offset--600;
+        background-image: url('../../images/loader.gif');
+        content: '';
+    }
+}
+
+.plp-brand-banner__image,
+.plp-recommendations__image,
+.plp__products__item__image {
+    @extend %e__grid__fill-parent;
+}
+
+.plp-category-name-stripe {
+    @extend %q__display-none;
+    @extend %q__full-width;
+    padding-bottom: $b__whitespace__related;
+    @extend %q__text-align--center;
+}
+
+.plp-category-name-stripe__content {
+    @extend %q__font--uppercase;
+    font-weight: 300;
+    font-size: $b__font__xlarge--size;
+    color: $b__color__primary--600;
+}
+
+.plp-category-name-stripe--show {
+    @include e__media--palm-only {
+        display: block;
+    }
+}
+
+.plp__refine {
+    @extend %e__palm--hidden;
+    @extend %q__whitespace__related--bottom;
+
+    .category-navigation {
+        @extend %e__palm--hidden;
+        @extend %q__padding__unassociated--bottom;
+        @extend %e__reset__border;
+        @extend %e__reset__padding-top;
+    }
+
+    .category-navigation__title {
+        line-height: 2 * $b__font__main--size;
+    }
+    @include e__media--palm-only {
+        &.js-show__fixed{
+            z-index: $b__z-index__filter--fixed;
+            display: block;
+            position: fixed;
+            top: $b__measure__height__servicebar;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: $b__whitespace__basevalue;
+            background-color: $b__color__offset--700;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 0;
+        }
+    }
+
+}
+
+.refine__categories {
+    @extend %e__hands__grid__thirds;
+    @extend %e__desktop__grid__quarters;
+    @extend %e__widescreen__grid__fifths;
+    @include e__media--hands {
+        min-height: 320px;
+    }
+
+    @include e__media--hands {
+        margin-bottom: 0;
+    }
+
+}
+
+.refine__properties {
+    @extend %e__hands__grid__two-thirds;
+    @extend %e__hands__grid__omega;
+    @extend %e__desktop__grid__three-quarters;
+    @extend %e__desktop__grid__omega;
+    @extend %e__widescreen__grid__four-fifths;
+    @extend %e__widescreen__grid__omega;
+    @extend %q__whitespace__related--bottom;
+    background-color: $b__color__offset--700;
+
+    @include e__media--hands {
+        margin-bottom: 0;
+        .js-sticky__position & {
+            padding-top: $b__whitespace__basevalue;
+        }
+    }
+    .applied-filters{
+        @extend %e__palm--hidden;
+        margin-bottom: $b__whitespace__basevalue;
+    }
+}
+
+.refine__properties__container, .refine__categories__container {
+    position: relative;
+}
+
+.js-sticky__position {
+    position: fixed;
+    z-index: $b__z-index__sticky-bar;
+    top: $b__measure__height__servicebar;
+    left: 0;
+    right: 0;
+    width: auto;
+
+    @include e__media--hands-only {
+        box-shadow: -5px 0px 0px 0px $b__color__offset--700, 5px 0px 0px 0px $b__color__offset--700;;
+    }
+
+    @include e__media--hands {
+        pointer-events: none;
+
+        .refine__categories {
+            pointer-events: initial;
+            padding: $b__whitespace__basevalue 0 0 0;
+            min-height: auto;
+        }
+
+        .refine__properties {
+            pointer-events: initial;
+        }
+    }
+
+    .refine__properties__container__in {
+        padding-left: $b__whitespace__page__horizontal;
+        padding-right: $b__whitespace__page__horizontal;
+        max-width: $b__grid__max-width;
+        position: relative;
+        margin: auto;
+        box-sizing: border-box;
+        @include e__media--hands {
+            padding-left: $b__whitespace__page__horizontal__static;
+            padding-right: $b__whitespace__page__horizontal__static;
+        }
+    }
+
+    .refine__categories__container__in {
+        pointer-events: auto;
+        max-width: $b__grid__max-width;
+        position: relative;
+        margin: auto;
+        box-sizing: border-box;
+        padding-left: $b__whitespace__page__horizontal;
+        padding-right: $b__whitespace__page__horizontal;
+
+        @include e__media--desktop {
+            padding-left: $b__whitespace__page__horizontal__static;
+            padding-right: $b__whitespace__page__horizontal__static;
+        }
+    }
+
+    .refine__properties__container__in__shadow {
+        @extend %e__hands__grid__thirds;
+        @extend %e__desktop__grid__quarters;
+        @extend %e__widescreen__grid__fifths;
+        @extend %q__full-height;
+
+        &::after {
+            content: '';
+            padding: $b__whitespace__basevalue;
+        }
+    }
+
+    &.js-sticky_slim-fit {
+        top: $b__measure__height__servicebar + $b__font__line-height--slim;
+    }
+
+    &.refine__properties__container__in__shadow {
+        @extend %e__palm--hidden;
+        @extend %e__hands__grid__thirds;
+        @extend %e__desktop__grid__quarters;
+        @extend %e__widescreen__grid__fifths;
+        @extend %q__full-height;
+        @extend %e__palm--hidden;
+
+        &::after {
+            content: '';
+            padding: $b__whitespace__basevalue;
+        }
+    }
+
+    &.js-sticky__down {
+        @include animation('slide-out-top 0.3s ease-out both');
+    }
+
+    &.js-sticky__up {
+        @include animation('slide-in-top 0.3s ease-out both');
+    }
+
+    &.js-sticky__position--bottom-limit {
+        position: absolute;
+    }
+}
+
+.plp-products-display {
+    @extend %e__palm__grid__whole;
+    @extend %e__hands--hidden;
+}
+
+.plp-sorting {
+    @extend %a__formfield__text;
+}
+
+.plp-categories,
+.plp-filters {
+    @extend %m__accordion;
+}
+
+.plp-products-found {
+    @extend %q__text-align--center;
+    @extend %q__height--rectilineal;
+}
+
+.plp-pagination {
+    @extend %q__text-align--center;
+    @extend %q__height--rectilineal;
+}
+
+.plp__products {
+    @extend %m__plp__products;
+    @extend %e__hands__grid__two-thirds;
+    @extend %e__hands__grid__omega;
+    @extend %e__desktop__grid__three-quarters;
+    @extend %e__desktop__grid__omega;
+    @extend %e__widescreen__grid__four-fifths;
+    @extend %e__widescreen__grid__omega;
+    @extend %q__whitespace__related--bottom;
+    .did-you-mean{
+        @extend %e__hands--hidden;
+    }
+}
+
+.plp__products__item,
+.plp__promotion__item {
+    // When using custom sizes we can not use this molecule, because it will add a clear left to the wrong items.
+    .main-plp:not(.main-plp--custom-sizes) & {
+        @extend %m__plp__products__item;
+    }
+}
+
+/*
+User defined PLP grid item sizes.
+*/
+
+.main-plp--custom-sizes {
+
+    &:not(.main-plp--custom-large-images):not(.main-plp--custom-small-images){
+
+        .plp__products {
+            .plp__products__item,
+            .plp__promotion__item {
+                @extend %m__plp__products__item--custom-supported;
+            }
+        }
+    }
+
+    &.main-plp--custom-small-images {
+
+        .plp__products {
+            .plp__products__item,
+            .plp__promotion__item {
+                @extend %m__plp__products__item--custom-small;
+            }
+        }
+    }
+
+    &.main-plp--custom-large-images {
+
+        .plp__products {
+
+            .plp__products__item,
+            .plp__promotion__item {
+                @extend %m__plp__products__item--custom-large;
+            }
+        }
+    }
+}
+
+.plp__search-no-results,
+.plp__products__no-results {
+    @extend %e__palm__grid__whole;
+    @extend %q__text-align--center;
+    @extend %q__whitespace__unassociated--top;
+}
+
+.plp-header {
+    @extend %q__font__headline;
+    @extend %q__whitespace__associated--top;
+}
+
+.plp-content {
+    @extend %m__plp-content;
+}
+
+.plp-content__searched-for,
+.plp-content__did-you-mean,
+.plp-content__search,
+.plp-content__help {
+    @extend %a__box-model__flow;
+}
+
+.plp-content__search-phrase {
+    @extend %q__font--emphasis;
+}
+
+.plp-content__help {
+    @extend %q__font--small;
+}
+
+.plp-brand-banner {
+    @extend %e__palm__grid__whole;
+    @extend %e__grid__fill-parent;
+}
+
+.plp-recommendations {
+    @extend %e__palm--hidden;
+    @extend %e__hands__grid__whole;
+    @extend %e__grid__fill-parent;
+    @extend %e__grid__gutter__vertical;
+}
+
+.plp-refinement-subcategories__section {
+    @extend %e__hands--hidden;
+    @extend %q__overflow-x--auto;
+    margin-left: -$b__whitespace__page__horizontal;
+    margin-right: -$b__whitespace__page__horizontal;
+    display: flex;
+}
+
+.plp-refinement-subcategories__group {
+    @extend %e__reset__margin;
+    @extend %e__reset__padding;
+    @extend %q__whitespace__nowrap;
+    border-bottom: $b__subcategories-slider__border;
+    border-top: $b__subcategories-slider__border;
+    padding: $b__whitespace__basepadding 0;
+    list-style: none;
+    flex: 1;
+    li {
+        display: inline-block;
+    }
+}
+
+.plp-refinement-subcategories__item {
+    @extend %m__plp-refinement-subcategories__item;
+
+    &--active {
+        @extend %m__plp-refinement-subcategories__item;
+        position: relative;
+        &::after{
+            position: absolute;
+            content: '';
+            left: 0;
+            right: 0;
+            height: 1px;
+            bottom: calc(#{-$b__whitespace__basepadding} - 1px);
+            background-color: #333333;
+        }
+    }
+}
+
+.plp-refinement-subcategories__link,
+.plp-refinement-subcategories__link--active {
+    @extend %q__font--uppercase;
+    font-weight: $b__font__weight;
+}
+
+.applied-filters {
+    @extend %q__inline-block;
+    @extend %q__padding__related--top;
+    @extend %q__colors__primary--100;
+    @extend %q__full-width;
+    padding-bottom: $b__whitespace__related;
+    margin-bottom: -$b__whitespace__related;
+
+    @include e__media--hands {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.applied-filters__container {
+    @extend %q__inline;
+}
+
+.applied-filters__content {
+    @extend %q__font__applied-filters;
+    @extend %q__inline-block;
+    @extend %q__colors__primary--600;
+    margin-bottom: $b__whitespace__line-spacing;
+    padding: $b__whitespace__line-spacing;
+    text-transform: none;
+}
+
+.applied-filters__value {
+    @extend %q__whitespace__line-spacing;
+    @extend %e__reset__margin-left;
+    font-weight: $b__font__corporate-weight--300;
+}
+
+.applied-filters__relax {
+    cursor: pointer;
+    @extend %q__whitespace__line-spacing--right;
+    @extend %q__whitespace__line-spacing--bottom;
+    @extend %q__whitespace__line-spacing--top;
+
+    &::after {
+        @extend %q__icon__delete;
+        @extend %a__pseudo__icon;
+        @extend %q__colors__primary--600;
+        @extend %q__colors__text__primary--100;
+        font-weight: 300;
+        border-radius: $b__measure__half;
+        line-height: 1;
+    }
+}
+
+.applied-filters__clear-container {
+    @extend %q__inline-block;
+    @extend %q__whitespace__line-spacing--top;
+}
+
+.applied-filters__clear {
+    cursor: pointer;
+    @extend %q__whitespace__line-spacing;
+    @extend %q__whitespace__nowrap;
+    @extend %q__font-weight--semi-bold;
+    color: $b__color__corporate__offset--600;
+}

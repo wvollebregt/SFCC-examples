@@ -1,0 +1,132 @@
+/*doc
+---
+title: Editorial
+name: editorial
+category: widgets
+---
+
+Simple text-based editorial widget, similar to victorinox, except it is not
+restricted in height and is assumed to always be contained in row-type 16.
+
+```html_example
+<ol class="row-type-16-half-width">
+    <li class="row-type-16-half-width__right">
+        <article class="widget-editorial" style=";background-color:rgba(196,196,196,1)">
+            <div class="widget-editorial__main-container">
+                <div class="widget-editorial__sub-container">
+                    <div class="widget-editorial__content-box widget-editorial__text-box widget-editorial__content-box--desktop-left-bottom">
+                        <div class="widget-editorial__content">
+                            <h3 class="widget-editorial__header">
+
+                            </h3>
+
+                            <div class="widget-editorial__text--markdown--palm-hidden ">
+                                <h2 id="dbr-662-basic-text-version">DBR-662, Basic text version</h2>
+                                <p>You can leave some <em>text</em> here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </li>
+    <li class="row-type-16-half-width__left">
+        <article class="widget-editorial" style=";background-color:rgba(196,196,196,1)">
+            <div class="widget-editorial__main-container">
+                <div class="widget-editorial__sub-container">
+                    <div class="widget-editorial__content-box widget-editorial__text-box widget-editorial__content-box--desktop-left-bottom">
+                        <div class="widget-editorial__content">
+                            <h3 class="widget-editorial__header">
+
+                            </h3>
+
+                            <div class="widget-editorial__text--markdown--palm-hidden ">
+                                <h2 id="dbr-662-basic-text-version">DBR-662, Basic text version</h2>
+                                <p>You can leave some <em>text</em> here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </li>
+    <li class="row-type-16-half-width__right">
+        <article class="widget-editorial" style=";background-color:rgba(196,196,196,1); margin: 3rem;">
+            <div class="widget-editorial__main-container">
+                <div class="widget-editorial__sub-container">
+                    <div class="widget-editorial__content-box widget-editorial__text-box widget-editorial__content-box--desktop-left-bottom">
+                        <div class="widget-editorial__content">
+                            <h3 class="widget-editorial__header">
+
+                            </h3>
+
+                            <div class="widget-editorial__text--markdown--palm-hidden ">
+                                <h2 id="dbr-662-basic-text-version">DBR-662, Basic text version</h2>
+                                <p>You can leave some <em>text</em> here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </li>
+</ol>
+
+```
+*/
+
+// Main container (positioned inside a row slot).
+
+.widget-editorial {
+    @extend %q__positioning__relative;
+    @extend %q__background-image__no-repeat;
+    @extend %e__grid__fill-parent;
+    @extend %m__widget-editorial--spacing;
+}
+
+// Sub containers.
+
+.widget-editorial__main-container {
+    @extend %m__scalable__content--no-breakpoints;
+    @extend %m__widget__main-container--relative;
+}
+
+.widget-editorial__sub-container {
+    @extend %m__widget__sub-container;
+    border-spacing: e__replace-units__rems-to-ems($b__whitespace__unassociated);
+}
+
+.widget-editorial__content-box {
+    @extend %m__widget__positioning-box;
+}
+
+.widget-editorial__content {
+    @extend %e__nine-positions-box__content;
+}
+
+.widget-editorial__link {
+    @extend %e__reset;
+    @extend %e__reset__background-color;
+    @extend %q__block;
+}
+
+// Content elements.
+
+.widget-editorial__header {
+    @extend %q__font--reset--text-transform;
+    @include e__exhibit-header;
+    font-size: e__replace-units__rems-to-ems($b__headers__exhibit-headline--size--hands);
+}
+
+.widget-editorial__text { // Facilitating both Editorial text widget & Editorial multi-backgrounds widget
+    @include e__widget__text {
+        @extend %q__font--reset--text-transform;
+    }
+}
+
+.widget-editorial__call-to-action {
+    @extend %e__nine-positions-box__content;
+    @extend %a__call-to-action__secondary-in-slot--scalable;
+}
+
+@include e__nine-positions(widget-editorial__content-box, 'desktop');

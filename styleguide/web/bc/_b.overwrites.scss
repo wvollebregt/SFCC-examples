@@ -1,0 +1,96 @@
+
+/*doc
+---
+title: BC Brand Variables
+name: bc-overwrites
+category: bc-brand
+---
+
+Collection of all SCSS variables (Bosons) that this brand can use/uses to overwrite the global/default styling.
+By changing the values of these bosons this brand changes the SCSS values for things like color, size, font, etc.
+
+Best practice is to define and re-use branded ** variables '$b__**__color__primary' for every recurring value,
+naming kept functional, whenever sharing the same relationship.
+
+*/
+
+$b__bc__headers__headline--weight: 300;
+$b__bc__font__link--weight: 700;
+$b__bc__font__weight: 300;
+$b__bc__font__weight--regular: 500;
+
+$b__bc__color__primary--600: #333;
+$b__bc__color__primary--500: #666;
+$b__bc__color__primary--100: #fff;
+$b__bc__color-link__offset: #333;
+$b__bc__border-color--default: #e4e4e4;
+
+$b__bc__color__body--offset: $b__bc__color__primary--500;
+$b__bc__color__strikethrough--offset: #999999;
+$b__bc__color-headings__offset: $b__bc__color__primary--600;
+
+$b__bc__headers__headline--letter-spacing: .07rem;
+$b__bc__headers__header--letter-spacing: .07rem;
+$b__bc__headers__subheader--letter-spacing: .04rem;
+$b__bc__letter-spacing: .03rem;
+
+// font style
+$b__font__weight: $b__bc__font__weight;
+
+$b__headers__headline--weight: $b__bc__font__weight;
+$b__headers__subheader--weight: $b__bc__font__weight--regular;
+$b__font__link--weight: $b__bc__font__link--weight;
+
+// colors
+
+$b__color__links--footer: $b__bc__color-link__offset;
+$b__color__primary--footer: $b__bc__color__primary--100;
+$b__color__links--account: $b__bc__color-link__offset;
+$b__color__primary--account: $b__bc__color__primary--100;
+
+$b__color__primary--600: $b__bc__color__primary--600;
+$b__color__primary--500: $b__bc__color__primary--500;
+$b__color__primary--400: $b__bc__color__primary--600;
+
+$b__color__offset--200: $b__bc__color__primary--600;
+$b__color__offset--400: $b__bc__color-link__offset;
+$b__color-sublink__offset: $b__bc__color__primary--600;
+
+$b__color__body--offset: $b__bc__color__body--offset;
+$b__color-headings__offset: $b__bc__color-headings__offset;
+$b__color__strikethrough--offset: $b__bc__color__strikethrough--offset;
+
+// border
+$b__border__base--color: $b__bc__border-color--default;
+
+// letterspacing
+$b__letter-spacing: $b__bc__letter-spacing;
+$b__headers__headline--letter-spacing: $b__bc__headers__headline--letter-spacing;
+$b__headers__header--letter-spacing: $b__bc__headers__header--letter-spacing;
+$b__headers__subheader--letter-spacing: $b__bc__headers__subheader--letter-spacing;
+
+/*doc
+---
+title: Grid Alternate variables
+name: bt-gridAlt
+parent: bt-overwrites
+---
+
+Grid Alternate gutter sizes must be based on whitespace standards
+The values for `$b__grid--alt__gutter` and `$b__grid__aspect-ratio__1by2` are
+directly related. Pick the corresponding values from the table below
+
+Grid gutter boson standard  |  est.px  |  alt__gutter
+=======================================================
+- none -                    |    0px   |       0rem
+-------------------------------------------------------
+$b__whitespace__line-spacing|  ~ 5px   |   0.417rem
+$b__whitespace__associated  |  ~10px   |   0.833rem    !default
+$b__whitespace__basepadding |  ~15px   |   1.250rem
+$b__whitespace__related     |  ~20px   |   1.666rem
+$b__whitespace__unassociated|  ~30px   |   2.499rem
+BestsellerCom               |  ~85px   |   8.333rem
+
+*/
+//$b__grid--alt__selector: ".cm-branded-content";
+//$b__grid--alt__gutter: 0.833rem;

@@ -1,0 +1,76 @@
+/*doc
+---
+title: Container
+name: containers
+category: atoms
+---
+
+A basic container.
+
+```html_example
+<div class="example__container">
+    <p>Just some dummy content</p>
+</div>
+```
+*/
+%a__container {
+    @extend %q__block;
+}
+
+/*doc
+---
+title: Overlay
+name: overlay
+parent: containers
+---
+
+A container that sits on top of other content. This is just the visual styling for an
+overlay, it's positioning is not modified, that is not the concern of this atom.
+
+```html_example
+<div class="example__overlay">
+    <p>Just some dummy content</p>
+</div>
+<p>Just some dummy content, to make a point ;)</p>
+```
+*/
+%a__overlay {
+    @extend %q__gutterbox--base;
+    @extend %q__colors__emphasis--info;
+}
+
+/*doc
+---
+title: Parent Container
+name: parentContainer
+parent: containers
+---
+
+This atom makes sure that it's child containers all have the appropriate white-space set
+between them. Intended for a container that only contains child containers and no direct
+content.
+
+(this sets the 'lobotomised owl selector for child-containers')
+
+```html_example
+```
+*/
+%a__parent-container {
+    @extend %e__clearfix;
+}
+
+/*doc
+---
+title: Image reduced
+name: imageReduced
+parent: containers
+---
+
+This atom is used for reduced image (85% width and height). It also add left and top appropriately.
+*/
+%a__image-reduced {
+    height: $b__measure__whole - $b__measure__image-reduced;
+    left: $b__measure__image-reduced / 2;
+    top: $b__measure__image-reduced / 2;
+    width: $b__measure__whole - $b__measure__image-reduced;
+}

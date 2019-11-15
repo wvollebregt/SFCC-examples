@@ -1,0 +1,219 @@
+/*doc
+---
+title: customer service widget
+name: customerServiceWidget
+category: widgets
+---
+
+Customer service widget
+
+```html_example
+<ol class="row-type1">
+    <li class="row-type1__slot1">
+        <div class="customer-service-widget" style="background-image:url(http://bc-s21.bse-test.com/on/demandware.static/-/Library-Sites-bestseller-content-library/default/dwcf6845a0/images/homepage/customer-service.jpg)">
+            <div class="customer-service-widget__text-container">
+                <h3 class="customer-service-widget__header"> Product Category </h3>
+                <p class="customer-service-widget__text">Customer service</p>
+                <p class="customer-service-widget__phone-number">+45 23 45 65 34</p>
+            </div>
+            <div class="customer-service-widget__cta-container">
+                <a class="customer-service-widget__cta-contact" href="" >CONTACT FORM</a>
+                </br>
+                <a class="customer-service-widget__cta-help" href="" >GO TO HELP</a>
+            </div>
+        </div>
+    </li>
+    <li class="row-type1__slot2">
+        <div class="customer-service-widget" style="background-image:url(http://bc-s21.bse-test.com/on/demandware.static/-/Library-Sites-bestseller-content-library/default/dwcf6845a0/images/homepage/customer-service.jpg)">
+            <div class="customer-service-widget__text-container">
+                <h3 class="customer-service-widget__header"> Product Category </h3>
+                <p class="customer-service-widget__text">Customer service</p>
+                <p class="customer-service-widget__phone-number">+45 23 45 65 34</p>
+            </div>
+            <div class="customer-service-widget__cta-container">
+                <a class="customer-service-widget__cta-contact" href="" >CONTACT FORM</a>
+                </br>
+                <a class="customer-service-widget__cta-help" href="" >GO TO HELP</a>
+            </div>
+        </div>
+    </li>
+    <li class="row-type1__slot3"><article class="example__widget3"></article></li>
+</ol>
+<ol class="row-type4">
+    <li class="row-type4__slot1">
+        <div class="customer-service-widget" style="background-image:url(http://bc-s21.bse-test.com/on/demandware.static/-/Library-Sites-bestseller-content-library/default/dwcf6845a0/images/homepage/customer-service.jpg)">
+            <div class="customer-service-widget__text-container">
+                <h3 class="customer-service-widget__header"> Product Category </h3>
+                <p class="customer-service-widget__text">Customer service</p>
+                <p class="customer-service-widget__phone-number">+45 23 45 65 34</p>
+            </div>
+            <div class="customer-service-widget__cta-container">
+                <a class="customer-service-widget__cta-contact" href="" >CONTACT FORM</a>
+                </br>
+                <a class="customer-service-widget__cta-help" href="" >GO TO HELP</a>
+            </div>
+        </div>
+    </li>
+</ol>
+```
+*/
+
+.customer-service-widget {
+    @extend %e__reset;
+    @extend %m__widget;
+    @extend %q__background-image__cover;
+    @extend %q__background-image__no-repeat;
+    @extend %q__display__flex-vertical-end;
+}
+
+%m__customer-service--container {
+    @extend %q__padding__base;
+    @extend %m__scalable__content;
+    width: 100%;
+}
+
+.customer-service-widget__text-container {
+    @extend %m__customer-service--container;
+    @extend %q__positioning__absolute--left-top;
+}
+
+.customer-service-widget__cta-container {
+    @extend %m__customer-service--container;
+}
+
+.customer-service-widget__header {
+    @include e__exhibit-header;
+}
+
+.customer-service-widget__text {
+    @include e__widget__text;
+}
+
+.customer-service-widget__phone-number {
+    @extend %q__font--emphasis;
+    @extend %q__whitespace__associated--top;
+}
+
+%m__customer-service-widget__cta {
+    @extend %a__call-to-action__secondary-in-slot--scalable;
+    @extend %q__block;
+    @extend %q__whitespace__related;
+}
+
+.customer-service-widget__cta-contact {
+    @extend %m__customer-service-widget__cta;
+}
+
+.customer-service-widget__cta-help {
+    @extend %m__customer-service-widget__cta;
+}
+
+@mixin e__customer-service-widget--wide {
+    .customer-service-widget {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    %m__customer-service--container {
+        padding: $b__whitespace__unassociated;
+    }
+}
+
+@mixin e__customer-service-widget--medium {
+    %m__customer-service--container {
+        padding: $b__whitespace__unassociated;
+    }
+}
+
+@include e__slot__4by2--hands {
+    .customer-service-widget__cta-container {
+        margin: 0;
+        width: $b__measure__half;
+    }
+}
+
+@include e__slot__3by3--hands {
+    .customer-service-widget__cta-container {
+        margin: 0;
+        width: $b__measure__half;
+    }
+}
+
+@include e__slot__6by2--hands {
+    .customer-service-widget__cta-container {
+        margin: 0;
+        width: $b__measure__half;
+    }
+}
+
+@include e__slot__8by2--desktop {
+    .customer-service-widget__cta-container {
+        margin: 0;
+        width: $b__measure__third;
+    }
+}
+
+@include e__slot__2by2 {
+    .customer-service-widget__header {
+        font-size: e__replace-units__rems-to-ems($b__headers__exhibit-headline--size);
+    }
+}
+
+@include e__slot__1by1--palm {
+    .customer-service-widget__text {
+        display: none;
+    }
+}
+
+@include e__slot__2by2--palm {
+    .customer-service-widget__text {
+        font-size: e__replace-units__rems-to-ems($b__font__large--size);
+    }
+}
+
+@include e__slot__4by4 {
+    @include e__customer-service-widget--medium;
+
+    .customer-service-widget__cta-container {
+        margin: 0;
+        width: $b__measure__half;
+    }
+}
+
+@include e__slot__2by4 {
+    @include e__customer-service-widget--medium;
+}
+
+@include e__slot__6by4--hands {
+    @include e__customer-service-widget--wide;
+
+    .customer-service-widget__text-container {
+        flex-basis: 0;
+        flex-grow: 2;
+    }
+
+    .customer-service-widget__cta-container {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}
+
+@include e__slot__8by4--desktop {
+    @include e__customer-service-widget--wide;
+
+    %m__customer-service-widget__cta {
+        margin-left: auto;
+        margin-right: auto;
+        width: $b__measure__half;
+    }
+
+    .customer-service-widget__text-container {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+
+    .customer-service-widget__cta-container {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}

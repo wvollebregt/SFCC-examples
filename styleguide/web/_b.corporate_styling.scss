@@ -1,0 +1,35 @@
+@import 'b.font.worksans';
+
+/*doc
+---
+title: Corporate Colors
+name: corporate-colors
+parent: colors
+---
+
+Here we've defined colors that cannot be overwritten by other brands.
+*/
+
+$b__color__corporate__offset--500: #666;
+$b__color__corporate__primary--500: #fff;
+$b__color__corporate__offset--600: #333;
+$b__color__corporate__offset--400: #ccc;
+
+/*doc
+---
+title: Corporate Fonts
+name: corporate-Fonts
+parent: fonts
+---
+
+Here we've defined font styles that cannot be overwritten by other brands.
+*/
+// corporate font sizes
+$b__font__corporate-small--size: 5/6 * 1rem;
+
+// corporate font weights
+$b__font__corporate-weight--300: 300;
+
+// corporate font families
+$b__font__corporate--import: $b__font__worksans--import;
+$b__font__corporate: $b__font__worksans;

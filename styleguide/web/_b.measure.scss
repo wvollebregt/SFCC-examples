@@ -1,0 +1,338 @@
+/*doc
+---
+title: Measurements
+name: measure
+category: bosons
+---
+*/
+$b__measure__whole: 100% !default;
+$b__measure__three-quarters: percentage(3 / 4) !default;
+$b__measure__half: 50% !default;
+$b__measure__third: percentage(1 / 3) !default;
+$b__measure__quarter: percentage(1 / 4) !default;
+$b__measure__one-fifth: percentage(1 / 5) !default;
+$b__measure__one-eight: percentage(1 / 8) !default;
+
+// On every change of the media query sizes, also change the ones defined in style_generator.js and BreakpointDimensions.js!
+// These media-query breakpoints are based on fixed device dimensions, therefore in absolute pixels
+$b__measure__device--palm-xtra-small: 295px !default;
+$b__measure__device--palm-small: 660px !default;
+$b__measure__device--hands: 660px !default;
+$b__measure__device--desktop: 870px !default;
+$b__measure__device--widescreen: 1280px !default;
+
+$b__measure__text-indent: 1rem !default;
+$b__measure__text-indent__base: $b__measure__text-indent !default;
+
+$b__measure__aspect-ratio: 3 / 4;
+$b__measure__aspect-ratio-percent: 100% * $b__measure__aspect-ratio;
+$b__measure__aspect-ratio--inverted: 1 / $b__measure__aspect-ratio;
+$b__measure__aspect-ratio-percent--inverted: 100% * $b__measure__aspect-ratio--inverted;
+
+/*doc
+---
+title: Base Element Height
+name: baseHeight
+parent: measure
+---
+
+This would be the default height used to size a 'box' element.
+*/
+$b__measure__height__element: 1rem / 3 * 10 !default;
+$b__measure__height__servicebar: 5rem !default;
+
+/*doc
+---
+title: Logo left and right position
+name: logoPosition
+parent: measure
+---
+
+This would be the default left and right position for logo.
+*/
+$b__measure__position__logo: calc(50% - 120px) !default;
+
+/*doc
+---
+title: Customer global info text max width
+name: CustomerInfoWidth
+parent: measure
+---
+
+This would be the default max width of Customer Global Info text content
+*/
+$b__measure__width__customer-global-info: calc(100% - 8rem) !default;
+
+/*doc
+---
+title: Terms and conditions max height
+name: TCheight
+parent: measure
+---
+
+This would be measure height of Terms and Conditions content
+Output is 100% - (servicebar height + offset)
+*/
+$b__measure__height__terms-and-conditions: calc(100% - (5rem + 6rem)) !default;
+
+/*doc
+---
+title: Swatch Element Size
+name: swatchElementSize
+parent: measure
+---
+
+This would be the default height and width to size a swatch.
+*/
+$b__measure__swatch__element: 3.8rem !default;
+
+/*doc
+---
+title: MiniCart SummaryCart Element Size
+name: miniCartElementSize
+parent: measure
+---
+
+This would be the default height and width to size a minicart and summarycart image.
+*/
+$b__measure__minicart__element: 8.3rem !default;
+
+/*doc
+---
+title: Ratio Dimensions
+name: ratio
+parent: measure
+---
+
+Used in widget category banner background image ratio
+*/
+/*doc
+---
+title: Ratio Rectangle
+name: ratioRectangle
+parent: ratio
+---
+
+Default - Used in widget category banner background image ratio
+*/
+$b__measure__ratio-rectangle__palm: 26%;
+$b__measure__ratio-rectangle__hands: 30%;
+$b__measure__ratio-rectangle__desktop: 15%;
+
+/*doc
+---
+title: Ratio Square
+name: ratioSquare
+parent: ratio
+---
+
+Used in widget BC banner background image ratio
+*/
+$b__measure__ratio-square__palm: 41%;
+$b__measure__ratio-square__hands: 30%;
+$b__measure__ratio-square__desktop: 23%;
+
+/*doc
+---
+title: Ratio Tall Square
+name: ratioTallSquare
+parent: ratio
+---
+
+Used in widget marketing banner background image ratio
+*/
+$b__measure__ratio-tall-square__palm: $b__measure__ratio-rectangle__palm;
+$b__measure__ratio-tall-square__hands: $b__measure__ratio-square__hands;
+$b__measure__ratio-tall-square__desktop: $b__measure__ratio-square__desktop;
+
+/*doc
+---
+title: Menu
+name: menu
+parent: measure
+---
+
+The set width & height of the menu.
+*/
+$b__measure__menu-width: $b__font__base--size--normalize-factor * 25.8rem;
+$b__measure__menu-offset--widescreen: $b__font__base--size--normalize-factor * -80.8rem;
+
+/*doc
+---
+title: Top navigation
+name: topNavigation
+parent: measure
+---
+
+The set width and height of the top navigation.
+*/
+
+$b__measure__top-navigation--widescreen: $b__measure__device--widescreen * .95;
+$b__measure__top-navigation--height: 26rem;
+
+/*doc
+---
+title: Map Measure
+name: mapMeasure
+parent: measure
+---
+
+Measurements for map elements
+*/
+$b__measure__map-ratio: 75%;
+$b__measure__map-results-height: 87vh;
+// Used for the map search to line up the button with the input & label on hands and up.
+$b__measure__map-search: 3.25rem;
+
+/*doc
+---
+title: Unisex splitter measure
+name: splitterMeasure
+parent: measure
+---
+
+Measurements for unisex splitter widget
+*/
+$b__measure__splitter-desktop-height: $b__measure__ratio-square__hands !default;
+$b__measure__splitter-palm-height: $b__measure__ratio-square__hands !default;
+
+/*doc
+---
+title: Credit card logo image measure
+name: creditCardLogoImageMeasure
+parent: measure
+---
+
+Measurement for credit card logo images
+*/
+$b__measure__credit-card-logo__image: 31%;
+
+/*doc
+---
+title: My account address item measure
+name: myAccountAddressItemMeasure
+parent: measure
+---
+
+Measurement for my account address item
+*/
+$b__measure__my-account__address-item: calc(50% - (1.66rem / 4)) !default;
+
+/*doc
+---
+title: PLP Promotion tile customBox Primary
+name: PlpPromotionCustomBoxPrimary
+parent: measure
+---
+
+Minimal height on PLP promotion tile customBox Primary.
+Based on product-tile info 4 lines of text & its line-height
+*/
+$b__measure__plp-promotion-tile__primary: (4 * $b__font__line-height)+rem;
+
+/*doc
+---
+title: Image reduced measure
+name: imageReducedMeasure
+parent: measure
+---
+
+Percentage with which the image is reduced in size
+*/
+$b__measure__image-reduced: 10% !default;
+
+
+/*doc
+---
+title: Back To Top Button Size
+name: BackToTopButtonSize
+parent: measure
+---
+
+This would be the default height and width for the back to top button tablet and above.
+*/
+$b__measure__back-to-top__button-width: 25/6 * 1rem;
+$b__measure__back-to-top__button-height: 25/6 * 1rem;
+
+/*doc
+---
+title: Back To Top Button Size Mobile
+name: BackToTopButtonSize
+parent: measure
+---
+
+This would be the default height and width for the back to top button tablet and above.
+*/
+$b__measure__back-to-top__button__hands-width: 35/12 * 1rem;
+$b__measure__back-to-top__button__hands-height: 35/12 * 1rem;
+
+/*doc
+---
+title: View All Results Button Size
+name: viewAllResultsButtonSize
+parent: measure
+---
+
+This would be the default height and width for the view all results button.
+*/
+$b__measure__view-all-results__button-height: 4rem;
+
+/*doc
+---
+title: Product Urgency Message Height
+name: ProductUrgencyMessageHeight
+parent: measure
+---
+
+This would be the default height for product urgency message.
+*/
+$b__measure__product-urgency-message-height: 16/6 * 1rem;
+
+/*doc
+---
+title: PLP filter size --hands
+name:
+parent: measure
+---
+
+This would be the default height for refinement filters (dropdowns).
+Expanded
+*/
+$b__measure__refine-filter-height--hands: 3rem;
+$b__measure__refine-filter__section-height--hands: calc(3rem + 12px);
+$b__measure__refine-filter__section--expanded-height--hands: calc(3rem + 13px);
+
+/*doc
+---
+title: Filter PLP Height
+name: FilterPlpHeight
+parent: measure
+---
+
+This would be the default height for the refinements
+*/
+$b__measure__filter-plp-height: 3rem;
+
+/*doc
+---
+title: Catergories Slider Padding
+name: Category Slider Padding
+parent: measure
+---
+
+This would be the default height for the catergory slider padding
+*/
+
+$b__measure__font-vs-line-height__base: (($b__font__line-height - $b__font__base--size) / 2);
+
+/*doc
+---
+title: Pagination Buttons
+name: Pagination Buttons size
+parent: measure
+---
+
+This would be the default height size for the pagination buttons
+*/
+
+$b__measure__pagination-buttons: 3rem;

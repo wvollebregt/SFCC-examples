@@ -1,0 +1,233 @@
+/*doc
+---
+title: Container
+name: container
+category: molecules
+---
+
+Page level container. Standard block displayed with box-model
+DIV, ARTICLE, FOOTER, etc.
+
+```html_example
+<article class="example__container">
+    <header class="example__header">
+        <h1>Example Title</h1>
+        <p>Example Intro text</p>
+    </header>
+    Proin ac elit sed mi sollicitudin convallis. Nam molestie elit et orci imperdiet, non commodo lorem pharetra.
+    Proin molestie posuere lectus, sed bibendum lacus hendrerit a. Quisque at accumsan nisl. Proin sed ullamcorper sem.
+</article>
+<footer class="example__container">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vivamus sed purus eget ante luctus commodo et et nisi. Sed pharetra, justo vel euismod placerat,
+    augue erat gravida ligula, non dapibus tortor magna et nulla. Quisque justo ex, eleifend pretium aliquet nec,
+    porta quis urna. Aliquam consectetur lectus sed eros faucibus dignissim.
+</footer>
+```
+*/
+%m__container {
+    @extend %a__box-model;
+}
+
+/*doc
+---
+title: Container Breakout
+name: containerBreakout
+parent: container
+---
+
+A container that breaks out of the page-gutter. In other words, instead of lining up with
+content inside the page-gutter, it reclaims the page-gutter space and sits flush with the
+browser window.
+
+The content of this container will line up with the page-gutter.
+*/
+%m__container--breakout {
+    @extend %e__palm__breakout;
+    @extend %e__desktop__breakout;
+    @extend %e__widescreen--breakout;
+}
+
+/*doc
+---
+title: Container Header
+name: containerHeader
+parent: container
+---
+
+Page level container. Standard block displayed with box-model
+HEADER, etc.
+
+```html_example
+<article>
+    <header class="example__container--header">
+        <h1>Example Title</h1>
+        <p>Example Intro text</p>
+    </header>
+    Proin ac elit sed mi sollicitudin convallis. Nam molestie elit et orci imperdiet, non commodo lorem pharetra.
+    Proin molestie posuere lectus, sed bibendum lacus hendrerit a. Quisque at accumsan nisl. Proin sed ullamcorper sem.
+</article>
+```
+*/
+%m__container--header {
+    @extend %a__box-model__vertical;
+}
+
+/*doc
+---
+title: Container Page
+name: containerPage
+parent: container
+---
+
+The basic container of page content.
+
+```html_example
+<div class="plp__wrapper">
+</div>
+```
+*/
+%m__container--page {
+    @extend %e__grid__container;
+    padding-left: $b__whitespace__page__horizontal;
+    padding-right: $b__whitespace__page__horizontal;
+
+    @include e__media--desktop {
+        padding-left: $b__whitespace__page__horizontal__static;
+        padding-right: $b__whitespace__page__horizontal__static;
+    }
+}
+
+/*doc
+---
+title: Container Sticky
+name: containerSticky
+parent: container
+---
+*/
+%m__container--sticky {
+    @extend %a__sticky-container;
+    bottom: 0;
+    left: $b__whitespace__page__horizontal;
+    right: $b__whitespace__page__horizontal;
+
+    @include e__media--desktop {
+        left: $b__whitespace__page__horizontal__static;
+        right: $b__whitespace__page__horizontal__static;
+    }
+}
+
+/*doc
+---
+title: Container Sticky Bottom
+name: containerStickyBottom
+parent: container
+---
+*/
+%m__container--sticky--bottom {
+    @extend %m__container--sticky;
+    bottom: $b__whitespace__unassociated;
+    top: auto;
+}
+
+/*doc
+---
+title: Container Sticky Top
+name: containerStickyTop
+parent: container
+---
+*/
+%m__container--sticky--top {
+    @extend %m__container--sticky;
+    bottom: auto;
+    top: $b__whitespace__unassociated;
+}
+
+/*doc
+---
+title: Container highlight
+name: containerHighlight
+category: container
+---
+
+This is the style for a highlighted container.
+An example is the header for the current cart products on the cart page.
+
+```html_example
+<div class="example__container--highlight">
+    Content
+</div>
+```
+*/
+%m__container--highlight {
+    @extend %a__highlight--default;
+    @extend %e__clearfix;
+    @extend %q__padding__associated--top;
+    @extend %q__padding__associated--bottom;
+    @extend %q__padding__base;
+    @extend %q__whitespace__related;
+}
+
+/*doc
+---
+title: Non-scrollable container
+name: containerNonScrollable
+category: container
+---
+
+This is the style for a container with a disabled overflow.
+*/
+%m__container--not-scrollable {
+    @extend %q__overflow--hidden;
+    height: 100%;
+}
+
+/*doc
+---
+title: Non-scrollable container including ios+safari
+name: containerNonScrollableIOS
+category: container
+---
+
+This is the style for a container with a disabled overflow and works under ios and safari.
+*/
+%m__container--not-scrollable-ios {
+    @extend %e__grid__fill-parent;
+    @extend %q__overflow--hidden;
+    @extend %q__positioning__fixed;
+    height: 100%;
+}
+
+%m__content-wrapper {
+    @extend %m__container--page;
+    @extend %a__parent-container;
+    @extend %q__border--sizing;
+    @extend %q__positioning__relative;
+}
+
+%m__content-wrapper--nav-is-closed {
+    @extend %a__transform__menu__wrapper__closed;
+    @extend %q__overflow--visible;
+
+    .sticky-price { // All position:fixed elements that escape the content wrapper require to be shown/hidden
+        @extend %e__palm--show;
+    }
+    .burger-menu {
+        @extend %a__transform__menu;
+    }
+}
+
+%m__content-wrapper--nav-is-open {
+    @extend %q__overflow--hidden;
+
+    @include e__media--widescreen {
+        overflow: visible;
+    }
+
+    .sticky-price { // All position:fixed elements that escape the content wrapper require to be shown/hidden
+        @extend %e__palm--hidden;
+    }
+    .burger-menu,
+    .burger-menu--layered {
+        @extend %q__block;
+    }
+}

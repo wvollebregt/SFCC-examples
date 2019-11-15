@@ -1,0 +1,71 @@
+/*doc
+---
+title: Widget badge
+name: widgetBadge
+category: widgets
+---
+
+Universal badge which can be added to all the existing widgets, by including the widget_badget.imsl and adding "badgeText" and "badgePostion" to the widgets content assets attributes.
+Due to use of `inline-block` for alignment purposes, *make sure there is no extra white-space in the template*.
+
+```html_example
+
+<div class="row-type1__slot1">
+<article class="example__widget1">
+<div class="widget__badge widget__badge__positioning-box--left"><div class="widget__badge__text widget__badge__text__positioning-box--left">Seriously incredible long text</div></div>
+</div>
+<div class="row-type1__slot1">
+<article class="example__widget1">
+<div class="widget__badge widget__badge__positioning-box--right"><div class="widget__badge__text widget__badge__text__positioning-box--right">Short</div></div>
+</div>
+
+```
+*/
+.widget__badge {
+    @extend %q__overflow--hidden;
+    @extend %q__positioning__absolute;
+    top: 0;
+
+    &::before {
+        @extend %a__pseudo__ratio;
+        @extend %q__inline-block;
+        @extend %q__vertical-align--middle;
+        padding-top: 100%;
+    }
+}
+
+.widget__badge__text {
+    @extend %q__font-weight--bold;
+    @extend %q__font--xlarge;
+    @extend %q__font--uppercase;
+    @extend %q__colors__primary--100;
+    @extend %q__inline-block;
+    @extend %q__vertical-align--middle;
+    @extend %q__text-align--center;
+    @extend %q__whitespace__nowrap;
+    margin: 0 -7rem;
+    padding: 0 9rem;
+}
+
+.widget__badge__positioning-box--left {
+    left: 0;
+}
+
+.widget__badge__positioning-box--right {
+    right: 0;
+}
+
+.widget__badge__text__positioning-box--left {
+    @include e__prefix(transform, rotate(-45deg) translate(0, -1em), webkit moz ms);
+}
+
+.widget__badge__text__positioning-box--right {
+    @include e__prefix(transform, rotate(45deg) translate(0, -1em), webkit moz ms);
+}
+
+@include e__media--hands-only {
+    .widget__badge__text {
+        font-size: $b__font__main--size;
+    }
+
+}

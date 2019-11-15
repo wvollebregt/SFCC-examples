@@ -1,0 +1,49 @@
+/*doc
+---
+title: cursor
+name: cursor
+category: atoms
+---
+
+This atom will define different cursor options.
+
+```html_example
+<div class="example__cursor"></div>
+```
+*/
+
+/*doc
+---
+title: cursor pointer
+name: cursorPointer
+parent: cursor
+---
+
+This div is clickable, the user will therefore see a pointer when they hover the mouse of the div.
+
+```html_example
+<div class="example__cursor-pointer">&nbsp;</div>
+```
+*/
+
+%a__cursor-pointer {
+    cursor: pointer;
+}
+
+/*doc
+---
+title: cursor not allowed
+name: cursorNotAllowed
+parent: cursor
+---
+
+This cursor indicates that the interaction with this element is disabled.
+
+```html_example
+<div class="example__cursor-not-allowed">&nbsp;</div>
+```
+*/
+
+%a__cursor-not-allowed {
+    cursor: not-allowed;
+}

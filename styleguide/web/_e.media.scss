@@ -1,0 +1,226 @@
+/*doc
+---
+title: Media Queries
+name: mediaQueries
+category: electrons
+---
+
+With our mobile first approach all css that is written without a surrounding media-query
+should be written for the palm devices. Any properties that need be affected for larger
+devices should be written within a media-query. The following media-queries have been
+pre-defined.
+
+As a principle, mobile-first design is the concept of larger breakpoints being build on
+top of smaller breakpoints. This is reflected in our media-queries, of which the defaults
+are written as 'min-width: [device-width]', meaning in effect any device of this size or
+larger.
+
+Simply use `@include e__media--[palm-only|hands|hands-only|desktop|desktop-only|widescreen]`
+and you're good to go! You can include this inside a selector to have the selector
+automatically ported to the media-query, or you can use the mix-in at a higher level to
+group a set of selectors.
+
+```
+//Apply a query to one or more properties for a selector.
+.example__media-palm-only--highlight {
+    @include e__media--palm-only {
+        background: green;
+    }
+}
+
+//Group multiple selectors inside a single query
+@include e__media--palm-only {
+    .example__media-palm-only--highlight {
+        background: green;
+    }
+    .example__media-palm-only--hide {
+        display: none;
+    }
+}
+```
+
+```html_example
+Current client-width: <span id="js-clientWidth"></span>dp. (device pixels)
+<ol>
+    <li class="example__media-palm-only--highlight">This is the Media, Palm only, query.</li>
+    <li class="example__media-hands--highlight">This is the Media, Hands, query.</li>
+    <li class="example__media-hands-only--highlight">This is the Media, Hands only, query.</li>
+    <li class="example__media-desktop--highlight">This is the Media, Desktop, query.</li>
+    <li class="example__media-desktop-only--highlight">This is the Media, Desktop only, query.</li>
+    <li class="example__media-widescreen--highlight">This is the Media, Widescreen, query.</li>
+</ol>
+```
+```js_example
+//For demo purposes only!!
+(function(){
+    function reportSize() {
+        var element = document.getElementById('js-clientWidth');
+        if (element) {
+            element.innerHTML = window.innerWidth;
+        } else {
+            if (requestAnimationFrame) {
+                requestAnimationFrame(reportSize);
+            }
+        }
+    }
+    window.addEventListener('resize', reportSize);
+    reportSize();
+})();
+```
+*/
+
+/*doc
+---
+title: Media, Palm only
+name: mediaPalmOnly
+parent: mediaQueries
+---
+
+This media-query allows you to write css that is only effective on palm devices. This
+query should rarely be used, as our mobile-first approach should make everything work on
+palm devices first. However, in some rare cases, overriding property required for correct
+rendering on palm is hard / expensive, in these cases we use this media query.
+
+*/
+@mixin e__media--palm-only {
+    @media screen and (max-width: ($b__measure__device--hands - 1px)) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, Palm only, Orientation landscape
+name: mediaPalmOrientationLandscape
+parent: mediaQueries
+---
+
+This media-query allows you to write css that is only effective on palm devices when in horizontal orientation.
+
+*/
+
+@mixin e__media--palm-orientation-landscape {
+    @media screen and (max-width: ($b__measure__device--hands - 1px)) and (orientation: landscape) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, Hands
+name: mediaHands
+parent: mediaQueries
+---
+
+This media-query allows you to write css that becomes active from hands devices and will
+affect all larger breakpoints.
+
+*/
+@mixin e__media--hands {
+    @media screen and (min-width: $b__measure__device--hands) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, Hands only
+name: mediaHandsOnly
+parent: mediaQueries
+---
+
+This media-query allows you to write css that is only effective on hands devices. This
+query should be used only when you must affect properties that are complicated to override
+on higher breakpoints.
+
+*/
+@mixin e__media--hands-only {
+    @media screen and (min-width: $b__measure__device--hands) and (max-width: ($b__measure__device--desktop - 1px)) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, Desktop
+name: mediaDesktop
+parent: mediaQueries
+---
+
+This media-query allows you to write css that becomes active from desktop devices and will
+affect all larger breakpoints.
+
+*/
+@mixin e__media--palm-hands-only {
+    @media screen and (max-width: $b__measure__device--desktop) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, Desktop
+name: mediaDesktop
+parent: mediaQueries
+---
+
+This media-query allows you to write css that becomes active from desktop devices and will
+affect all larger breakpoints.
+
+*/
+@mixin e__media--desktop {
+    @media screen and (min-width: $b__measure__device--desktop) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, Desktop only
+name: mediaDesktopOnly
+parent: mediaQueries
+---
+
+This media-query allows you to write css that is only effective on desktop devices. This
+query should be used only when you must affect properties that are complicated to override
+on higher breakpoints.
+
+*/
+@mixin e__media--desktop-only {
+    @media screen and (min-width: $b__measure__device--desktop) and (max-width: ($b__measure__device--widescreen - 1px)) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, Widescreen
+name: mediaWidescreen
+parent: mediaQueries
+---
+
+This media-query allows you to write css that becomes active from Widescreen devices. As
+we currently have no larger breakpoints defined, this should be the final solution
+nomatter how large the screen gets...
+
+*/
+@mixin e__media--widescreen {
+    @media screen and (min-width: $b__measure__device--widescreen) {
+        @content;
+    }
+}
+
+/*doc
+---
+title: Media, IE 10+ only
+name: mediaIE10Plus
+parent: mediaQueries
+---
+
+This media-query allows you to write css that becomes active only for IE10+ browsers.
+*/
+@mixin e__media--gte-ie10 {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        @content;
+    }
+}

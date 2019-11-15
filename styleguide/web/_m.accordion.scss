@@ -1,0 +1,264 @@
+/*doc
+---
+title: accordion
+name: accordion
+category: molecules
+---
+*/
+
+/*doc
+---
+title: accordion, fully expanded
+name: accordion_expanded
+category: molecules
+parent: accordion
+---
+
+This is an example a burger menu accordion block, fully expanded
+
+```html_example
+<article class="example__accordion" role="accordion">
+    <header class="example__accordion__title">Expanded</header>
+    <section class="example__accordion__section">
+        <ul class="example__accordion__links">
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+        </ul>
+        <ul class="example__accordion__links">
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+        </ul>
+
+        <button class="example__accordion-trigger">Close</button>
+    </section>
+</article>
+```
+*/
+%m__accordion {
+    @extend %q__border--bottom;
+    @extend %q__padding__related__vertical;
+    @extend %e__reset__margin;
+}
+
+/*doc
+---
+title: accordion section
+name: accordionSection
+parent: accordion
+---
+
+This is a reset for the accordion section element.
+
+*/
+%m__accordion__section {
+    @extend %e__reset__margin;
+}
+
+/*doc
+---
+title: accordion links
+name: accordionLinks
+parent: accordion
+---
+
+This is an example of the accordinon links.
+
+*/
+%m__accordion__links {
+    @extend %m__list-plain;
+}
+
+/*doc
+---
+title: accordion title
+name: accordionTitle
+parent: accordion
+---
+
+This is an example of the accordinon title.
+
+*/
+%m__accordion__title {
+    @extend %m__accordion__subtitle;
+    @extend %q__font__subheader;
+}
+
+/*doc
+---
+title: accordion subtitle
+name: accordionSubtitle
+parent: accordion
+---
+
+This is an example of the accordinon subtitle. Less emphasised than the title.
+
+*/
+%m__accordion__subtitle {
+    @extend %q__font--uppercase;
+    @extend %e__reset__margin;
+}
+
+/*doc
+---
+title: accordion item
+name: accordionItem
+parent: accordion
+---
+
+This is an example of an accordion item.
+
+*/
+%m__accordion__item {
+    margin-top: 2 / 3 * $b__whitespace__related;
+}
+
+/*doc
+---
+title: accordion link-item
+name: accordionLink-item
+parent: accordion
+---
+
+This is an example of an accordion link item.
+
+*/
+%m__accordion__link-item {
+    @extend %q__font;
+}
+
+/*doc
+---
+title: accordion trigger
+name: accordionTrigger
+parent: accordion
+---
+
+This is an example of the accordion link trigger.
+
+*/
+%m__accordion-trigger {
+    @extend %e__reset;
+    @extend %q__font;
+    @extend %q__font--uppercase;
+    width: 100%;
+
+    &::after {
+        @extend %q__float__omega;
+        @extend %a__pseudo__icon--after;
+        @extend %q__icon__more;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+/*doc
+---
+title: accordion trigger title
+name: accordionTriggerTitle
+parent: accordion
+---
+
+This is an example of the accordion link trigger title.
+
+*/
+%m__accordion-trigger--title {
+    @extend %m__accordion-trigger;
+    @extend %e__reset__margin;
+}
+
+/*doc
+---
+title: accordion collapsed
+name: accordionCollapsed
+parent: accordion
+---
+
+This is an example a burger menu nav accordion block, collapsed
+
+```html_example
+<article class="example__accordion" role="accordion">
+    <header class="example__accordion__title">
+        <button class="example__accordion-trigger--title">More</button>
+    </header>
+    <section class="example__accordion__section">
+        <ul class="example__accordion__links example__accordion__links--collapsed">
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+            <li class="example__accordion__item">
+                <a class="example__accordion__link-item" href="#">Category link</a>
+            </li>
+        </ul>
+    </section>
+</article>
+```
+*/
+%m__accordion__links--collapsed {
+    @extend %q__overflow--hidden;
+    @extend %e__reset__margin;
+    @extend %q__height--none;
+}
+
+/*doc
+---
+title: accordion, customer club
+name: accordion_customer_club
+parent: accordion
+---
+
+This is an example of the customer club block in the burger menu
+
+```html_example
+<article class="example__accordion">
+    <header class="example__accordion__title">
+        <a class="example__accordion__customer-club-link" href="#">Customer Club</a>
+    </header>
+    <section class="example__accordion__section">
+        <span class="example__accordion__customer-club-call-to-action">Sign up to get 20% off</span>
+    </section>
+</article>
+```
+*/
+.example__accordion__customer-club-item,
+.example__accordion__customer-club-link {
+    @extend %e__reset;
+}
+
+/*doc
+---
+title: accordion customber club
+name: accordionCustomerClub
+parent: accordion
+---
+This is an example of the accordion link trigger title.
+
+*/
+%m__accordion__customer-club-call-to-action {
+    @extend %q__block;
+    @extend %q__whitespace__associated--top;
+}

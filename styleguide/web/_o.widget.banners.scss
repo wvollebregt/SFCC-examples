@@ -1,0 +1,99 @@
+/*doc
+---
+title: Category Banner
+name: categoryBanner
+category: organisms
+---
+
+Category Banner
+
+```html_example
+<div class="category-banner" style="background:url(https://placeholdit.imgix.net/~text?txtsize=30&w=1009&h=154&txttrack=0)">
+    <div class="banner__text-container">
+        <h3 class="banner__text-container__title">Category Header</h3>
+        <p class="banner__text-container__message">Lorem ipsum dolor sit amet, vocibus nusquam molestiae ius te.
+        Id nonumes delectus salutatus mea, duo id graeco delectus oporteat.</p>
+    </div>
+</div>
+```
+*/
+
+.category-banner {
+    @extend %m__banner--rectangle;
+
+    a {
+        color: inherit;
+    }
+}
+
+/*doc
+---
+title: Marketing Banner
+name: marketingBanner
+category: organisms
+---
+
+Marketing Banner above/below PLP paginated product tiles.
+
+```html_example
+<div class="marketing-banner" style="background-image:url(http://i.imgur.com/AtJnAdl.jpg)">
+    <div class="banner__text-container">
+        <h3 class="banner__text-container__title">AUTUMN SALE DISCOUNT!</h3>
+        <p class="banner__text-container__message">Lorem ipsum dolor sit amet, vocibus nusquam molestiae ius te.
+        Id nonumes delectus salutatus mea, duo id graeco delectus oporteat.</p>
+    </div>
+</div>
+```
+*/
+.marketing-banner {
+    @extend %m__banner--tall-square;
+
+    a {
+        color: inherit;
+    }
+}
+
+.banner__text-container {
+    @extend %m__banner__text-container;
+
+    .banner__text-container__message__text {
+        @include e__widget__text;
+        @extend %m__scalable__content;
+    }
+}
+
+.banner__text-container__title {
+    @extend %m__banner__title;
+}
+
+@include e__nine-positions-image-bg(banner--bg);
+
+.mobileFirstDisabled { // Feature toggle to make SEO banner, category-banner & marketing-banner mobile first - DBR-826
+    @extend %m__scalable__content;
+
+    .banner__text-container__title,
+    .banner__text-container__title--plain {
+        @extend %m__banner__title--plain;
+    }
+
+    .banner__text-container__message {
+        @extend %m__banner__message;
+    }
+}
+
+.js-bottom-category-banner,
+.js-bottom-marketing-banner { // Feature toggle to make bottom SEO banner, bottom category-banner mobile first - DBR-826
+    & > div:not(.mobileFirstDisabled) {
+        @extend %m__banner--static;
+
+        .banner__text-container {
+            @extend %m__banner__text-container--static;
+        }
+
+        .banner__text-container__message__text {
+            @include e__widget__text;
+        }
+    }
+}
+
+@include e__nine-positions-image-bg(banner--bg);

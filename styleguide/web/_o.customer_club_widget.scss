@@ -1,0 +1,193 @@
+/*doc
+---
+title: Customer Club Signup Widget
+name: CustomerClubSignupWidget
+category: organisms
+---
+
+Customer Club Signup Widget appearance
+
+*/
+.customer-club-widget {
+    @extend %q__padding__related;
+
+    .swiper-container {
+        margin-top: 0;
+    }
+
+    .form__field-group {
+        @extend %q__whitespace__associated--top;
+        width: 100%;
+
+        .form__input-text {
+            @extend %q__font--uppercase;
+            @extend %e__reset__border;
+            @extend %q__border--bottom;
+        }
+
+        .error {
+            @extend %e__reset__border;
+            @extend %q__border--bottom;
+            @extend %q__font--uppercase;
+        }
+    }
+
+    @include e__media--hands {
+        .form__field-group {
+            width: 48%;
+        }
+    }
+
+    .customer-club-widget__form__terms,
+    .customer-club-widget__form__button--block {
+        width: 100%;
+    }
+}
+
+.customer-club-widget__header {
+    @extend %q__font--xxlarge;
+    @extend %q__text-align--center;
+    @extend %q__font-weight--bold;
+    @extend %q__whitespace__associated--top;
+    color: $b__color__primary--600;
+    margin-left: $b__measure__one-eight;
+    margin-right: $b__measure__one-eight;
+    width: $b__measure__aspect-ratio-percent;
+}
+
+.customer-club-widget__signed-in {
+    @extend %q__display-none;
+}
+
+.customer-club-widget__gender__wrapper {
+    @extend %q__text-align--center;
+    @include e__flexbox;
+    margin: 0 auto;
+    max-width: $b__measure__device--widescreen;
+}
+
+.customer-club-widget__form__gender {
+    @extend %q__font--uppercase;
+    margin: 0 auto;
+}
+
+.customer-club-widget__gender__categories {
+    @extend %q__positioning__relative;
+    @include e__prefix(transform, translateX(-25%), moz webkit ms);
+    left: $b__measure__half;
+}
+
+.customer-club-overlay__gender-label {
+    padding: 0;
+}
+
+.customer-club-widget__form__firstname,
+.customer-club-widget__form__email,
+.customer-club-widget__form__city {
+    margin-right: 3%;
+}
+
+.customer-club-widget__form__firstname {
+    clear: left;
+}
+
+.customer-club-widget__form__date-of-birth {
+    @extend %q__colors__text__primary--500;
+    color: inherit;
+}
+
+.customer-club-widget__input--birth-date::before {
+    @extend %e__grid__fill-parent;
+    content: attr(placeholder);
+}
+
+.customer-club-widget__input--birth-date {
+    /* hide our custom/fake placeholder text when in focus to show the default
+    * 'mm/dd/yyyy' value and when valid to show the users' date of birth value.*/
+    &:focus,
+    &:valid {
+        &::before {
+            content: none;
+        }
+    }
+}
+
+.customer-club-widget__form {
+    .form__input-text {
+        background-color: transparent;
+    }
+}
+
+.customer-club-widget__form__terms {
+    @extend %q__overflow--visible;
+    @extend %q__text-align--center;
+    @extend %e__grid__fill-parent;
+
+    .form-group__label--block {
+        &::before {
+            position: inherit;
+        }
+    }
+
+    .valid {
+        @extend %q__display-none;
+    }
+}
+
+.customer-club-widget__form__button--block {
+    @extend %q__text-align--center;
+    @extend %e__grid__fill-parent;
+}
+
+.customer-club-widget__form__button {
+    @extend %q__colors--600;
+    @extend %q__colors__text__primary--100;
+    @extend %q__font--uppercase;
+    @extend %q__padding__base;
+    @extend %q__font-weight--semi-bold;
+    @extend %q__whitespace__associated--top;
+    @extend %q__font--xlarge;
+    @extend %e__reset__border;
+    @extend %q__whitespace__center--horizontal;
+    @extend %q__whitespace__associated--top;
+    @extend %q__inline-block;
+}
+
+.customer-club-widget__markup {
+    @extend  %q__text-align--center;
+    @extend %q__whitespace__associated--top;
+}
+
+.customer-club-widget__thank-you-message,
+.customer-club-widget__extramessage {
+    @extend %q__text-align--center;
+}
+
+.customer-club-widget__thank-you-message {
+    @extend %q__whitespace__unassociated--top;
+    @extend %q__font--xlarge;
+}
+
+.customer-club-widget__extramessage {
+    @extend %q__whitespace__associated--top;
+    @extend %q__font--small;
+}
+
+.customer-club-widget__form__birthdate {
+    @extend %q__block;
+    @extend %e__grid__fill-parent;
+
+    .form__input-select {
+        @extend %e__grid__fill-parent;
+    }
+
+    .form__dropdown {
+        @extend %q__whitespace__form-spacing--top;
+    }
+}
+
+.customer-club-widget__form-second-step {
+    .customer-club-widget__form__birthdate {
+        width: 100%;
+    }
+}

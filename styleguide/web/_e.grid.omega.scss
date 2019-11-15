@@ -1,0 +1,142 @@
+@mixin e__nth-child($b_input_query) {
+    &:nth-child(#{$b_input_query}) {
+        margin-right: 0;
+    }
+
+    @if type-of($b_input_query) == number and unit($b_input_query) == 'n' {
+        $b_first-row: (strip-units($b_input_query) + 1);
+
+        &:nth-child(1n + #{$b_first-row}) {
+            margin-top: flex-gutter($b__grid__parent-columns);
+        }
+
+        &:nth-child(#{$b_input_query}+1) {
+            clear: left;
+        }
+    }
+}
+
+@function strip-units($b_number) {
+    @return $b_number / ($b_number * 0 + 1);
+}
+
+/*doc
+---
+title: Grid - Omega (end of line element)
+name: gridOmega
+parent: grid
+category: electrons
+---
+
+Removes the element's gutter `margin-right`, regardless of its position in the grid hierarchy or display property. It can target a specific element, or every `nth-child` occurrence. Works only with `block` layouts.
+
+`@param {List} $b_input_query [block]`
+
+List of arguments. Supported arguments are `nth-child` selectors (targets a specific pseudo element) and `auto` (targets `last-child`).
+When passed an `nth-child` argument of type `*n` with `block` display, the omega mixin automatically adds a clear to the `*n+1` th element. Note that composite arguments such as `2n+1` do not support this feature.
+
+If passed `block` or input is left empty, the omega mixin automatically adds a clear to the `*n+1` th element. Note that composite arguments such as `2n+1` do not support this feature.
+
+If passed `table`, it sets the display property to `table-cell` and calculates the width of the element without taking gutters into consideration. The result does not align with the block-based grid.
+
+If passed `auto` or a false input, it only clears the `margin-right` on targets `last-child`
+
+`@example scss - Usage`
+
+    .element {
+        @include e__omega;
+    }
+
+    .nth-element {
+        @include e__omega(4n);
+    }
+
+`@example css - CSS Output`
+
+    .element {
+        margin-right: 0;
+    }
+
+    .nth-element:nth-child(4n) {
+        margin-right: 0;
+    }
+
+    .nth-element:nth-child(4n+1) {
+        clear: left;
+    }
+*/
+
+/* Reason = Taking on tech-debt to refactor this mixin into separate functions later */
+@mixin e__omega($b_input_query: block) {
+    $b_table: false;
+    $b_auto: false;
+    $b_is-display-value: false;
+
+    @if $b_input_query == table {
+        $b_table: true;
+        @warn 'The omega mixin no longer removes padding in table layouts.';
+        $b_is-display-value: true;
+    } @else if length($b_input_query) == 0 or $b_input_query == block {
+        $b_is-display-value: true;
+    } @else if $b_input_query == auto {
+        $b_auto: true;
+        $b_is-display-value: false;
+    } @else {
+        $b_is-display-value: false;
+    }
+
+    @if length($b_input_query) == 1 {
+        @if $b_auto {
+            @include style-omega();
+
+        } @else if $b_is-display-value and $b_table == false {
+            @include style-omega(display);
+
+        } @else {
+            @include style-omega(nth, $b_input_query);
+        }
+    } @else if length($b_input_query) == 2 {
+        @if $b_auto {
+            @include style-omega();
+
+        } @else {
+            @include style-omega(nth, $b_input_query);
+        }
+    } @else {
+        @warn 'Too many arguments passed to the omega() mixin.';
+    }
+}
+
+@mixin style-omega($b_styles-type: omega, $b_input_query: 0) {
+    @if $b_styles-type == display {
+        margin-right: 0;
+
+        @if $b__grid--alt__selector {
+            #{$b__grid--alt__selector} & {
+                margin-right: 0;
+            }
+        }
+
+    } @else if $b_styles-type == nth {
+        @include e__nth-child(nth($b_input_query, 1));
+
+        @if $b__grid--alt__selector {
+            #{$b__grid--alt__selector} & {
+                @include e__nth-child(nth($b_input_query, 1));
+            }
+        }
+
+    } @else if $b_styles-type == omega {
+        &:last-child {
+            margin-right: 0;
+        }
+
+        @if $b__grid--alt__selector {
+            #{$b__grid--alt__selector} & {
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

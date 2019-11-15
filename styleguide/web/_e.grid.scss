@@ -1,0 +1,321 @@
+/*doc
+---
+title: Grid
+name: grid
+category: electrons
+---
+
+Working with a grid. To facilitate both a 3 column split and a 4 column split, the choice for default 12 columns is made.
+
+```html_example
+<article class="example__grid-container">
+    <ul class="example__grid-row">
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 1/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 2/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 3/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 4/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 1/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 2/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 3/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 4/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 1/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 2/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 3/4</a>
+        </li>
+        <li class="example__grid-quarter">
+            <a href="#">grid-cell 4/4</a>
+        </li>
+    </ul>
+</article>
+<article class="example__grid-container">
+    <header class="example__grid-row">Grid examples</header>
+    <section>
+        <ul class="example__grid-row">
+            <li class="example__grid-third">
+                <a href="#">grid-cell 1/3</a>
+            </li>
+            <li class="example__grid-third">
+                <a href="#">grid-cell 2/3</a>
+            </li>
+            <li class="example__grid-third">
+                <a href="#">grid-cell 3/3</a>
+            </li>
+        </ul>
+        <ul class="example__grid-row">
+            <li class="example__grid-half">
+                <a href="#">grid-cell 1/2</a>
+            </li>
+            <li class="example__grid-half">
+                <a href="#">grid-cell 2/2</a>
+                <ul class="example__reset">
+                    <li class="example__grid-third-nested">grid-cell 1/3<br/>(nested)</li>
+                    <li class="example__grid-third-nested">grid-cell 2/3<br/>(nested)</li>
+                    <li class="example__grid-third-nested">grid-cell 3/3<br/>(nested & omega)</li>
+                    <li class="example__grid-third-nested">grid-cell 1/3<br/>(nested & omega)</li>
+                    <li class="example__grid-third-nested">grid-cell 2/3<br/>(nested)</li>
+                </ul>
+            </li>
+        </ul>
+        <button class="example__call-to-action">Button</button>
+    </section>
+</article>
+```
+*/
+
+/*doc
+---
+title: Grid - Container (wrapper of grid columns)
+name: gridContainer
+parent: grid
+---
+
+Makes an element a outer container by centering it in the viewport, clearing its floats, and setting its `max-width`.
+Although optional, using `%e__grid__container` is recommended. The mixin can be called on more than one element per page, as long as they are not nested.
+
+`@example scss - Usage`
+
+    .element {
+        @extend %e__clearfix;
+        @extend %e__grid__container;
+    }
+
+`@example css - CSS Output`
+
+    .element {
+        *zoom: 1;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .element:before, .element:after {
+        content: ' ';
+        display: table;
+    }
+
+    .element:after {
+        clear: both;
+    }
+*/
+%e__grid__container {
+    @extend %q__border--sizing;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $b__grid__max-width;
+    position: relative;
+}
+
+/*doc
+---
+title: Grid - Fill Parent
+name: gridFillParent
+parent: grid
+---
+
+Forces the element to fill its parent container.
+
+`@example scss - Usage`
+
+    .element {
+        @extend %e__grid__fill-parent;
+    }
+
+`@example css - CSS Output`
+
+    .element {
+        box-sizing: border-box;
+        width: 100%;
+    }
+*/
+%e__grid__fill-parent {
+    @extend %q__border--sizing;
+    max-width: 100%;
+    width: 100%;
+}
+
+/*doc
+---
+title: Grid - Gutter Vertical
+name: gridGutterVertical
+parent: grid
+---
+
+Sets the element a vertical gutter margin equal to the calculated horizontal gutter margin given by the `e__col-span` mixin.
+
+`@example scss - Usage`
+
+    .element {
+        @extend %e__grid__gutter__vertical;
+    }
+
+`@example css - CSS Output`
+
+    .element {
+        margin-bottom: 2.35765%;
+    }
+*/
+/* stylelint-disable max-nesting-depth */
+/* Reason = Taking on tech-debt to refactor this mixin into separate functions later */
+@mixin e__grid__gutter__vertical($b_extend: true, $b_wrapper-clear: false) {
+    @if $b_extend == true {
+        @extend %e__grid__gutter__vertical;
+    } @else {
+        margin-bottom: flex-gutter($b__grid__parent-columns);
+
+        @if $b_wrapper-clear == true {
+            margin-bottom: -(flex-gutter($b__grid__parent-columns));
+        }
+
+        @if $b__grid--alt__selector {
+            @if $b__grid--alt__gutter and $b_wrapper-clear == true {
+                margin-bottom: -(flex-gutter($b__grid__parent-columns, $b__grid--alt__gutter));
+            }
+
+            #{$b__grid--alt__selector} & {
+                @if $b__grid--alt__gutter {
+                    margin-bottom: flex-gutter($b__grid__parent-columns, $b__grid--alt__gutter);
+                }
+            }
+        }
+    }
+}
+/* stylelint-enable max-nesting-depth */
+
+/*doc
+---
+title: Grid - Gutter Vertical (extend)
+name: gridGutterVerticalExtend
+parent: gridGutterVertical
+---
+
+The extend version of vertical gutter, internally uses the mixin.
+*/
+%e__grid__gutter__vertical {
+    @include e__grid__gutter__vertical(false);
+}
+
+/*doc
+---
+title: Grid - Display Context
+name: gridDisplayContext
+parent: grid
+---
+
+Changes the display property used by other mixins called in the code block argument.
+
+`@param {String} $b_input_display [block]`
+
+Display value to be used within the block. Can be `table` or `block`.
+
+`@example scss`
+
+    @include e__display-context(table) {
+        .display-table {
+            @include e__col-span(6);
+        }
+    }
+
+`@example css`
+
+    .display-table {
+        display: table-cell;
+        ...
+    }
+*/
+@mixin e__display-context($b_input_display: block) {
+    @if $b_input_query == table {
+        $b_table: true;
+        @warn 'The omega mixin no longer removes padding in table layouts.';
+        $b_is-display-value: true;
+    } @else if length($b_input_query) == 0 or $b_input_query == block {
+        $b_is-display-value: true;
+    } @else {
+        $b_is-display-value: false;
+    }
+
+    $b_scope-display: $b__grid__container-display-table;
+    $b__grid__container-display-table: $b_input_display == table !global;
+
+    @content;
+
+    $b__grid__container-display-table: $b_scope-display !global;
+}
+
+/*doc
+---
+title: Grid - Row
+name: gridRow
+parent: grid
+---
+
+Designates the element as a row of columns in the grid layout. It clears the floats on the element and sets its display property.
+Rows can't be nested, but there can be more than one row element—with different display properties—per layout.
+
+`@param {String} $b_input_display [default]`
+
+Sets the display property of the element and the display context that will be used by its children. Can be `block` or `table`.
+
+`@example scss - Usage`
+
+    .element {
+        @extend %e__clearfix;
+        @include e__row();
+    }
+
+`@example css - CSS Output`
+
+    .element {
+        *zoom: 1;
+        display: block;
+    }
+
+    .element:before, .element:after {
+        content: ' ';
+        display: table;
+    }
+
+    .element:after {
+        clear: both;
+    }
+*/
+@mixin e__row($b_input_display: default) {
+
+    @if $b_input_display != default {
+        @warn 'The $b_input_display argument will be deprecated in future versions in favor of the display(){...} mixin.';
+    }
+
+    @if $b_input_display == table {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        $b__grid__container-display-table: true !global;
+    } @else {
+        display: block;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 0;
+        width: 100%;
+        $b__grid__container-display-table: false !global;
+    }
+}

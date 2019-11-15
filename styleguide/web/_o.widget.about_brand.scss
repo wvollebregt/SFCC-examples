@@ -1,0 +1,102 @@
+/*doc
+---
+title: PDP - About brand
+name: aboutBrand
+category: organisms
+---
+
+This is the USP widget area for the PDP.
+
+```html_example
+<article class="widget__about-brand">
+    <section class="about-brand__info">
+        <h2 class="about-brand__heading">ABOUT BRAND</h2>
+        <p class="about-brand__paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.</p>
+        <a class="about-brand__link" href="#">Learn more about the brand</a>
+    </section>
+    <section class="about-brand__figure">
+        <img class="about-brand__image" src="https://placeholdit.imgix.net/~text?txtsize=79&txt=845%C3%97500&w=845&h=500" />
+        <div class="about-brand__widget-button">
+            <a href="#" class="about-brand__call-to-action">BC callout</a>
+        </div>
+    </section>
+</article>
+```
+
+*/
+
+.widget__about-brand {
+    @include e__nine-positions--complex;
+    @extend %a__parent-container;
+    @extend %e__reset;
+    @extend %q__whitespace__unassociated--top;
+    @extend %q__inline-block;
+    @extend %e__grid__fill-parent;
+}
+
+.about-brand__info {
+    @extend %e__hands__grid__thirds;
+    @extend %e__desktop__grid__halfs;
+    @extend %q__padding__base__horizontal;
+
+    @include e__media--hands {
+        padding: 0;
+    }
+}
+
+.about-brand__heading {
+    @extend %q__font__header;
+    @extend %q__font--reset--text-transform;
+}
+
+.about-brand__paragraph {
+    @extend %q__whitespace__associated--vertical;
+    @extend %q__overflow--hidden;
+}
+
+.about-brand__link {
+    @extend %q__font-weight--reset;
+}
+
+.about-brand__figure {
+    @extend %e__reset;
+    @extend %e__hands__grid__two-thirds;
+    @extend %e__desktop__grid__halfs;
+    @extend %m__widget__main-container;
+    position: relative; //absolute is declared after and needs to be overwritten...
+}
+
+.about-brand__image {
+    @extend %q__max-width-100;
+    @extend %q__block;
+}
+
+.about-brand__call-to-action {
+    @extend %a__call-to-action__secondary;
+    @extend %q__block;
+}
+
+.widget__about-brand__main-container {
+    @extend %q__padding__unassociated;
+}
+
+.widget__about-brand__content-container {
+    @extend %e__desktop__grid__halfs;
+    @extend %e__grid__fill-parent;
+    @extend %e__hands__grid__two-thirds;
+    min-width: 0;
+    &[class] {//artificial specificity to overrule breakpoint extensions (which have last-in-chain specificity)
+        @include e__media--hands {
+            display: inline-block;
+            float: none;
+        }
+    }
+}
+
+.widget-about-brand__text {
+    @include e__widget__text;
+}
+
+.widget__about-brand__positioning-box {
+    padding: 0;
+}

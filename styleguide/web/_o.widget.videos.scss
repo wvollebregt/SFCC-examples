@@ -1,0 +1,154 @@
+/*doc
+---
+title: Widget Video
+name: widgetVideo
+category: widgets
+---
+
+Widget for displaying embedded videos in an iframe. Accepted formats from Vimeo & YouTube
+Comes in aspect ratio variants
+
+```html_example
+<!-- Vimeo example -->
+<ol class="row-type3-dynamic">
+    <li class="row-type3-dynamic__slot1">
+        <article class="widget-video-hero">
+            <div class="widget-video-hero__content widget-video-hero__content--vimeo">
+                <iframe class="widget-video-hero__iframe" src="https://player.vimeo.com/video/128126914?autoplay=false&amp;loop=false&amp;title=false&amp;byline=false&amp;portrait=false&amp;color=null" width="1280" height="720" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
+                </iframe>
+            </div>
+        </article>
+    </li>
+</ol>
+
+<!-- YouTube example -->
+<ol class="row-type3-dynamic">
+    <li class="row-type3-dynamic__slot1">
+        <article class="widget-video-hero">
+            <div class="widget-video-hero__content widget-video-hero__content--youtube">
+                <iframe class="widget-video-hero__iframe" src="https://www.youtube.com/embed/c7nRTF2SowQ?rel=false&amp;showinfo=null&amp;controls=false" width="1280.0" height="720.0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
+                </iframe>
+            </div>
+        </article>
+    </li>
+</ol>
+```
+*/
+
+%o__widget-video {
+    @extend %e__palm__grid__whole;
+    @extend %e__hands__grid__whole;
+    @extend %q__positioning__relative;
+    @extend %q__overflow--hidden;
+    @extend %q__max-width-100;
+    @extend %q__height--none;
+}
+
+.widget-video iframe {
+    @extend %q__positioning__absolute--left-top;
+    @extend %e__grid__fill-parent;
+    height: 100%;
+}
+
+.widget-video__content {
+    @extend %e__grid__fill-parent;
+    @extend %q__positioning__absolute;
+    @extend %q__padding__unassociated;
+    @extend %q__full-height;
+    @extend %q__z-index__overlay;
+    @include e__flexbox;
+    @include e__flexbox-direction(column);
+    @include e__flexbox-wrap(wrap);
+    @include e__flexbox-align-content(stretch);
+
+    &--horizontal-position-left {
+        @include e__flexbox-align(flex-start);
+    }
+
+    &--horizontal-position-center {
+        @include e__flexbox-align(center);
+    }
+
+    &--horizontal-position-right {
+        @include e__flexbox-align(flex-end);
+    }
+
+    &--vertical-position-top {
+        @include e__flexbox-justify(flex-start);
+    }
+
+    &--vertical-position-middle {
+        @include e__flexbox-justify(center);
+    }
+
+    &--vertical-position-bottom {
+        @include e__flexbox-justify(flex-end);
+    }
+}
+
+.widget-video__call-to-action {
+    @extend %q__inline-block;
+    @extend %a__call-to-action__secondary--scalable;
+    @extend %q__whitespace__related;
+}
+
+.widget-video__content--text-align-left {
+    @extend %q__text-align--reset;
+}
+
+.widget-video__content--text-align-center {
+    @extend %q__text-align--center;
+}
+
+.widget-video__content--text-align-right {
+    @extend %q__text-align--right;
+}
+
+/*doc
+---
+title: Widget Video Hero
+name: widgetVideoHero
+parent: widgetVideo
+---
+
+Hero Widget for displaying embedded videos in an iframe. Accepted formats from Vimeo & YouTube
+Aspect ratio 16:9
+
+*/
+.widget-video--hero {
+    @extend %o__widget-video;
+    padding-bottom: 56.25%;
+}
+
+/*doc
+---
+title: Widget Video Square
+name: widgetVideoSquare
+parent: widgetVideo
+---
+
+Square Widget for displaying embedded videos in an iframe. Accepted formats from Vimeo & YouTube
+Aspect ratio 1:1
+
+*/
+.widget-video--square {
+    @extend %o__widget-video;
+    padding-bottom: $b__measure__whole;
+}
+
+.plp {
+    // if the creative plp template is being used and the video-widget is configured as the first child
+    .js-creative-plp-rows {
+        .widget-video--hero:first-child {
+            margin-top: -(4 * $b__whitespace__associated);
+        }
+    }
+
+    .widget-video--hero {
+        margin-bottom: $b__whitespace__related;
+    }
+}
+
+.js-widget-video--no-whitespace {
+    margin-top: -(4 * $b__whitespace__associated);
+}

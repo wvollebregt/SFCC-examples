@@ -1,0 +1,159 @@
+/*doc
+---
+title: Slim Fit Widget
+name: widgetSlimFit
+category: organisms
+---
+
+Slim Fit Banner widget for all the pages
+
+```html_example
+<aside>
+    <a class="slim-fit-widget__content" title="Call to action title" href="#">
+        Call to <strong>action</strong>
+    </a>
+</aside>
+```
+*/
+.slim-fit-widget__content, .slim-fit-usp-widget__content {
+    @extend %e__reset;
+    @extend %e__reset__text-transform;
+    @extend %q__font;
+    @extend %q__text-align--center;
+    @extend %q__z-index__slim-fit;
+    @extend %q__positioning__fixed;
+    @extend %q__full-width;
+    
+    line-height: $b__font__line-height--slim;
+    height: $b__font__line-height--slim;
+    top: $b__measure__height__servicebar;
+    left: 0;
+}
+
+.slim-fit-widget__content {
+    .content-wrapper.nav-is-open & {
+        left: $b__whitespace__basevalue;
+
+        @include e__media--widescreen {
+            margin: 0 $b__measure__whole / 5;
+        }
+    }
+}
+
+.slim-fit-usp-widget__content {
+    width: 100vw;
+    position: -webkit-sticky;
+    position: sticky;
+    margin-left: -34vw;
+    margin-right: -34vw;
+    line-height: inherit;
+
+    .content-wrapper.nav-is-open & {
+        left: $b__whitespace__basevalue;
+
+        @include e__media--widescreen {
+            margin: 0;
+        }
+    }
+
+    // IE 11 fix since it does not support position of 'sticky'
+    @include e__media--gte-ie10 {
+        position: static;
+        width: $b__measure__whole * 3;
+        margin-left: -$b__measure__whole;
+
+        .content-wrapper.nav-is-open & {
+            @include e__media--widescreen {
+                width: $b__measure__whole * 1.5;
+            }
+        }
+    }
+
+    // Position of 'static' causes an x-axis overflow of the page's body
+    @at-root {
+        body {
+            overflow-x: hidden;
+        }
+    }
+}
+
+.slim-fit-widget__container, .slim-fit-usp-widget__container {
+    margin: auto;
+    max-width: $b__measure__device--widescreen;
+    width: $b__measure__whole;
+
+    @include e__media--desktop {
+        @include e__flexbox;
+        @include e__flexbox-justify(center);
+    }
+}
+
+.slim-fit-usp-widget__usp {
+    @extend %m__slim-fit-widget__usp;
+
+    @include e__media--palm-hands-only {
+        position: absolute;
+        height: $b__measure__whole;
+        left: 0;
+        top: 0;
+        width: $b__measure__whole;
+
+        @for $i from 2 through 3 {
+            .slim-fit-usp-widget__container--widgets-count-#{$i} & {
+                @include e__widget_animations($i);
+            }
+        }
+    }
+}
+
+@each $b__icon in $b__char__bestseller_usp_icons {
+    .slim-fit-usp-widget__icon--#{$b__icon} {
+        @extend %m__menu-icons;
+        
+
+        &::before {
+            @extend %q__icon__#{$b__icon};
+            @extend %e__reset__margin;
+            font-size: 1.66em;
+
+            @include e__media--gte-ie10 {
+                font-size: 1.66rem;
+            }
+
+        }
+
+        width: $b__font__line-height--slim;
+        line-height: $b__font__line-height--slim;
+    }
+}
+
+.slim-fit-usp-widget__usp-text {
+    @extend %q__inline-block;
+    @extend %q__vertical-align--top;
+
+    line-height: $b__font__line-height--slim;
+    padding-left: $b__whitespace__associated;
+    max-width: 75vw;
+
+    p {
+        @extend %e__ellipsis;
+    }
+}
+
+.slim-fit-usp-widget__usp-content {
+    @extend %q__inline-block;
+    @extend %q__full-width;
+}
+
+.js-slim-fit-widget-active {
+    @extend %m__slim-fit-widget--push-content;
+}
+
+// Due to its fixed position, the splitter-container gets covered by the slim-fit-widget banner
+.slim-fit-widget {
+    ~ .js-curtain {
+        * .splitter-container {
+            margin-top: $b__font__line-height--slim;
+        }
+    } 
+}

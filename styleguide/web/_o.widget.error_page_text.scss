@@ -1,0 +1,49 @@
+/*doc
+---
+title: Error page text widget
+name: errorPageTextWidget
+category: widgets
+---
+
+Styling for for the error page text widget
+
+```html_example
+<article class="error-page-text-widget">
+    <h3 class="error-page-text-widget__header">Header</h3>
+    <p class="error-page-text-widget__text">Message</p>
+    <a class="error-page-text-widget__call-to-action>
+        Link
+    </a>
+    <p class="error-page-text-widget__extra-text">Text</p>
+</article>
+```
+*/
+
+.error-page-text-widget {
+    @extend %q__whitespace__center--horizontal;
+    @extend %q__whitespace__associated--top;
+    @extend %q__whitespace__unassociated--bottom;
+}
+
+@include e__media--hands {
+    .error-page-text-widget {
+        width: $b__measure__half;
+    }
+}
+
+.error-page-text-widget__header {
+    @extend %q__font--xxlarge;
+}
+
+.error-page-text-widget__text {
+    @extend %q__whitespace__associated--top;
+    @extend %q__whitespace__unassociated--bottom;
+}
+
+.error-page-text-widget__call-to-action {
+    @extend %a__call-to-action__secondary-in-slot--scalable;
+}
+
+.error-page-text-widget__extra-text {
+    @extend %q__whitespace__unassociated--top;
+}

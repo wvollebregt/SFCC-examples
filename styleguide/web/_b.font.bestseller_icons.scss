@@ -1,0 +1,379 @@
+/*doc
+---
+title: Bestseller Icons
+name: bestseller_icons
+parent: font
+---
+
+Bestseller Icons font style.
+
+```html_example
+// To convert from bosons below to html <li>blah</li>:
+// ^(.+):'(.+)',.+  -->  <li class="example__bestseller-icons--$1">$1, $2</li>
+<ul class="example__bestseller-icons">
+    <li class="example__bestseller-icons--back-small">back-small, \4f</li>
+    <li class="example__bestseller-icons--back">back, \43</li>
+    <li class="example__bestseller-icons--bag">bag, \3b</li>
+    <li class="example__bestseller-icons--bank-cards">bank-cards, \25</li>
+    <li class="example__bestseller-icons--barcode">barcode, \26</li>
+    <li class="example__bestseller-icons--box-filled">box-filled, \65</li>
+    <li class="example__bestseller-icons--briefcase">briefcase, \e863</li>
+    <li class="example__bestseller-icons--calendar-30">calendar-30, \70</li>
+    <li class="example__bestseller-icons--camera">camera, \5a</li>
+    <li class="example__bestseller-icons--cardboard-box">cardboard-box, \5c</li>
+    <li class="example__bestseller-icons--checkbox-checked">checkbox-checked, \6f</li>
+    <li class="example__bestseller-icons--checkbox-solid">checkbox-solid, \6b</li>
+    <li class="example__bestseller-icons--checkbox-unchecked">checkbox-unchecked, \6e</li>
+    <li class="example__bestseller-icons--checkmark">checkmark, \5e</li>
+    <li class="example__bestseller-icons--checkmarksmall">checkmarksmall, \32</li>
+    <li class="example__bestseller-icons--circle">circle, \5d</li>
+    <li class="example__bestseller-icons--circled-1">circled-1, \68</li>
+    <li class="example__bestseller-icons--circled-2">circled-2, \69</li>
+    <li class="example__bestseller-icons--circled-3">circled-3, \6a</li>
+    <li class="example__bestseller-icons--click-and-collect">click-and-collect, \35</li>
+    <li class="example__bestseller-icons--delete">delete, \5f</li>
+    <li class="example__bestseller-icons--delivery">delivery, \7e</li>
+    <li class="example__bestseller-icons--dropdown-small">dropdown-small, \e874</li>
+    <li class="example__bestseller-icons--dropdown">dropdown, \4d</li>
+    <li class="example__bestseller-icons--edit">edit, \31</li>
+    <li class="example__bestseller-icons--empty-box">empty-box, \59</li>
+    <li class="example__bestseller-icons--express-shipping">express-shipping, \79</li>
+    <li class="example__bestseller-icons--eye1">eye1, \047a</li>
+    <li class="example__bestseller-icons--eye2">eye2, \213a</li>
+    <li class="example__bestseller-icons--facebook">facebook, \46</li>
+    <li class="example__bestseller-icons--forward-small">forward-small, \4e</li>
+    <li class="example__bestseller-icons--forward">forward, \44</li>
+    <li class="example__bestseller-icons--free-shipping">free-shipping, \55</li>
+    <li class="example__bestseller-icons--geography">geography, \78</li>
+    <li class="example__bestseller-icons--gift">gift, \58</li>
+    <li class="example__bestseller-icons--gplus-circled">gplus-circled, \2b</li>
+    <li class="example__bestseller-icons--guest01">guest01, \39</li>
+    <li class="example__bestseller-icons--guest02">guest02, \38</li>
+    <li class="example__bestseller-icons--guest03">guest03, \37</li>
+    <li class="example__bestseller-icons--hanger">hanger, \3a</li>
+    <li class="example__bestseller-icons--help-circled">help-circled, \52</li>
+    <li class="example__bestseller-icons--help">help, \45</li>
+    <li class="example__bestseller-icons--high-priority">high-priority, \4b</li>
+    <li class="example__bestseller-icons--home">home, \28</li>
+    <li class="example__bestseller-icons--info">info, \4a</li>
+    <li class="example__bestseller-icons--inspire">inspire, \1d305</li>
+    <li class="example__bestseller-icons--instagram">instagram, \21</li>
+    <li class="example__bestseller-icons--invoice">invoice, \74</li>
+    <li class="example__bestseller-icons--jumper">jumper, \61</li>
+    <li class="example__bestseller-icons--keyboard">keyboard, \64</li>
+    <li class="example__bestseller-icons--klarna">klarna, \01c3</li>
+    <li class="example__bestseller-icons--languages">languages, \77</li>
+    <li class="example__bestseller-icons--leaf">leaf, \73</li>
+    <li class="example__bestseller-icons--lightbulb">lightbulb, \1ed8</li>
+    <li class="example__bestseller-icons--linkedin">linkedin, \40</li>
+    <li class="example__bestseller-icons--location">location, \62</li>
+    <li class="example__bestseller-icons--lock">lock, \71</li>
+    <li class="example__bestseller-icons--menu-filled-with-text">menu-filled-with-text, \29</li>
+    <li class="example__bestseller-icons--message">message, \7a</li>
+    <li class="example__bestseller-icons--minus-math">minus-math, \42</li>
+    <li class="example__bestseller-icons--more">more, \51</li>
+    <li class="example__bestseller-icons--new">new, \34</li>
+    <li class="example__bestseller-icons--ok-filled">ok-filled, \5b</li>
+    <li class="example__bestseller-icons--ok">ok, \3e</li>
+    <li class="example__bestseller-icons--order_search">order_search, \36</li>
+    <li class="example__bestseller-icons--paypal">paypal, \47</li>
+    <li class="example__bestseller-icons--phone">phone, \3d</li>
+    <li class="example__bestseller-icons--pinterest">pinterest, \22</li>
+    <li class="example__bestseller-icons--plus-math">plus-math, \41</li>
+    <li class="example__bestseller-icons--plus">plus, \7c</li>
+    <li class="example__bestseller-icons--price-tag">price-tag, \2f</li>
+    <li class="example__bestseller-icons--purchase-order">purchase-order, \67</li>
+    <li class="example__bestseller-icons--qr-code">qr-code, \24</li>
+    <li class="example__bestseller-icons--recycle">recycle, \3f</li>
+    <li class="example__bestseller-icons--refresh">refresh, \0cb2</li>
+    <li class="example__bestseller-icons--remove">remove, \60</li>
+    <li class="example__bestseller-icons--return">return, \53</li>
+    <li class="example__bestseller-icons--scanner">scanner, \50</li>
+    <li class="example__bestseller-icons--search-property">search-property, \6d</li>
+    <li class="example__bestseller-icons--search">search, \63</li>
+    <li class="example__bestseller-icons--share1">share1, \238b</li>
+    <li class="example__bestseller-icons--share2">share2, \15a0</li>
+    <li class="example__bestseller-icons--share3">share3, \1559</li>
+    <li class="example__bestseller-icons--share4">share4, \260d</li>
+    <li class="example__bestseller-icons--shop-app">shop-app, \0566</li>
+    <li class="example__bestseller-icons--shop">shop, \57</li>
+    <li class="example__bestseller-icons--snapchat">snapchat, \2d</li>
+    <li class="example__bestseller-icons--speech-bubble-comment">speech-bubble-comment, \fb26</li>
+    <li class="example__bestseller-icons--speech-bubble">speech-bubble, \33</li>
+    <li class="example__bestseller-icons--stamp-jj">stamp-jj, \233e</li>
+    <li class="example__bestseller-icons--stamp-nameit">stamp-nameit, \29c0</li>
+    <li class="example__bestseller-icons--stamp-pieces">stamp-pieces, \0e4f</li>
+    <li class="example__bestseller-icons--stamp-veromoda">stamp-veromoda, \235f</li>
+    <li class="example__bestseller-icons--stamp">stamp, \2aeb</li>
+    <li class="example__bestseller-icons--stampstar">stampstar, \66</li>
+    <li class="example__bestseller-icons--star_solid">star_solid, \6c</li>
+    <li class="example__bestseller-icons--star">star, \27</li>
+    <li class="example__bestseller-icons--store">store, \56</li>
+    <li class="example__bestseller-icons--tape_measure_sewing">tape_measure_sewing, \23</li>
+    <li class="example__bestseller-icons--target">target, \2b21</li>
+    <li class="example__bestseller-icons--thumb_down_filled">thumb_down_filled, \20ac</li>
+    <li class="example__bestseller-icons--thumb_down">thumb_down, \7b</li>
+    <li class="example__bestseller-icons--thumb_up_filled">thumb_up_filled, \a3</li>
+    <li class="example__bestseller-icons--thumb_up">thumb_up, \7d</li>
+    <li class="example__bestseller-icons--tilesfour">tilesfour, \76</li>
+    <li class="example__bestseller-icons--tilestwo">tilestwo, \75</li>
+    <li class="example__bestseller-icons--truck">truck, \54</li>
+    <li class="example__bestseller-icons--twitter">twitter, \48</li>
+    <li class="example__bestseller-icons--uparrow-small">uparrow-small, \02c4</li>
+    <li class="example__bestseller-icons--uparrow">uparrow, \4c</li>
+    <li class="example__bestseller-icons--user">user, \3c</li>
+    <li class="example__bestseller-icons--vip">vip, \72</li>
+    <li class="example__bestseller-icons--wishlist">wishlist, \2661</li>
+    <li class="example__bestseller-icons--youtube-play">youtube-play, \30</li>
+    <li class="example__bestseller-icons--youtube">youtube, \49</li>
+</ul>
+```
+*/
+$b__font__bestseller_icons--import: '../../fonts/bestseller_icons/styles.base64.css';
+
+$b__font__bestseller_icons: 'bestseller_icons', sans-serif;
+
+$b__font__bestseller_icons--size: 1.2rem;
+
+// To convert from fontello css (bestseller_icons-codes.css) to bosons:
+//  https://www.freeformatter.com/regex-tester.html
+//  \.icon\-(.+):before \{ content: (.+); \} \/\* (.+) \*\/  ->  $1:$2, // $3
+//  '.+', // '\\(.+)'   -->   '\$1', // '\$1'
+//  Sort alphabetically after please...
+
+// stylelint-disable indentation //
+// Disabled because of a Windows 10 bug with whitespaces //
+$b__char__bestseller_icons: (
+    back-small:'\4f', // 'O'
+    back:'\43', // 'C'
+    bag-full:'\e873', // ''
+    bag:'\3b', // ';'
+    bank-cards:'\25', // '%'
+    barcode:'\26', // '&amp;'
+    box-filled:'\65', // 'e'
+    briefcase:'\e863', // ''
+    calendar-30:'\70', // 'p'
+    camera:'\5a', // 'Z'
+    cardboard-box:'\5c', // '\'
+    checkbox-checked:'\6f', // 'o'
+    checkbox-solid:'\6b', // 'k'
+    checkbox-unchecked:'\6e', // 'n'
+    checkmark:'\5e', // '^'
+    checkmarksmall:'\32', // '2'
+    circle:'\5d', // ']'
+    circled-1:'\68', // 'h'
+    circled-2:'\69', // 'i'
+    circled-3:'\6a', // 'j'
+    click-and-collect:'\35', // '5'
+    delete:'\5f', // '_'
+    delivery:'\7e', // '~'
+    dropdown-small:'\e874', // ''
+    dropdown:'\4d', // 'M'
+    edit:'\31', // '1'
+    empty-box:'\59', // 'Y'
+    express-shipping:'\79', // 'y'
+    eye1:'\047a', // 'Ѻ'
+    eye2:'\213a', // '℺'
+    facebook:'\46', // 'F'
+    filter:'\e800', // ''
+    forward-small:'\4e', // 'N'
+    forward:'\44', // 'D'
+    free-shipping:'\55', // 'U'
+    geography:'\78', // 'x'
+    gift:'\58', // 'X'
+    gplus-circled:'\2b', // '+'
+    guest01:'\39', // '9'
+    guest02:'\38', // '8'
+    guest03:'\37', // '7'
+    hanger:'\3a', // ':'
+    help-circled:'\52', // 'R'
+    help:'\45', // 'E'
+    high-priority:'\4b', // 'K'
+    home:'\28', // '('
+    info:'\4a', // 'J'
+    inspire:'\1d305', // '𝌅'
+    instagram:'\21', // '!'
+    invoice:'\74', // 't'
+    jumper:'\61', // 'a'
+    keyboard:'\64', // 'd'
+    klarna:'\01c3', // 'ǃ'
+    languages:'\77', // 'w'
+    leaf:'\73', // 's'
+    lightbulb:'\1ed8', // 'Ộ'
+    linkedin:'\40', // '@'
+    location:'\62', // 'b'
+    lock:'\71', // 'q'
+    menu-filled-with-text:'\29', // ')'
+    message:'\7a', // 'z'
+    minus-math:'\42', // 'B'
+    more:'\51', // 'Q'
+    new:'\34', // '4'
+    ok-filled:'\5b', // '['
+    ok:'\3e', // '&gt;'
+    order_search:'\36', // '6'
+    paypal:'\47', // 'G'
+    phone:'\3d', // '='
+    pinterest:'\22', // '&quot;'
+    plus-math:'\41', // 'A'
+    plus:'\7c', // '|'
+    price-tag:'\2f', // '/'
+    purchase-order:'\67', // 'g'
+    qr-code:'\24', // '$'
+    recycle:'\3f', // '?'
+    refresh:'\0cb2', // 'ಲ'
+    remove:'\60', // '`'
+    return:'\53', // 'S'
+    scanner:'\50', // 'P'
+    search-property:'\6d', // 'm'
+    search:'\63', // 'c'
+    share1:'\238b', // '⎋'
+    share2:'\15a0', // 'ᖠ'
+    share3:'\1559', // 'ᕙ'
+    share4:'\260d', // '☍'
+    shop-app:'\0566', // 'զ'
+    shop:'\57', // 'W'
+    snapchat:'\2d', // '-'
+    speech-bubble-comment:'\fb26', // 'ﬦ'
+    speech-bubble:'\33', // '3'
+    stamp-jj:'\233e', // '⌾'
+    stamp-nameit:'\29c0', // '⧀'
+    stamp-pieces:'\0e4f', // '๏'
+    stamp-veromoda:'\235f', // '⍟'
+    stamp:'\2aeb', // '⫫'
+    stampstar:'\66', // 'f'
+    star_solid:'\6c', // 'l'
+    star:'\27', // '''
+    store:'\56', // 'V'
+    tape_measure_sewing:'\23', // '#'
+    target:'\2b21', // '⬡'
+    thumb_down_filled:'\20ac', // '€'
+    thumb_down:'\7b', // '{'
+    thumb_up_filled:'\a3', // '£'
+    thumb_up:'\7d', // '}'
+    tilesfour:'\76', // 'v'
+    tilestwo:'\75', // 'u'
+    truck:'\54', // 'T'
+    twitter:'\48', // 'H'
+    uparrow-small:'\02c4', // '˄'
+    uparrow:'\4c', // 'L'
+    user:'\3c', // '&lt;'
+    vip:'\72', // 'r'
+    wishlist:'\2661', // '♡'
+    youtube-play:'\30', // '0'
+    youtube:'\49', // 'I'
+);
+
+/*doc
+---
+title: USP Icons
+parent: font
+---
+
+USP Icons font style.
+
+```html_example
+<ul class="example__bestseller-icons">
+    <li class="example__bestseller-icons--bag">bag, \1f45c</li>
+    <li class="example__bestseller-icons--bank-cards">bank-cards, \2acd</li>
+    <li class="example__bestseller-icons--box-filled">box-filled, \235e</li>
+    <li class="example__bestseller-icons--calendar-30">calendar-30, \263c</li>
+    <li class="example__bestseller-icons--cardboard-box">cardboard-box, \25eb</li>
+    <li class="example__bestseller-icons--click-and-collect">click-and-collect, \27e4</li>
+    <li class="example__bestseller-icons--delivery">delivery, \1f550</li>
+    <li class="example__bestseller-icons--empty-box">empty-box, \229f</li>
+    <li class="example__bestseller-icons--express-shipping">express-shipping, \2708</li>
+    <li class="example__bestseller-icons--free-shipping">free-shipping, \2262</li>
+    <li class="example__bestseller-icons--geography">geography, \2691</li>
+    <li class="example__bestseller-icons--gift">gift, \229e</li>
+    <li class="example__bestseller-icons--plus">plus, \F2B3</li>
+    <li class="example__bestseller-icons--guest03">guest03, \29dd</li>
+    <li class="example__bestseller-icons--hanger">hanger, \fe37</li>
+    <li class="example__bestseller-icons--help">help, \3f</li>
+    <li class="example__bestseller-icons--high-priority">high-priority, \1c3</li>
+    <li class="example__bestseller-icons--info">info, \69</li>
+    <li class="example__bestseller-icons--invoice">invoice, \2685</li>
+    <li class="example__bestseller-icons--jumper">jumper, \22b9</li>
+    <li class="example__bestseller-icons--languages">languages, \2690</li>
+    <li class="example__bestseller-icons--leaf">leaf, \2660</li>
+    <li class="example__bestseller-icons--location">location, \22ba</li>
+    <li class="example__bestseller-icons--lock">lock, \264a</li>
+    <li class="example__bestseller-icons--message">message, \2709</li>
+    <li class="example__bestseller-icons--new">new, \273a</li>
+    <li class="example__bestseller-icons--order_search">order_search, \29c9</li>
+    <li class="example__bestseller-icons--paypal">paypal, \50</li>
+    <li class="example__bestseller-icons--phone">phone, \1f4de</li>
+    <li class="example__bestseller-icons--price-tag">price-tag, \29ee</li>
+    <li class="example__bestseller-icons--purchase-order">purchase-order, \236f</li>
+    <li class="example__bestseller-icons--qr-code">qr-code, \29fb</li>
+    <li class="example__bestseller-icons--recycle">recycle, \2234</li>
+    <li class="example__bestseller-icons--return">return, \21b6</li>
+    <li class="example__bestseller-icons--scanner">scanner, \2016</li>
+    <li class="example__bestseller-icons--shop">shop, \229c</li>
+    <li class="example__bestseller-icons--snapchat">snapchat, \F2AB</li>
+    <li class="example__bestseller-icons--speech-bubble">speech-bubble, \2726</li>
+    <li class="example__bestseller-icons--stampstar">stampstar, \235f</li>
+    <li class="example__bestseller-icons--star_solid">star_solid, \2605</li>
+    <li class="example__bestseller-icons--star">star, \2b50</li>
+    <li class="example__bestseller-icons--store">store, \229b</li>
+    <li class="example__bestseller-icons--truck">truck, \21e2</li>
+    <li class="example__bestseller-icons--user">user, \1f464</li>
+    <li class="example__bestseller-icons--vip">vip, \265b</li>
+</ul>
+```
+*/
+
+$b__char__bestseller_usp_icons: (
+    bag,
+    bank-cards,
+    box-filled,
+    calendar-30,
+    cardboard-box,
+    click-and-collect,
+    delivery,
+    empty-box,
+    express-shipping,
+    free-shipping,
+    geography,
+    gift,
+    guest03,
+    hanger,
+    help,
+    high-priority,
+    info,
+    invoice,
+    jumper,
+    languages,
+    leaf,
+    location,
+    lock,
+    message,
+    new,
+    order_search,
+    paypal,
+    phone,
+    price-tag,
+    purchase-order,
+    qr-code,
+    recycle,
+    return,
+    scanner,
+    shop,
+    speech-bubble,
+    stampstar,
+    star_solid,
+    star,
+    store,
+    truck,
+    user,
+    vip
+);
+
+$b__char__bestseller_social_icons: (
+    youtube,
+    twitter,
+    facebook,
+    instagram,
+    plus,
+    snapchat,
+    pinterest
+);

@@ -1,0 +1,603 @@
+/*doc
+---
+title: Breakpoints
+name: breakpoints
+category: electrons
+---
+
+# Synopsis
+
+We need breakpoints to get our mobile-first approach to become a reality. Now, we also
+need content to line-up nicely, usually solved with grids. Grid-systems however assume
+a certain space to be available, but with responsive design we have breakpoints at which
+this availability changes.
+
+## Inuit solution
+
+The simple explanation is that we roughly define three grid-like systems, for four
+abstract breakpoints, Palm, Hands, Desktop and Widescreen (we're making a distinction of Phones vs
+Tablets, we might at some point make a distinction between large screens on Desktops/Widescreen
+and small screens on Laptops, hence 'hands' instead of 'lap'). We use place-holders, just like
+everywhere else and any Atom or Molecule can extend any, or all, of the breakpoints for
+different parts of the grid.
+
+For instance, a button might extend `%e__palm__one-whole` and
+`%e__hands__grid__thirds`. Which might drastically change the page flow between
+those breakpoints, but doesn't restrict our markup.
+
+@see http://csswizardry.com/2013/02/responsive-grid-systems-a-solution/
+*/
+%e__palm__one-whole {
+    clear: both;
+    display: block;
+    float: none;
+    width: auto;
+}
+
+/*doc
+---
+title: Breakpoints palm grid whole
+name: breakpointsPalmGridWhole
+parent: breakpoints
+---
+*/
+%e__palm__grid__whole {
+    @include e__col-span($b__grid__split);
+    @include e__omega;
+}
+
+/*doc
+---
+title: Breakpoints palm grid halfs
+name: breakpointsPalmGridHalfs
+parent: breakpoints
+---
+*/
+%e__palm__grid__halfs {
+    @include e__col-span($b__grid__split / 2);
+}
+
+/*doc
+---
+title: Breakpoints palm grid thirds
+name: breakpointsPalmGridThirds
+parent: breakpoints
+---
+*/
+%e__palm__grid__thirds {
+    @include e__col-span($b__grid__split / 3);
+}
+
+/*doc
+---
+title: Breakpoints palm grid two-thirds
+name: breakpointsPalmGridTwoThirds
+parent: breakpoints
+---
+*/
+%e__palm__grid__two-thirds {
+    @include e__col-span($b__grid__split / (3 / 2));
+}
+
+/*doc
+---
+title: Breakpoints palm grid quarters
+name: breakpointsPalmGridQuarters
+parent: breakpoints
+---
+*/
+
+%e__palm__grid__quarters {
+    @include e__col-span($b__grid__split / 4);
+}
+
+/*doc
+---
+title: Breakpoints palm grid three-quarters
+name: breakpointsPalmGridThreeQuarters
+parent: breakpoints
+---
+*/
+
+%e__palm__grid__three-quarters {
+    @include e__col-span($b__grid__split / (4 / 3));
+}
+
+/*doc
+---
+title: Breakpoints palm grid right alignment
+name: breakpointsPalmGridAlignRight
+parent: breakpoints
+---
+
+Use this modifier to force a `float: right` on your grid-element
+
+*/
+%e__palm__grid--align-right {
+    float: $b__orientation--right;
+}
+
+/*doc
+---
+title: Breakpoints palm detector
+name: breakpointsPalmDetector
+parent: breakpoints
+---
+
+*/
+%e__palm--detector {
+    z-index: 1;
+}
+
+/*doc
+---
+title: Breakout margin
+name: breakoutMargin
+parent: breakout
+---
+
+Reverse the effect of the page-gutter on a single container, allowing it to sit flush with
+the browser window even though elements around it are not.
+*/
+%e__palm__breakout--margin {
+    margin-left: -$b__whitespace__page__horizontal;
+    margin-right: -$b__whitespace__page__horizontal;
+}
+
+/*doc
+---
+title: Breakout padding
+name: breakoutPadding
+parent: breakout
+---
+
+Set the page-gutter as padding on a single container. Use this for containers that break
+out of the normal page-gutter, but who's content needs to line up with the page-gutter.
+*/
+%e__palm__breakout--padding {
+    padding-left: $b__whitespace__page__horizontal;
+    padding-right: $b__whitespace__page__horizontal;
+}
+
+/*doc
+---
+title: Breakout
+name: breakout
+parent: breakpoints
+---
+
+Allow a single element to break out of the page-gutter and have it's content line up with
+the content that sits around this element.
+*/
+%e__palm__breakout {
+    @extend %e__palm__breakout--margin;
+    @extend %e__palm__breakout--padding;
+}
+
+//Palm, set to max-width to make decissions that need enforcement on small screens
+@include e__media--palm-only {
+    %e__palm__grid__whole-only {
+        @include e__col-span($b__grid__split);
+        @include e__omega;
+    }
+
+    %e__palm__grid__halfs--list {
+        @include e__omega(2n);
+    }
+
+    %e__palm__grid__thirds--list {
+        @include e__omega(3n);
+    }
+
+    %e__palm__grid__quarters--list {
+        @include e__omega(4n);
+    }
+
+    %e__palm__grid__omega {
+        @include e__omega();
+    }
+
+    %e__palm--hidden {
+        display: none;
+    }
+
+    %e__palm--show {
+        display: inherit;
+    }
+
+    %e__palm--show-inline {
+        display: inline;
+    }
+
+    %e__palm__grid__halfs-only {
+        @include e__col-span($b__grid__split / 2);
+    }
+
+    %e__palm__reset-horizontal-margin {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+//Hands, set to min-width because, mobile-first...
+@include e__media--hands {
+    %e__hands__grid__whole {
+        @include e__col-span($b__grid__split);
+        @include e__omega;
+    }
+
+    %e__hands__grid__halfs {
+        @include e__col-span($b__grid__split / 2);
+    }
+
+    %e__hands__grid__thirds {
+        @include e__col-span($b__grid__split / 3);
+    }
+
+    %e__hands__grid__two-thirds {
+        @include e__col-span($b__grid__split / (3 / 2));
+    }
+
+    %e__hands__grid__quarters {
+        @include e__col-span($b__grid__split / 4);
+    }
+
+    %e__hands__grid__three-quarters {
+        @include e__col-span($b__grid__split / (4 / 3));
+    }
+
+    %e__hands__grid__fifths {
+        @include e__col-span($b__grid__split / 5);
+    }
+
+    %e__hands__grid__two-fifths {
+        @include e__col-span($b__grid__split / (5 / 2));
+    }
+
+    %e__hands__grid__sixths {
+        @include e__col-span($b__grid__split / 6);
+    }
+
+    %e__hands--hidden {
+        display: none;
+    }
+
+    %e__hands--show {
+        display: inherit;
+    }
+
+    %e__hands__grid--align-right {
+        float: $b__orientation--right;
+    }
+
+    %e__hands--show-inline-block {
+        display: inline-block;
+    }
+
+    %e__hands__reset-horizontal-margin {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    %e__hands__reset-horizontal-padding {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    %e__hands--static {
+        position: static;
+    }
+
+    %e__hands--detector {
+        z-index: 2;
+    }
+
+    %e__hands__breakout--margin {
+        margin-left: -$b__whitespace__page__horizontal;
+        margin-right: -$b__whitespace__page__horizontal;
+    }
+
+    %e__hands__breakout--padding {
+        padding-left: $b__whitespace__page__horizontal;
+        padding-right: $b__whitespace__page__horizontal;
+    }
+
+    %e__hands__grid__auto {
+        width: auto;
+    }
+
+    %e__hands__grid__halfs-only {
+        @include e__col-span($b__grid__split / 2);
+    }
+
+    /*doc
+    ---
+    title: Breakout hands
+    name: breakoutHands
+    parent: breakout
+    ---
+
+    Applying the breakout effect from hands and up, for elements that need a different
+    white-spacing set of rules on palm.
+    */
+    %e__hands__breakout {
+        @extend %e__hands__breakout--margin;
+        @extend %e__hands__breakout--padding;
+
+        // https://css-tricks.com/international-box-sizing-awareness-day/
+        // brush up on your box-sizing before asking what this is doing here
+        box-sizing: content-box;
+    }
+}
+
+//Hands, set to both min-width and max-width to enable overrides on dynamic code, like mixins...
+@include e__media--hands-only {
+    %e__hands__grid__halfs--list {
+        @include e__omega(2n);
+    }
+
+    %e__hands__grid__thirds--list {
+        @include e__omega(3n);
+    }
+
+    %e__hands__grid__quarters--list {
+        @include e__omega(4n);
+    }
+
+    %e__hands__grid__omega {
+        @include e__omega();
+    }
+
+    %e__hands-only__grid__halfs {
+        @include e__col-span($b__grid__split / 2);
+    }
+
+    %e__hands--only--hidden {
+        display: none;
+    }
+
+    %e__hands--only--show {
+        display: inherit;
+    }
+}
+
+//Desktop, set to min-width because, mobile-first...
+@include e__media--desktop {
+    %e__desktop__grid__whole {
+        @include e__col-span($b__grid__split);
+        @include e__omega;
+    }
+
+    %e__desktop__grid__halfs {
+        @include e__col-span($b__grid__split / 2);
+    }
+
+    %e__desktop__grid__thirds {
+        @include e__col-span($b__grid__split / 3);
+    }
+
+    %e__desktop__grid__two-thirds {
+        @include e__col-span($b__grid__split / (3 / 2));
+    }
+
+    %e__desktop__grid__quarters {
+        @include e__col-span($b__grid__split / 4);
+    }
+
+    %e__desktop__grid__three-quarters {
+        @include e__col-span($b__grid__split / (4 / 3));
+    }
+
+    %e__desktop__grid__fifths {
+        @include e__col-span($b__grid__split / 5);
+    }
+
+    %e__desktop__grid__two-fifths {
+        @include e__col-span($b__grid__split / (5 / 2));
+    }
+
+    %e__desktop__grid__four-fifths {
+        @include e__col-span($b__grid__split / (5 / 4));
+    }
+
+    %e__desktop__grid__sixths {
+        @include e__col-span($b__grid__split / 6);
+    }
+
+    %e__desktop__grid__five-sixths {
+        @include e__col-span($b__grid__split / (6 / 5));
+    }
+
+    %e__desktop--show {
+        display: inherit;
+    }
+
+    %e__desktop--hidden {
+        display: none;
+    }
+
+    %e__desktop__grid--align-right {
+        float: $b__orientation--right;
+    }
+
+    %e__desktop__page__horizontal {
+        padding-left: $b__whitespace__page__horizontal__static;
+        padding-right: $b__whitespace__page__horizontal__static;
+    }
+
+    %e__desktop__overlay {
+        opacity: $b__opacity__disable;
+    }
+
+    %e__desktop__reset-horizontal-margin {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    %e__desktop--detector {
+        z-index: 3;
+    }
+
+    %e__desktop__breakout--margin {
+        margin-left: -$b__whitespace__page__horizontal__static;
+        margin-right: -$b__whitespace__page__horizontal__static;
+    }
+
+    %e__desktop__breakout--padding {
+        padding-left: $b__whitespace__page__horizontal__static;
+        padding-right: $b__whitespace__page__horizontal__static;
+    }
+
+    /*doc
+    ---
+    title: Breakout desktop
+    name: breakoutDesktop
+    parent: breakout
+    ---
+
+    Applying the breakout effect from desktop and up, this is required for elements that
+    don't have a different set of white-space rules at desktop level. The page-gutter uses
+    different rules on desktop.
+    */
+    %e__desktop__breakout {
+        @extend %e__desktop__breakout--margin;
+        @extend %e__desktop__breakout--padding;
+    }
+}
+
+//Desktop, set to both min-width and max-width to enable overrides on dynamic code, like mixins...
+@include e__media--desktop-only {
+    %e__desktop__grid__halfs--list {
+        @include e__omega(2n);
+    }
+
+    %e__desktop__grid__thirds--list {
+        @include e__omega(3n);
+    }
+
+    %e__desktop__grid__quarters--list {
+        @include e__omega(4n);
+    }
+
+    %e__desktop__grid__fifths--list {
+        @include e__omega(5n);
+    }
+
+    %e__desktop__grid__sixths--list {
+        @include e__omega(6n);
+    }
+
+    %e__desktop__grid__omega {
+        @include e__omega();
+    }
+}
+
+//Widescreen, set to min-width because, mobile-first...
+@include e__media--widescreen {
+    %e__widescreen__grid__halfs {
+        @include e__col-span($b__grid__split / 2);
+    }
+
+    %e__widescreen__grid__thirds {
+        @include e__col-span($b__grid__split / 3);
+    }
+
+    %e__widescreen__grid__quarters {
+        @include e__col-span($b__grid__split / 4);
+    }
+
+    %e__widescreen__grid__three-quarters {
+        @include e__col-span($b__grid__split / (4 / 3));
+    }
+
+    %e__widescreen__grid__fifths {
+        @include e__col-span($b__grid__split / 5);
+    }
+
+    %e__widescreen__grid__two-fifths {
+        @include e__col-span($b__grid__split / (5 / 2));
+    }
+
+    %e__widescreen__grid__four-fifths {
+        @include e__col-span($b__grid__split / (5 / 4));
+    }
+
+    %e__widescreen__grid__sixths {
+        @include e__col-span($b__grid__split / 6);
+    }
+
+    %e__widescreen__grid__five-sixths {
+        @include e__col-span($b__grid__split / (6 / 5));
+    }
+
+    %e__widescreen__grid__halfs--list {
+        @include e__omega(2n);
+    }
+
+    %e__widescreen__grid__thirds--list {
+        @include e__omega(3n);
+    }
+
+    %e__widescreen__grid__quarters--list {
+        @include e__omega(4n);
+    }
+
+    %e__widescreen__grid__fifths--list {
+        @include e__omega(5n);
+    }
+
+    %e__widescreen__grid__sixths--list {
+        @include e__omega(6n);
+    }
+
+    %e__widescreen__grid__omega {
+        @include e__omega();
+    }
+
+    %e__widescreen__grid--align-right {
+        float: $b__orientation--right;
+    }
+
+    %e__widescreen--show {
+        display: inherit;
+    }
+
+    %e__widescreen--hidden {
+        display: none;
+    }
+
+    %e__widescreen--detector {
+        z-index: 4;
+    }
+
+    /*doc
+    ---
+    title: Breakout widescreen
+    name: breakoutWidescreen
+    parent: breakout
+    ---
+
+    Recommend to extend for widescreen. The breakout effect on widescreen appears to have
+    an adverse effect on the layout.
+    */
+    %e__widescreen--breakout {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.markdown-breakpoint-1 {
+    @extend %e__palm--show; //palm-only
+    @extend %e__hands--hidden; //hands and higher
+}
+
+.markdown-breakpoint-2 {
+    @extend %e__palm--hidden; //palm-only
+    @extend %e__hands--show; //hands and higher
+}
+
+.markdown-breakpoint-3 {
+    @extend %e__palm--show; //palm-only
+    @extend %e__hands--hidden; //hands and higher
+    @extend %e__desktop--show; //desktop and higher
+}

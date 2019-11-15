@@ -1,0 +1,350 @@
+/*doc
+---
+title: Colors
+name: colors
+category: bosons
+---
+
+Here we've defined all the colors we'll be using in our project. Nowhere else should a
+color be defined (except in branded overwrites). Names of the colors are kept functional
+on purpose, this principle should facilitate agnostic use of the colors.
+
+*/
+
+/*doc
+---
+title: Signal Colors
+name: signal-colors
+parent: colors
+---
+
+These colors are used for signaling the user, think of simple context.
+
+```html_example
+<p><span class="example__warning example__color">Warning</span>, user should not continue without taking action</p>
+<p><span class="example__csuccess example__color">Success</span>, user has full-filled what was needed. Also used to
+    provide hints to the user as to what to do next.</p>
+```
+*/
+$b__color__signal--warning: #f44336 !default;
+$b__color__signal--warning-border: rgba(244, 67, 54, .5) !default;
+$b__color__signal__offset--warning: #fff !default;
+$b__color__signal--success: #679863 !default;
+$b__color__signal__offset--success: $b__color__signal__offset--warning !default;
+
+/*doc
+---
+title: Primary Colors
+name: primary-colors
+parent: colors
+---
+
+Primary colors used in the application. These should be treated somewhat similar to text
+weight. Where for instance normal text is weight 400, bold 600, light is 200.
+
+The offset colors are matched in weight to the primary colors and together form a color
+pair. Although each individually could be overwritten, the basic premise is to always use
+them in tandem. For instance, if setting the background to `$b__color__primary--600` it is
+expected to set the text-color to `$b__color__offset--600`.
+
+```html_example
+<p><span class="example__c600 example__color">(Darkest Grey)</span></p>
+<p><span class="example__c500 example__color">(Dark Grey)</span></p>
+<p><span class="example__c400 example__color">(Middle Grey)</span></p>
+<p><span class="example__c300 example__color">(Light Grey)</span></p>
+<p><span class="example__c200 example__color">(Accent Grey)</span></p>
+<p><span class="example__c100 example__color">(White)</span></p>
+```
+*/
+
+$b__color__reset--primary: transparent;
+
+$b__color__primary--700: #000 !default;
+$b__color__offset--700: #fff !default;
+$b__color__primary--600: #333 !default;
+$b__color__offset--600: #fff !default;
+$b__color__primary--500: #666 !default;
+$b__color__offset--500: $b__color__offset--600 !default;
+$b__color__primary--400: #ccc !default;
+$b__color__offset--400: #666 !default;
+$b__color__primary--300: #e4e4e4 !default;
+$b__color__offset--300: $b__color__offset--400 !default;
+$b__color__primary--200: #f2f2f2 !default;
+$b__color__offset--200: $b__color__offset--400 !default;
+$b__color__primary--100: #fff !default;
+$b__color__offset--100: $b__color__offset--400 !default;
+
+/*doc
+---
+title: Application Colors
+name: application-colors
+parent: colors
+---
+
+Primary colors used in the application. These should be treated somewhat similar to text
+weight. Where for instance normal text is weigth 400, bold 600, light is 200.
+
+The offset colors are matched in weight to the primary colors and together form a color
+pair. Although each individually could be overwritten, the basic premise is to always use
+them in tandem. For instance, if setting the background to `$b__color__primary--600` it is
+expected to set the text-color to `$b__color__offset--600`.
+
+*/
+$b__color__primary--servicebar: $b__color__primary--100 !default;
+$b__color__offset--servicebar: $b__color__offset--100 !default;
+$b__color__primary--customer-club-popup: $b__color__primary--100 !default;
+$b__color__offset--customer-club-popup: $b__color__offset--100 !default;
+$b__color__offset--customer-club-signup: $b__color__offset--100 !default;
+$b__color__primary--cookie-overlay: $b__color__primary--600 !default;
+$b__color__offset--cookie-overlay: $b__color__offset--600 !default;
+$b__color__offset--servicebar--success: $b__color__signal--success !default;
+$b__colors__primary--separator: #232324 !default;
+$b__color__body--primary: $b__color__reset--primary !default;
+$b__color__body--offset: $b__color__offset--400 !default;
+$b__color__strikethrough--offset: $b__color__primary--400 !default;
+$b__color__primary--menubar: $b__color__primary--100 !default;
+
+// call to action primary
+$b__color__call-to-action--primary: $b__color__corporate__primary--500 !default;
+$b__color__offset--call-to-action--primary: $b__color__corporate__offset--500 !default;
+
+// call to action secondary
+$b__color__call-to-action--secondary: $b__color__primary--500 !default;
+$b__color__offset--call-to-action--secondary: $b__color__signal__offset--warning !default;
+
+// call to action step backwards
+$b__color__call-to-action--backward: $b__color__primary--300 !default;
+$b__color__offset--call-to-action--backward: $b__color__offset--300 !default;
+
+// linkbox colors
+$b__color__primary--linkbox: $b__color__primary--200 !default;
+$b__color__offset--linkbox: $b__color__offset--200 !default;
+
+// Tile widget colors
+$b__color__primary--tile-widget: $b__color__call-to-action--secondary !default;
+$b__color__offset--tile-widget: $b__color__offset--call-to-action--secondary !default;
+
+// USP area colors
+$b__color__primary--usp-area: $b__color__primary--200 !default;
+$b__color__offset--usp-area: $b__color__offset--200 !default;
+
+// Promotions
+$b__color__primary--promotions: $b__color__primary--200 !default;
+$b__color__offset--promotions: $b__color__offset--200 !default;
+
+// Forms
+$b__color__primary--form-field: $b__color__primary--100 !default;
+$b__color__offset--checkbox-radio: $b__color__signal--success !default;
+
+// Container from success feedback
+$b__color__primary--success-box: $b__color__primary--100 !default;
+$b__color__offset--success-box: $b__color__signal--success !default;
+
+// Dialogue colors
+$b__color__primary--dialogue: $b__color__primary--100 !default;
+$b__color__offset--dialogue: $b__color__offset--100 !default;
+
+/*doc
+---
+title: Summary Colors
+name: summary-colors
+parent: colors
+---
+
+Summary colors used in the order confirmation page.
+
+The summary colors could be overwritten, the basic premise is to always use
+them in tandem. For instance, if setting the background to `$b__color__primary--500` it is
+expected to set the text-color to `$b__color__offset--500`.
+
+*/
+
+$b__colors__summary-heading__primary: $b__color__primary--500 !default;
+$b__colors__summary-heading__offset: $b__color__offset--500 !default;
+
+/*doc
+---
+title: Footer Colors
+name: footer-colors
+parent: colors
+---
+
+Summary colors used in the footer.
+
+*/
+
+$b__color__primary--footer: $b__color__primary--200 !default;
+$b__color__offset--footer: $b__color__offset--200 !default;
+$b__color__links--footer: lighten($b__color__offset--footer, .3) !default;
+
+$b__color__primary--account: $b__color__primary--200 !default;
+$b__color__offset--account: $b__color__offset--200 !default;
+$b__color__links--account: lighten($b__color__offset--account, .3) !default;
+
+/*doc
+---
+title: Headings Colors
+name: headingsColors
+parent: colors
+---
+
+Colors for headings
+*/
+
+$b__color-headings__offset: $b__color__primary--600 !default;
+$b__color-bigheadline__offset: $b__color-headings__offset !default;
+$b__color-headline__offset: $b__color-headings__offset !default;
+$b__color-header__offset: $b__color-headings__offset !default;
+$b__color-subheader__offset: $b__color-headings__offset !default;
+
+/*doc
+---
+title: Link Colors
+name: linkColors
+parent: colors
+---
+
+Colors for links
+*/
+
+$b__color-link__offset: $b__color__offset--400 !default;
+$b__color-sublink__offset: $b__color__offset--400 !default;
+
+/*doc
+---
+title: PDP Colors
+name: pdpColors
+parent: colors
+---
+
+Colors for the PDP
+*/
+
+$b__color__pdp-description--primary: $b__color__reset--primary !default;
+
+/*doc
+---
+title: Cart Page Colors
+name: cartColors
+parent: colors
+---
+
+Colors for the cart page
+*/
+
+$b__color__cart-continue-shopping--primary: $b__color__reset--primary !default;
+
+/*doc
+---
+title: Mini Cart Colors
+name: miniCartColors
+parent: colors
+---
+
+Colors for the mini cart
+*/
+
+$b__color__mini-cart-info--primary: #333 !default;
+$b__color__mini-cart-info--background: #f2f2f2 !default;
+
+/*doc
+---
+title: Search Suggest Scrollbar Colors
+name: SearchSuggestScrollbarColors
+parent: colors
+---
+
+Colors for the search suggest scrollbar
+*/
+
+$b__color-scrollbar--track: #f0f0f0 !default;
+$b__color-scrollbar--thumb: #bfbfbf !default;
+
+/*doc
+---
+title: Burger Menu Colors
+name: burgerMEnuColors
+parent: colors
+---
+
+Colors for the burger menu
+*/
+$b__color__burger-menu--primary: $b__color__primary--100 !default;
+
+/*doc
+---
+title: Full Width Text Widget Colors
+name: fullWidthTextWidgetColors
+parent: colors
+---
+
+Colors for the Full Width Text Widget
+*/
+
+$b__color__full-width-text__title-background: $b__color__primary--100 !default;
+$b__color__full-width-text__title-color: $b__color__offset--100 !default;
+$b__color__full-width-text__title-stroke: $b__color__primary--300 !default;
+
+/*doc
+---
+title: Splash Screen Widget Colors
+name: SplashScreenWidgetColors
+parent: colors
+---
+
+Colors for splash screen Widget
+*/
+
+$b__color__splash-screen__background: $b__color__offset--100 !default;
+
+/*doc
+---
+title: Back To Top Button Colors
+name: BackToTopColors
+parent: colors
+---
+
+Colors for Back To Top Button
+*/
+
+$b__color__back-to-top__button-color: $b__color__corporate__offset--500;
+$b__color__back-to-top__button-background: $b__color__corporate__primary--500;
+
+/*doc
+---
+title: Unavailable Notify Me Color
+name: Unavailable Notify Me Color
+parent: colors
+---
+
+Colors for Notify Me
+*/
+
+$b__color__notify-me__swatch--unavailable: #666;
+
+/*doc
+---
+title: Product Urgency Message Colors
+name: ProductUrgencyMessageColors
+parent: colors
+---
+
+Colors for product urgency message
+*/
+
+$b__color__product-urgency-message__border-color: #f2453d;
+
+/*doc
+---
+title: Browser Compatibility Container
+name: BrowserCompatibilityContainer
+parent: colors
+---
+
+*/
+
+$b__color__browser-compatibility-container__background-color: #fff;
+
+// pagination direction
+$b__color__pagination-direction__border-color: $b__color__primary--300 !default;
+$b__color__pagination-buttons__offset: $b__color__primary--600 !default;

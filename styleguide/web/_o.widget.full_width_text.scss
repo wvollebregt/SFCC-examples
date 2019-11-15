@@ -1,0 +1,183 @@
+/*doc
+---
+title: Widget Full Width Text
+name: widgetFullWidthText
+category: organisms
+---
+
+Full width text widget for all pages
+
+```html_example
+<article class="widget__full-width-text widget__full-width-text--center">
+    <h3 class="full-width-text__title">Title</h3>
+    <p class="full-width-text__text">
+        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+    </p>
+    <a class="full-width-text__call-to-action" title="Call to action title" href="#">
+        Call to action
+    </a>
+</article>
+```
+*/
+.widget__full-width-text--full-width-background {
+    @extend %m__full-width-background;
+    @extend %q__padding__related--top;
+
+    .full-width-text__title-stroke::before{
+        @extend %q__border__full-width-text;
+    }
+
+    .full-width-text__title {
+        @extend %q__block;
+        @extend %q__colors__full-width-text__title--contrast;
+    }
+
+    .full-width-text__title--plain,
+    .full-width-text__text--markdown {
+        @extend %q__inline-block;
+        @extend %q__colors__full-width-text__title--contrast;
+    }
+}
+
+.widget__full-width-text {
+    &--left {
+        @extend %q__text-align--reset;
+    }
+
+    &--center {
+        @extend %q__text-align--center;
+    }
+
+    &--right {
+        @extend %q__text-align--right;
+    }
+
+    @extend %q__whitespace__unassociated--top;
+    @extend %e__clearfix;
+    @extend %e__reset__margin;
+    @extend %e__reset__padding;
+    @extend %m__scalable__content;
+    @extend %e__clear-both;
+
+    .markdown-wrapper,
+    .cm-branded-content & .markdown-wrapper {
+        & > *:not(h1):not(h2):not(h3) {
+            @extend %q__font;
+        }
+
+        & > p a {
+            @extend %q__font--reset--text-transform;
+            @extend %q__text-decoration__underline;
+            @extend %q__font-weight--reset;
+            color: inherit;
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        h1[id],
+        h2[id],
+        h3[id] {
+            @extend %q__whitespace__related;
+        }
+    }
+}
+
+.widget-full-width-text__text {
+    @include e__widget__text {
+        @extend %q__whitespace__associated--top;
+        @extend %q__whitespace__associated--bottom;
+        @extend %e__palm__grid__whole;
+    }
+}
+
+.full-width-text__call-to-action {
+    @extend %q__inline-block;
+    @extend %a__call-to-action__secondary--scalable;
+    @extend %q__whitespace__associated--top;
+    @extend %q__whitespace__unassociated--bottom;
+}
+
+.full-width-text__image {
+    @extend %e__reset;
+    @extend %q__whitespace__associated--top;
+}
+
+.full-width-text__title-separator,
+.full-width-text__title-stroke {
+    @extend %e__reset;
+    @extend %q__whitespace__unassociated--top;
+    @extend %q__font--xxlarge--scalable;
+}
+
+.full-width-text__title-stroke {
+    @extend %q__positioning__relative;
+
+    .full-width-text__title,
+    .full-width-text__title--plain {
+        @extend %q__inline-block;
+        @extend %q__colors__full-width-text__title;
+    }
+
+    &::before {
+        @extend %q__positioning__fixed--left;
+        @extend %q__positioning__absolute;
+        @extend %q__border__full-width-text;
+        @extend %e__grid__fill-parent;
+        content: '';
+        margin-left: $b__measure__one-eight;
+        margin-right: $b__measure__one-eight;
+        top: $b__measure__half;
+        width: $b__measure__aspect-ratio-percent;
+    }
+}
+
+.full-width-text__title,
+.full-width-text__title-separator,
+.full-width-text__title-stroke {
+    @extend %q__font__exhibit-header;
+}
+
+.full-width-text__title,
+.full-width-text__title--plain {
+    @extend %q__font--xxlarge--scalable;
+    @extend %q__block;
+    @extend %q__positioning__relative;
+    padding: 0 1em;
+}
+
+.full-width-text__title-separator {
+    @extend %q__block;
+    @extend %e__reset;
+
+    &::after {
+        @extend %q__border__full-width-text;
+        @extend %q__inline-block;
+        content: '';
+        height: 2px;
+        width: 44px;
+    }
+
+    .full-width-text__title-stroke {
+        @extend %e__reset;
+    }
+}
+
+@include e__media--palm-only {
+    .widget__full-width-text::before {
+        padding-top: $b__measure__ratio-square__palm;
+    }
+}
+
+@include e__media--hands {
+    .widget__full-width-text::before {
+        padding-top: $b__measure__ratio-square__hands;
+    }
+}
+
+@include e__media--desktop {
+    .widget__full-width-text::before {
+        padding-top: $b__measure__ratio-square__desktop;
+    }
+}

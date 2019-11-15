@@ -1,0 +1,21 @@
+/*doc
+---
+title: Vertical Alignment
+name: vertical
+category: atoms
+---
+
+This is a container with vertical-align middle. Which in essence seems so obvious! Take
+into account that for this to work, any child-elements must be extending %e__reset, to
+make sure they inherit the vertical alignment.
+
+```html_example
+<div class="example__vertical">
+    <del class="example__value__price--discount">90,00 EUR</del>
+    <em class="example__value__price">60,00 EUR</em>
+</div>
+```
+*/
+%a__vertical--middle {
+    @extend %q__vertical-align--middle;
+}

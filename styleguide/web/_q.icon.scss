@@ -1,0 +1,23 @@
+@each $b__icon, $b__char in $b__char__bestseller_icons {
+    %q__icon__#{$b__icon} {
+        @extend %e__reset__text-transform;
+        content: $b__char;
+        font-family: "bestseller_icons", sans-serif;
+    }
+}
+
+%q__svg-icon {
+    @extend %q__overflow--hidden; // IE needs this to be consistent with other browsers
+    fill: currentColor;
+
+    // Old icons are roughly 20px by default
+    // This makes them exactly the size they were before
+    height: $b__font__icon__large--size;
+    width: $b__font__icon__large--size;
+}
+
+%q__svg-icon--xlarge {
+    @extend %q__svg-icon;
+    height: $b__font__icon__xlarge--size;
+    width: $b__font__icon__xlarge--size;
+}
