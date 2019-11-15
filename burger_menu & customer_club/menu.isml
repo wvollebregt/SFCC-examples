@@ -1,0 +1,95 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+
+<iscomment>
+    Render the brand categories tree structure assigned by the MenuView
+</iscomment>
+
+<isloop items="${pdict.Menu.BrandCategories}" var="topCategory">
+    <aside class="category-navigation__section js-category-refinement">
+        <nav class="category-navigation js-category-navigation" data-category="${topCategory.getDisplayName()}">
+            <ul class="category-navigation__group category-navigation__group--level-1">
+                <li class="category-navigation__item" data-category-id="${topCategory.getID()}">
+                    <a data-menu-category="${topCategory.getID()}" class="category-navigation__title category-navigation__link" href="<isprint value="${topCategory.getUrl()}" encoding="off"/>" data-layer-click="${topCategory.getDataLayerJsonString()}">
+                        <isprint value="${topCategory.getDisplayName()}"/>
+                    </a>
+
+                    <isif condition="${topCategory.categories}">
+                        <section class="category-navigation__section js-category-refinement">
+                            <ul class="category-navigation__group category-navigation__group--level-2">
+                                <isloop items="${topCategory.categories}" var="secondLevelCategory">
+                                    <li data-category-id="${secondLevelCategory.getID()}" class="category-navigation__item<isif condition="${secondLevelCategory.categories}">--more</isif>">
+                                        <isif condition="${secondLevelCategory.categories && secondLevelCategory.isSubCategoriesVisible()}">
+                                            <span data-menu-category="${secondLevelCategory.getID()}" class="js-category-trigger category-navigation__parent" data-layer-click="${secondLevelCategory.getDataLayerJsonString()}">
+                                                <isprint value="${secondLevelCategory.getDisplayName()}"/>
+                                            </span>
+                                        <iselse>
+                                            <a data-menu-category="${secondLevelCategory.getID()}" class="category-navigation__link" href="<isprint value="${secondLevelCategory.getUrl()}" encoding="off"/>" data-layer-click="${secondLevelCategory.getDataLayerJsonString()}">
+                                                <isprint value="${secondLevelCategory.getDisplayName()}"/>
+                                            </a>
+                                        </isif>
+
+                                        <isif condition="${secondLevelCategory.categories}">
+                                            <ul class="category-navigation__group category-navigation__group__inner-level category-navigation__group--level-3">
+                                                <li class="category-navigation__item">
+                                                    <a class="category-navigation__link" href="<isprint value="${secondLevelCategory.getUrl()}" encoding="off"/>" data-layer-click="${secondLevelCategory.getDataLayerJsonString()}">
+                                                        ${pdict.Resource.msg('global.seeall', 'locale', null)}
+                                                    </a>
+                                                </li>
+                                                <isloop items="${secondLevelCategory.categories}" var="thirdLevelCategory">
+                                                    <li data-category-id="${thirdLevelCategory.getID()}" class="category-navigation__item<isif condition="${secondLevelCategory.categories}">--more</isif>">
+
+                                                        <isif condition="${thirdLevelCategory.categories && thirdLevelCategory.isSubCategoriesVisible()}">
+                                                            <span data-menu-category="${thirdLevelCategory.getID()}" class="js-category-trigger category-navigation__parent" data-layer-click="${thirdLevelCategory.getDataLayerJsonString()}">
+                                                                <isprint value="${thirdLevelCategory.getDisplayName()}"/>
+                                                            </span>
+                                                        <iselse>
+                                                            <a data-menu-category="${thirdLevelCategory.getID()}" class="category-navigation__link" href="<isprint value="${thirdLevelCategory.getUrl()}" encoding="off"/>" data-layer-click="${thirdLevelCategory.getDataLayerJsonString()}">
+                                                                <isprint value="${thirdLevelCategory.getDisplayName()}"/>
+                                                            </a>
+                                                        </isif>
+
+                                                        <isif condition="${thirdLevelCategory.categories}">
+                                                            <ul class="category-navigation__group category-navigation__group__inner-level category-navigation__group--level-4">
+                                                                <li class="category-navigation__item" data-category-id="${thirdLevelCategory.getID()}">
+                                                                    <a class="category-navigation__link" href="<isprint value="${thirdLevelCategory.getUrl()}" encoding="off"/>" data-layer-click="${thirdLevelCategory.getDataLayerJsonString()}">
+                                                                        ${pdict.Resource.msg('global.seeall', 'locale', null)}
+                                                                    </a>
+                                                                </li>
+                                                                <isloop items="${thirdLevelCategory.categories}" var="fourthLevelCategory">
+                                                                    <li class="category-navigation__item" data-category-id="${fourthLevelCategory.getID()}">
+                                                                        <a data-menu-category="${fourthLevelCategory.getID()}" class="category-navigation__link" href="<isprint value="${fourthLevelCategory.getUrl()}" encoding="off"/>" data-layer-click="${fourthLevelCategory.getDataLayerJsonString()}">
+                                                                            <isprint value="${fourthLevelCategory.getDisplayName()}"/>
+                                                                        </a>
+                                                                    </li>
+                                                                </isloop>
+                                                            </ul>
+                                                        </isif>
+                                                    </li>
+                                                </isloop>
+                                            </ul>
+                                        </isif>
+                                    </li>
+                                </isloop>
+                            </ul>
+                        </section>
+                    </isif>
+                </li>
+            </ul>
+
+            <isif condition="${(topCategory.categories) && (topCategory.categories.length > pdict.MaximumVisibleCategories)}">
+                <button class="category-navigation__trigger-more js-category-navigation-trigger"
+                    data-label-more="${pdict.Resource.msg('searchrefinebar.showmore','search', null)}"
+                    data-label-less="${pdict.Resource.msg('searchrefinebar.showless','search', null)}"
+                    data-max-category="${pdict.MaximumVisibleCategories}"
+                    data-layer-click="${topCategory.getMoreButtonDataLayerJsonString()}">
+                    ${pdict.Resource.msg('searchrefinebar.showmore','search', null)}
+                </button>
+            </isif>
+        </nav>
+    </aside>
+</isloop>
+
+<isslot id="custom-navigation-link-widget" context="folder" description="custom navigation links" context-object="${pdict.Widgets.contextFolder}" />
+
+<isslot id="burger-menu-marketing-widget" context="folder" description="Burger menu marketing spot" context-object="${pdict.Widgets.contextFolder}" />

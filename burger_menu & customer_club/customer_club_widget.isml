@@ -1,0 +1,65 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+
+<article class="customer-club-widget js-customer-club__widget js-customer-club__signup"
+        data-show-additional-fields="${Boolean(widgetContentAsset.showAdditionalFields)}"
+        style="${widgetContentAsset.getInlineStyles()}">
+    <div class="customer-club-widget__overlay js-customer-club__overlay">
+        <div class="swiper-container swiper-no-swiping" data-autoplay-delay="0" data-loop="false">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <isif condition="${!empty(widgetContentAsset.header)}">
+                        <header class="customer-club-widget__banner">
+                            <h3 class="customer-club-widget__header${widgetContentAsset.disableHeaderFont?'--plain':''}">
+                                <isprint value="${widgetContentAsset.header}" />
+                            </h3>
+                        </header>
+                    </isif>
+                    <isinclude url="${URLUtils.https('CustomerClub-ShowForm', 'formID', '_basic', 'assetID', widgetContentAsset.getID())}" />
+                </div>
+
+                <isif condition="${
+                    widgetContentAsset.displayBirthdateField === 'display-in-second-step' ||
+                    widgetContentAsset.displayCityField === 'display-in-second-step' ||
+                    widgetContentAsset.displayPhoneNumberField === 'display-in-second-step'
+                    }">
+                    <div class="swiper-slide">
+                        <div class="customer-club-widget__main-container">
+                            <h3 class="customer-club-widget__header${widgetContentAsset.disableHeaderFont?'--plain':''}">
+                                <isprint value="${widgetContentAsset.customerClubSecondStepHeader}" />
+                            </h3>
+                            <div class="customer-club-widget__markup">
+                                <iswidgettext widgetname="widget-customer-club" widgetdisablesubtext="no" />
+                            </div>
+                            <div class="customer-club-widget__sub-container">
+                                <isinclude url="${URLUtils.https('CustomerClub-ShowForm', 'formID', '_advanced', 'assetID', widgetContentAsset.getID())}" />
+                            </div>
+                            <div class="form__field-group customer-club-widget__form__button--block">
+                                <button class="customer-club-widget__form__button js-customer-club-widget__thank-you-step" style="${widgetContentAsset.getInlineStylesForCTA()}" type="submit">
+                                    <isprint value="${widgetContentAsset.callToAction}" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </isif>
+
+                <div class="swiper-slide">
+                    <div class="customer-club-widget__main-container">
+                        <div class="customer-club-widget__sub-container">
+                            <isif condition="${!empty(widgetContentAsset.thankYouMessageHeader)}">
+                                <h3 class="customer-club-widget__header">
+                                    <isprint value="${widgetContentAsset.thankYouMessageHeader}" />
+                                </h3>
+                            </isif>
+                            <isif condition="${!empty(widgetContentAsset.thankYouMessageMarkup)}">
+                                <div class="customer-club-widget__thank-you-message">
+                                    <iswidgettext widgetname="widget-customer-club" widgetmarkupobject="${widgetContentAsset.thankYouMessageMarkup}" widgetdisablesubtext="no" />
+                                </div>
+                            </isif>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

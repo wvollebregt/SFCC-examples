@@ -1,0 +1,102 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+<isset name="useHeadlines" value="${pdict.EnableBurgerMenuHeadlines}" scope="page" />
+
+<iscomment>
+    Render the brand categories tree structure assigned by the MenuView
+</iscomment>
+
+<div class="burger-menu__layers">
+    <isif condition="${pdict.Menu.BrandCategoriesLayered}">
+        <isset name="topCategories" value="${pdict.Menu.BrandCategoriesLayered.topCategories}" scope="page"/>
+
+        <iscomment>
+            -- This loop is for top category
+        </iscomment>
+        <ul class="category-navigation__group category-navigation__group--level-1 js-burger-menu__controls__next--forward" data-menu-level="1">
+            <isloop items="${topCategories}" var="topCategory" status="topCategoryStatus">
+                <li class="category-navigation__item" data-category="${topCategory.getDisplayName()}" data-category-id="${topCategory.getID()}">
+                    <isif condition="${topCategory.isSubCategoriesVisible()}">
+                        <span data-menu-category="${topCategory.getID()}" class="category-navigation__parent--layered" data-category-id="${topCategory.getID()}" data-layer-click="${topCategory.getDataLayerJsonString()}">
+                            <isprint value="${topCategory.getDisplayName()}"/>
+                        </span>
+                    <iselse>
+                        <a data-menu-category="${topCategory.getID()}" class="category-navigation__link category-navigation__title" href="<isprint value="${topCategory.getUrl()}" encoding="off"/>" data-layer-click="${topCategory.getDataLayerJsonString()}">
+                            <isprint value="${topCategory.getDisplayName()}"/>
+                        </a>
+                    </isif>
+                </li>
+            </isloop>
+        </ul>
+
+        <iscomment>
+            -- This loop is for children levels level of categories
+            -- IMPORTANT: 3 nested loops explanation:
+                - first loop over max of 3 groups of categories
+                - second+third loops are considered to be O(n), where n is the number of subcategories for brand in level
+        </iscomment>
+        <isloop items="${pdict.Menu.BrandCategoriesLayered.subCategories}" var="subCategoryGroups" status="subCategoryGroupsStatus">
+
+            <iscomment>
+                DMW casts integer to float when writing integer directly into a tag attribute,
+                therefore currentCategoryLevel variable is being calculated and then casted to string
+            </iscomment>
+            <isset name="currentCategoryLevel" value="${(parseInt(subCategoryGroupsStatus.index, 10) + 2) + ''}" scope="page"/>
+            <isset name="categoryClassName" value="${'category-navigation__group--level-' + currentCategoryLevel}" scope="page"/>
+
+            <isif condition="${subCategoryGroups}">
+                <isloop items="${subCategoryGroups}" var="subCategoryGroup">
+                    <ul class="category-navigation__group ${categoryClassName} hidden js-burger-menu__controls__close--backward" data-menu-level="${currentCategoryLevel}" data-parent-id="${subCategoryGroup.parent.getID()}" data-parent-header="${subCategoryGroup.parent.getDisplayName()}">
+                        <li class="category-navigation__item category-navigation__item--see-all">
+                            <a class="category-navigation__link" href="<isprint value="${subCategoryGroup.parent.getUrl()}" encoding="off"/>" data-layer-click="${subCategoryGroup.parent.getDataLayerJsonString()}">
+                            ${pdict.Resource.msg('global.seeall', 'locale', null)}
+                            </a>
+                        </li>
+                        <isloop items="${subCategoryGroup.categories}" var="subCategory" status="loopstate">
+                            <isset name="shouldShowAsParent" value="${(subCategoryGroupsStatus.index < pdict.Menu.BrandCategoriesLayered.subCategories.length - 1) && subCategory.isSubCategoriesVisible()}" scope="page"/>
+                            <isset name="nextCategory" value="${loopstate.index < subCategoryGroup.categories.length - 1? subCategoryGroup.categories[loopstate.index + 1]: null}" scope="page" />
+                            <isset name="nextHasHeadline" value="${Boolean(useHeadlines && nextCategory && !empty(nextCategory.headline()))}" scope="page" />
+                            <isif condition="${useHeadlines && !empty(subCategory.headline())}">
+                                <isset name="categoryHeadlineLink" value="${subCategory.headlineLink()}" scope="page" />
+                                <li class="category-navigation__headline category-navigation__headline--menu">
+                                    <isif condition="${!empty(categoryHeadlineLink)}">
+                                        <a
+                                            href="${categoryHeadlineLink.url}"
+                                            target="${categoryHeadlineLink.newWindow? '_blank': '_self'}"
+                                            class="category-navigation__headline__text"
+                                        >
+                                            <isprint value="${subCategory.headline()}"/>
+                                        </a>
+                                    <iselse/>
+                                        <span class="category-navigation__headline__text">
+                                            <isprint value="${subCategory.headline()}"/>
+                                        </span>
+                                    </isif>
+                                </li>
+                            </isif>
+                            <li class="category-navigation__item ${nextHasHeadline? 'category-navigation__item--last-in-subgroup': ''}" data-category="${subCategory.getDisplayName()}"  data-category-id="${subCategory.getID()}">
+                                <iscomment>
+                                    First we check if we reached the maximum level for the current brand.
+                                </iscomment>
+                                <isif condition="${shouldShowAsParent}">
+                                    <span data-menu-category="${subCategory.getID()}" class="category-navigation__parent--layered" data-category-id="${subCategory.getID()}" data-layer-click="${subCategory.getDataLayerJsonString()}">
+                                        <isprint value="${subCategory.getDisplayName()}"/>
+                                    </span>
+                                <iselse>
+                                    <a data-menu-category="${subCategory.getID()}" class="category-navigation__link" href="<isprint value="${subCategory.getUrl()}" encoding="off"/>" data-layer-click="${subCategory.getDataLayerJsonString()}">
+                                        <isprint value="${subCategory.getDisplayName()}"/>
+                                    </a>
+                                </isif>
+                            </li>
+                        </isloop>
+                    </ul>
+                </isloop>
+            </isif>
+        </isloop>
+    </isif>
+</div>
+<div class="burger-menu__widgets">
+    <isslot id="custom-navigation-link-widget" context="folder" description="custom navigation links" context-object="${pdict.Widgets.contextFolder}" />
+
+    <isslot id="burger-menu-marketing-widget" context="folder" description="Burger menu marketing spot" context-object="${pdict.Widgets.contextFolder}" />
+</div>

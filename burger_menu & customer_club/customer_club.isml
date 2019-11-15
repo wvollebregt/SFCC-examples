@@ -1,0 +1,165 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+
+<isset name="WidgetContentModel" value="${require('/app_bse_controllers/cartridge/scripts/models/WidgetContentModel.ds')}" scope="page" />
+<isset name="widgetContentAsset" value="${WidgetContentModel ? WidgetContentModel.get(pdict.assetID) : null}" scope="page" />
+<isset name="DISResponsiveHelper" value="${require('~/cartridge/scripts/images/DISResponsiveHelper')}" scope="page" />
+<isset name="context" value="${pdict.suffix === 'popup' ? 'Popup' : 'Footer'}" scope="page" />
+
+<isif condition="${!empty(widgetContentAsset)}">
+    <isif condition="${widgetContentAsset.isOnline()}">
+        <article class="customer-club-${pdict.suffix} js-customer-club__${pdict.suffix}"
+                data-show-additional-fields="${Boolean(pdict.showAdditionalFields)}"
+                data-hands-background="${DISResponsiveHelper.getLayoutContextURLs(widgetContentAsset.backgroundImage, 'hands-customerclub' + pdict.suffix).hands}"
+                data-desktop-background="${DISResponsiveHelper.getLayoutContextURLs(widgetContentAsset.backgroundImage, 'desktop-customerclub' + pdict.suffix).desktop}">
+            <div class="customer-club-${pdict.suffix}__overlay">
+                <div class="customer-club-${pdict.suffix}__background js-customer-club-background"
+                    data-palm-background="${DISResponsiveHelper.getLayoutContextURLs(widgetContentAsset.backgroundImage, 'palm-customerclub' + pdict.suffix).palm}"
+                    data-hands-background="${DISResponsiveHelper.getLayoutContextURLs(widgetContentAsset.backgroundImage, 'hands-customerclub' + pdict.suffix).hands}"
+                    data-desktop-background="${DISResponsiveHelper.getLayoutContextURLs(widgetContentAsset.backgroundImage, 'desktop-customerclub' + pdict.suffix).desktop}">
+                </div>
+                <button class="customer-club-${pdict.suffix}__close js-customer-club--close" data-trigger="js-popup--hide"></button>
+                <div class="${pdict.swiperClass}" data-autoplay-delay="0" data-loop="false">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#" class="customer-club-${pdict.suffix}__signed-in js-customer-club--signed" data-trigger="js-popup--hide">${widgetContentAsset.signedInLabel}</a>
+                            <header class="customer-club-${pdict.suffix}__banner">
+                                <isif condition="${!empty(widgetContentAsset.header)}">
+                                    <h3 class="customer-club-${pdict.suffix}__firstheader${widgetContentAsset.disableHeaderFont?'--plain':''}">
+                                        <isprint value="${widgetContentAsset.header}" />
+                                    </h3>
+                                </isif>
+                                <iswidgettext widgetname="widget-customer-club" widgetdisablesubtext="no" />
+                            </header>
+                            <form class="customer-club-${pdict.suffix}__form">
+                                <input type="hidden" name="context" id="context-${pdict.suffix}" value="${context}"/>
+                                <input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+
+                                <div class="form__field-group customer-club-${pdict.suffix}__form__firstname">
+                                    <div class="customer-club-${pdict.suffix}__form__label">
+                                        <label class="form-group__label--block" for="firstNameInput-${pdict.suffix}">
+                                            <span class="js-field-label" data-original="${pdict.Resource.msg('global.firstname','locale',null)}:">
+                                                <isprint value="${pdict.Resource.msg('global.firstname','locale',null)}" />:
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <input class="form__input-text js-name" type="text" name="firstName" id="firstNameInput-${pdict.suffix}" placeholder="${pdict.Resource.msg('global.firstname','locale',null)}" required/>
+                                </div>
+                                <div class="form__field-group customer-club-${pdict.suffix}__form__lastname">
+                                    <div class="customer-club-${pdict.suffix}__form__label">
+                                        <label class="form-group__label--block" for="lastNameInput-${pdict.suffix}">
+                                            <span class="js-field-label" data-original="${pdict.Resource.msg('global.lastname','locale',null)}:">
+                                                <isprint value="${pdict.Resource.msg('global.lastname','locale',null)}" />:
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <input class="form__input-text js-name" type="text" name="lastName" id="lastNameInput-${pdict.suffix}" placeholder="${pdict.Resource.msg('global.lastname','locale',null)}" required/>
+                                </div>
+                                <div class="form__field-group customer-club-${pdict.suffix}__form__email">
+                                    <div class="customer-club-${pdict.suffix}__form__label">
+                                        <label class="form-group__label--block" for="emailInput-${pdict.suffix}">
+                                            <span class="js-field-label" data-original="${pdict.Resource.msg('global.email','locale',null)}:">
+                                                <isprint value="${pdict.Resource.msg('global.email','locale',null)}" />:
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <input class="form__input-text js-email" type="email" name="email" id="emailInput-${pdict.suffix}" placeholder="${pdict.Resource.msg('global.email','locale',null)}" required/>
+                                </div>
+                                <div class="form__field-group customer-club-${pdict.suffix}__form__button--inline">
+                                    <label class="form-group__label--block customer-club-${pdict.suffix}__form__label"> </label>
+                                    <button class="customer-club-${pdict.suffix}__form__button" style="${widgetContentAsset.getInlineStylesForCTA()}" type="submit" value="join">
+                                        <isprint value="${widgetContentAsset.callToAction}" />
+                                    </button>
+                                </div>
+                                <div class="form__field-group customer-club-${pdict.suffix}__form__terms">
+                                    <input class="form__input-checkbox" type="checkbox" name="acceptTcCheckbox-${pdict.suffix}" id="acceptTcCheckbox-${pdict.suffix}" required>
+                                    <label for="acceptTcCheckbox-${pdict.suffix}" class="form-group__label--block">
+                                        <span class="js-field-label">
+                                            <isprint value="${pdict.Resource.msg('global.termsfirstpart','locale',null)}" />
+                                            <a class="customer-club-${pdict.suffix}__form__anchor js-lightbox-overlay--customer-club" title="${pdict.Resource.msg('confirmation.account.terms','checkout',null)}"
+                                                href="#lightbox-terms">
+                                                <isif condition="${!empty(widgetContentAsset.termsAndConditions)}">
+                                                    <isprint value="${widgetContentAsset.termsAndConditions}" />
+                                                <iselse>
+                                                    <isprint value="${pdict.Resource.msg('confirmation.account.terms','checkout',null)}" />
+                                                </isif>
+                                            </a>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form__field-group customer-club-${pdict.suffix}__form__button--block">
+                                    <button class="customer-club-${pdict.suffix}__form__button" style="${widgetContentAsset.getInlineStylesForCTA()}" type="submit" value="join">
+                                        <isprint value="${widgetContentAsset.callToAction}" />
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <isif condition="${widgetContentAsset.displaySecondStep}">
+                            <div class="swiper-slide js-customer-club-popup__second-step">
+                                <div class="customer-club-${pdict.suffix}__main-container">
+                                    <h3 class="customer-club-${pdict.suffix}__firstheader${widgetContentAsset.disableHeaderFont?'--plain':''}">
+                                        <isprint value="${widgetContentAsset.secondaryHeader}" />
+                                    </h3>
+                                    <div class="customer-club-${pdict.suffix}__markup">
+                                        <iswidgettext widgetname="widget-customer-club" widgetmarkupobject="${widgetContentAsset.widgetContentMarkupSecondary}" widgetdisablesubtext="no" />
+                                    </div>
+                                    <form class="customer-club-popup__form--second-step">
+                                        <div class="form__field-group customer-club-popup__form__date-of-birth">
+                                            <div class="customer-club-popup__form__label">
+                                                <label class="form-group__label--block" for="birthDateInput">
+                                                </label>
+                                            </div>
+                                            <input class="form__input-text customer-club-popup__birth-date" type="date" name="date" id="birthDateInput" placeholder="MM-DD-YYYY" required/>
+                                        </div>
+                                        <div class="form__field-group customer-club-popup__form__lastname">
+                                            <div class="customer-club-widget__form__label">
+                                                <label class="form-group__label--block" for="cityInput">
+                                                </label>
+                                            </div>
+                                            <input class="form__input-text" type="text" name="city" id="cityInput" placeholder="${Resource.msg('resource.city','forms',null)}" required/>
+                                        </div>
+                                        <div class="form__field-group customer-club-popup__form__lastname">
+                                            <div class="customer-club-widget__form__label">
+                                                <label class="form-group__label--block" for="phoneNumberInput">
+                                                </label>
+                                            </div>
+                                            <input class="form__input-text" type="tel" name="phoneNumber" id="phoneNumberInput" placeholder="${Resource.msg('profile.phoneprefix','forms',null)}" required/>
+                                        </div>
+                                        <div class="form__field-group customer-club-popup__form__button--block">
+                                            <button class="customer-club-${pdict.suffix}__form__button" style="${widgetContentAsset.getInlineStylesForCTA()}" type="submit" value="join">
+                                                <isprint value="${widgetContentAsset.callToAction}" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </isif>
+
+                        <div class="swiper-slide">
+                            <div class="customer-club-${pdict.suffix}__main-container">
+                                <div class="customer-club-${pdict.suffix}__sub-container">
+                                    <isif condition="${!empty(widgetContentAsset.brandContent)}">
+                                        <p class="customer-club-${pdict.suffix}__brandcontent">
+                                            <isprint value="${widgetContentAsset.brandContent}" />
+                                        </p>
+                                    </isif>
+                                    <isif condition="${!empty(widgetContentAsset.thankYouMessage)}">
+                                        <h3 class="customer-club-${pdict.suffix}__secondheader${widgetContentAsset.disableHeaderFont?'--plain':''}">
+                                            <isprint value="${widgetContentAsset.thankYouMessage}" />
+                                        </h3>
+                                    </isif>
+                                    <isif condition="${!empty(widgetContentAsset.extraMessage)}">
+                                        <p class="customer-club-${pdict.suffix}__extramessage">
+                                            <isprint value="${widgetContentAsset.extraMessage}" />
+                                        </p>
+                                    </isif>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </isif>
+</isif>

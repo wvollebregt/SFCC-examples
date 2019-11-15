@@ -1,0 +1,108 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+
+<isset name="linkTextColor" value="${pdict.customerClubOverlayAsset.linkColor ? 'color:' + pdict.customerClubOverlayAsset.linkColor + ';' : ''}" scope="page" />
+<isset name="linkBackgroundColor" value="${pdict.customerClubOverlayAsset.linkBackgroundColor ? 'background-color:' + pdict.customerClubOverlayAsset.linkBackgroundColor + ';' : ''}" scope="page" />
+
+<div class="lightbox-overlay js-lightbox-overlay" id="customer-club-overlay">
+    <button class="lightbox-overlay-close"></button>
+    <article class="customer-club-overlay js-customer-club__overlay"
+            data-style-generator
+            data-palm-background="${pdict.backgroundImage.palm}"
+            data-hands-background="${pdict.backgroundImage.hands}"
+            data-desktop-background="${pdict.backgroundImage.desktop}">
+        <div class="customer-club-overlay__overlay">
+            <button class="customer-club-overlay__close js-overlay-close"></button>
+            <div class="swiper-container swiper-no-swiping" data-autoplay-delay="0" data-loop="false">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <header class="customer-club-overlay__banner">
+                            <h3 class="customer-club-overlay__firstheader${pdict.customerClubOverlayAsset.disableHeaderFont?'--plain':''}">
+                                <isprint value="${pdict.customerClubOverlayAsset.header}" />
+                            </h3>
+                            <p class="customer-club-overlay__extramessage">
+                                <isprint value="${pdict.customerClubOverlayAsset.message}" />
+                            </p>
+                        </header>
+                        <form class="customer-club-overlay__form">
+                            <input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+
+                            <isif condition="${pdict.categories}">
+                                <div class="form__field-group customer-club-overlay__form__gender">
+                                    <div class="customer-club-overlay__form__label">
+                                        <label class="form-group__label--block">
+                                            <span class="js-field-label" data-original="${pdict.Resource.msg('global.newslettercategories','locale',null)}:">
+                                                <isprint value="${pdict.Resource.msg('global.newslettercategories','locale',null)}" />:
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <isloop items="${pdict.categories}" var="category">
+                                        <input class="form__input-checkbox" type="checkbox" name="category_${category.id}" id="category_${category.id}" value="selected">
+                                        <label for="category_${category.id}" class="form-group__label--inline customer-club-overlay__gender-label">
+                                            <span class="js-field-label">
+                                                <isprint value="${pdict.Resource.msg('global.' + category.id,'locale',null)}" />
+                                            </span>
+                                        </label>
+                                    </isloop>
+                                </div>
+                            </isif>
+                            <div class="form__field-group customer-club-overlay__form__birthdate">
+                                <div class="customer-club-overlay__form__label">
+                                    <label class="form-group__label--block" for="day">
+                                        <span class="js-field-label" data-original="${pdict.Resource.msg('global.birthdate','locale',null)}:">
+                                            <isprint value="${pdict.Resource.msg('global.birthdate','locale',null)}" />:
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form__dropdown birthdate__day">
+                                    <select class="form__input-select" name="day" id="day" required>
+                                        <isprintoptions headeroptiontext="${pdict.Resource.msg('global.day','locale',null)}" begin="${1}" end="${31}" />
+                                    </select>
+                                </div>
+                                <div class="form__dropdown birthdate__month">
+                                    <select class="form__input-select" name="month" id="month" required>
+                                        <isprintoptions headeroptiontext="${pdict.Resource.msg('global.month','locale',null)}" itemslist="${pdict.months}" />
+                                    </select>
+                                </div>
+                                <div class="form__dropdown birthdate__year">
+                                    <select class="form__input-select" name="year" id="year" required>
+                                        <isprintoptions headeroptiontext="${pdict.Resource.msg('global.year','locale',null)}" begin="${1930}" end="${2000}" />
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form__field-group customer-club-overlay__form__mobile">
+                                <div class="customer-club-overlay__form__label">
+                                    <label class="form-group__label--block" for="phone">
+                                        <span class="js-field-label" data-original="${pdict.Resource.msg('global.mobile','locale',null)}:">
+                                            <isprint value="${pdict.Resource.msg('global.mobile','locale',null)}" />:
+                                        </span>
+                                    </label>
+                                </div>
+                                <input class="form__input-text js-phone phone" type="tel" name="phone" id="phone" placeholder="${pdict.Resource.msg('global.mobileplaceholder','locale',null)}"/>
+                                <input class="country" name="country" value="${pdict.countryCode}" type="hidden"/>
+                            </div>
+                            <div class="form__field-group customer-club-overlay__form__button-container">
+                                <button class="customer-club-overlay__form__button" style="${linkTextColor} ${linkBackgroundColor}" type="submit" value="join">
+                                    <isprint value="${pdict.customerClubOverlayAsset.callToAction}" />
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="swiper-slide customer-club__main-container">
+                        <div class="customer-club__sub-container">
+                            <p class="customer-club-overlay__brandcontent">
+                                <isprint value="${pdict.customerClubOverlayAsset.brandContent}" />
+                            </p>
+                            <h3 class="customer-club-overlay__secondheader${pdict.customerClubOverlayAsset.disableHeaderFont?'--plain':''}">
+                                <isprint value="${pdict.customerClubOverlayAsset.thankYouMessage}" />
+                            </h3>
+                            <p class="customer-club-overlay__extramessage">
+                                <isprint value="${pdict.customerClubOverlayAsset.extraMessage}" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
